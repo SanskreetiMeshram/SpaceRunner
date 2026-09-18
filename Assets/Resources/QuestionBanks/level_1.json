@@ -1,0 +1,429 @@
+{
+  "level": 1,
+  "class": "1",
+  "subject": "Math",
+  "description": "Class 1: Counting 1-20, single-digit addition and subtraction, basic shapes, and number comparisons.",
+  "questions": [
+    {
+      "id": "L1-MATH-001",
+      "subject": "Math",
+      "topic": "Counting",
+      "difficulty": "easy",
+      "questionText": "How many stars are there: ★ ★ ★ ★ ★ ?",
+      "type": "mcq",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Let's count the stars one by one: 1, 2, 3, 4, 5!",
+        "There are 5 stars in total.",
+        "So the correct answer is 5."
+      ],
+      "hint": "Point to each star with your finger and count out loud: 1, 2, 3, 4, 5."
+    },
+    {
+      "id": "L1-MATH-002",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "easy",
+      "questionText": "What is 3 + 2?",
+      "type": "mcq",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Start with 3 fingers on one hand.",
+        "Add 2 more fingers: 4, 5!",
+        "3 plus 2 equals 5."
+      ],
+      "hint": "Start at 3 and count forward by 2 steps."
+    },
+    {
+      "id": "L1-MATH-003",
+      "subject": "Math",
+      "topic": "Subtraction",
+      "difficulty": "easy",
+      "questionText": "What is 5 - 1?",
+      "type": "mcq",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "You have 5 delicious apples.",
+        "You eat 1 apple. Now count how many are left: 4!",
+        "5 take away 1 leaves 4."
+      ],
+      "hint": "Count backward one step from 5."
+    },
+    {
+      "id": "L1-MATH-004",
+      "subject": "Math",
+      "topic": "Shapes",
+      "difficulty": "easy",
+      "questionText": "Which shape has 3 sides and 3 corners?",
+      "type": "mcq",
+      "options": [
+        "Circle",
+        "Square",
+        "Triangle",
+        "Rectangle"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "A circle is round with zero straight sides.",
+        "A square has 4 equal sides.",
+        "A triangle has exactly 3 sides and 3 sharp corners!",
+        "So the shape is a Triangle."
+      ],
+      "hint": "'Tri' means three! Think of a slice of pizza."
+    },
+    {
+      "id": "L1-MATH-005",
+      "subject": "Math",
+      "topic": "Comparison",
+      "difficulty": "easy",
+      "questionText": "Which number is greater: 8 or 4?",
+      "type": "mcq",
+      "options": [
+        "4",
+        "8",
+        "Both are equal",
+        "0"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Imagine 8 shiny gems and 4 shiny gems.",
+        "When we count, 8 comes after 4: 1, 2, 3, 4, 5, 6, 7, 8.",
+        "8 is a bigger number than 4."
+      ],
+      "hint": "Which pile has more items: 8 or 4?"
+    },
+    {
+      "id": "L1-MATH-006",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "easy",
+      "questionText": "What is 4 + 4?",
+      "type": "mcq",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "We want to add 4 and 4.",
+        "Count 4 fingers, then count 4 more: 5, 6, 7, 8!",
+        "4 + 4 = 8."
+      ],
+      "hint": "Double 4 is the same as 4 + 4."
+    },
+    {
+      "id": "L1-MATH-007",
+      "subject": "Math",
+      "topic": "Shapes",
+      "difficulty": "easy",
+      "questionText": "Which shape has NO straight edges and NO corners?",
+      "type": "mcq",
+      "options": [
+        "Square",
+        "Triangle",
+        "Circle",
+        "Cube"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Squares and triangles have straight lines and sharp corners.",
+        "A circle is perfectly curved all the way around.",
+        "A circle has 0 corners and 0 straight edges!"
+      ],
+      "hint": "Think of a full moon or a round coin."
+    },
+    {
+      "id": "L1-MATH-008",
+      "subject": "Math",
+      "topic": "Subtraction",
+      "difficulty": "easy",
+      "questionText": "What is 6 - 2?",
+      "type": "mcq",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Start at the number 6.",
+        "Jump backwards 2 times on the number line: 5, then 4.",
+        "6 minus 2 equals 4."
+      ],
+      "hint": "If you have 6 crayons and give 2 away, count how many remain."
+    },
+    {
+      "id": "L1-MATH-009",
+      "subject": "Math",
+      "topic": "Patterns",
+      "difficulty": "easy",
+      "questionText": "What number comes next in the pattern: 2, 4, 6, ___?",
+      "type": "fill_blank",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Look at how the numbers grow: 2 (+2) = 4, 4 (+2) = 6.",
+        "We are skip-counting by 2!",
+        "6 + 2 = 8. The next number is 8."
+      ],
+      "hint": "Add 2 to the number 6."
+    },
+    {
+      "id": "L1-MATH-010",
+      "subject": "Math",
+      "topic": "Comparison",
+      "difficulty": "easy",
+      "questionText": "Which number is the smallest?",
+      "type": "mcq",
+      "options": [
+        "9",
+        "3",
+        "7",
+        "5"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Let's look at all four numbers: 3, 5, 7, 9.",
+        "When we count from 1, the first number we reach is 3.",
+        "3 is less than 5, 7, and 9. So 3 is the smallest!"
+      ],
+      "hint": "Find the number closest to 1."
+    },
+    {
+      "id": "L1-MATH-011",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "easy",
+      "questionText": "What is 7 + 0?",
+      "type": "mcq",
+      "options": [
+        "0",
+        "7",
+        "8",
+        "70"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Zero means adding nothing at all.",
+        "If you have 7 space coins and collect 0 more, you still have 7 coins!",
+        "Any number plus 0 stays the same: 7 + 0 = 7."
+      ],
+      "hint": "Adding zero does not change the number."
+    },
+    {
+      "id": "L1-MATH-012",
+      "subject": "Math",
+      "topic": "Counting",
+      "difficulty": "easy",
+      "questionText": "What number comes right before 10?",
+      "type": "mcq",
+      "options": [
+        "8",
+        "9",
+        "11",
+        "7"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Count up towards 10: 7, 8, 9, 10.",
+        "The number right before 10 is 9!",
+        "10 minus 1 is 9."
+      ],
+      "hint": "Think about the number that comes just before 10 when counting."
+    },
+    {
+      "id": "L1-MATH-013",
+      "subject": "Math",
+      "topic": "Subtraction",
+      "difficulty": "easy",
+      "questionText": "What is 4 - 4?",
+      "type": "mcq",
+      "options": [
+        "0",
+        "1",
+        "4",
+        "8"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "You have 4 space crystals.",
+        "You use all 4 crystals.",
+        "When you subtract a number from itself, you are left with nothing: 0!"
+      ],
+      "hint": "If you give away all 4 of your items, how many do you have?"
+    },
+    {
+      "id": "L1-MATH-014",
+      "subject": "Math",
+      "topic": "Shapes",
+      "difficulty": "easy",
+      "questionText": "How many sides does a square have?",
+      "type": "mcq",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "A square has 4 straight sides.",
+        "All 4 sides are of the exact same length!",
+        "So a square has 4 sides."
+      ],
+      "hint": "A square has the same number of sides as a rectangle: four."
+    },
+    {
+      "id": "L1-MATH-015",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "easy",
+      "questionText": "What is 6 + 3?",
+      "type": "mcq",
+      "options": [
+        "8",
+        "9",
+        "10",
+        "7"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Put 6 in your head.",
+        "Count forward 3 fingers: 7, 8, 9.",
+        "6 + 3 = 9!"
+      ],
+      "hint": "Start at 6 and count forward 3 times."
+    },
+    {
+      "id": "L1-MATH-016",
+      "subject": "Math",
+      "topic": "Counting",
+      "difficulty": "easy",
+      "questionText": "Which number comes between 14 and 16?",
+      "type": "mcq",
+      "options": [
+        "13",
+        "15",
+        "17",
+        "18"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Let's count through the teens: 13, 14, 15, 16, 17.",
+        "Directly between 14 and 16 is 15!",
+        "14, 15, 16."
+      ],
+      "hint": "What number comes after 14 and before 16?"
+    },
+    {
+      "id": "L1-MATH-017",
+      "subject": "Math",
+      "topic": "Subtraction",
+      "difficulty": "easy",
+      "questionText": "What is 9 - 3?",
+      "type": "mcq",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Start with 9 fingers.",
+        "Tuck 3 fingers away: 8, 7, 6.",
+        "You have 6 fingers left standing. 9 - 3 = 6."
+      ],
+      "hint": "Take away 3 from 9."
+    },
+    {
+      "id": "L1-MATH-018",
+      "subject": "Math",
+      "topic": "Comparison",
+      "difficulty": "easy",
+      "questionText": "Are 7 and 7 equal?",
+      "type": "mcq",
+      "options": [
+        "Yes, they are equal",
+        "No, 7 is greater",
+        "No, 7 is smaller",
+        "Cannot tell"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Both sides have the exact same number: 7.",
+        "Since they are the same amount, they are equal (=)!",
+        "7 = 7."
+      ],
+      "hint": "When two numbers are the exact same, they are equal."
+    },
+    {
+      "id": "L1-MATH-019",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "easy",
+      "questionText": "What is 5 + 5?",
+      "type": "mcq",
+      "options": [
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "You have 5 fingers on your left hand.",
+        "You have 5 fingers on your right hand.",
+        "Together you have 10 fingers! 5 + 5 = 10."
+      ],
+      "hint": "Count all the fingers on both of your hands together."
+    },
+    {
+      "id": "L1-MATH-020",
+      "subject": "Math",
+      "topic": "Counting",
+      "difficulty": "easy",
+      "questionText": "What is the number of sides on a coin?",
+      "type": "mcq",
+      "options": [
+        "1 curved edge",
+        "3 straight edges",
+        "4 straight edges",
+        "0 edges"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "A coin is shaped like a circle.",
+        "A circle has one continuous smooth curved boundary, not straight polygon sides.",
+        "So a coin has 1 curved round edge."
+      ],
+      "hint": "Feel a round coin. It curves smoothly all around."
+    }
+  ]
+}

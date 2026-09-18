@@ -1,0 +1,429 @@
+{
+  "level": 4,
+  "class": "4",
+  "subject": "Math & EVS",
+  "description": "Class 4: Multi-digit multiplication, fractions & decimals, perimeter/area basics, plants, animals, and environment.",
+  "questions": [
+    {
+      "id": "L4-MATH-001",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 25 × 12?",
+      "type": "mcq",
+      "options": [
+        "250",
+        "275",
+        "300",
+        "325"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Split 12 into 10 + 2: 25 × (10 + 2).",
+        "25 × 10 = 250.",
+        "25 × 2 = 50.",
+        "Add them up: 250 + 50 = 300."
+      ],
+      "hint": "25 × 10 = 250, then add 25 × 2."
+    },
+    {
+      "id": "L4-EVS-002",
+      "subject": "EVS",
+      "topic": "Plants",
+      "difficulty": "easy",
+      "questionText": "Which green pigment in plant leaves absorbs sunlight for photosynthesis?",
+      "type": "mcq",
+      "options": [
+        "Hemoglobin",
+        "Chlorophyll",
+        "Melanin",
+        "Stomata"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Plants need light energy to synthesize their food.",
+        "Leaves contain a special green pigment called chlorophyll.",
+        "Chlorophyll captures energy from sunlight to make glucose."
+      ],
+      "hint": "It gives leaves their green color."
+    },
+    {
+      "id": "L4-MATH-003",
+      "subject": "Math",
+      "topic": "Decimals",
+      "difficulty": "medium",
+      "questionText": "Which decimal is equal to the fraction 1/2?",
+      "type": "mcq",
+      "options": [
+        "0.2",
+        "0.5",
+        "0.25",
+        "0.05"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "1/2 represents one divided by two: 1 ÷ 2.",
+        "1.0 ÷ 2 = 0.5.",
+        "So 1/2 = 0.5 (five tenths)."
+      ],
+      "hint": "0.5 is half of 1.0."
+    },
+    {
+      "id": "L4-EVS-004",
+      "subject": "EVS",
+      "topic": "Animals",
+      "difficulty": "easy",
+      "questionText": "Why do desert animals like camels have broad, padded feet?",
+      "type": "mcq",
+      "options": [
+        "To sink deep into sand",
+        "To spread their weight so they don't sink in loose sand",
+        "To swim faster in water",
+        "To run in snow"
+      ],
+      "hint": "A larger surface area reduces pressure on the soft sand.",
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Loose desert sand easily shifts under pressure.",
+        "Broad padded feet have a large surface area.",
+        "Larger area spreads the camel's weight, keeping it from sinking into the sand!"
+      ]
+    },
+    {
+      "id": "L4-MATH-005",
+      "subject": "Math",
+      "topic": "Area",
+      "difficulty": "medium",
+      "questionText": "What is the area of a rectangle with length 8 cm and breadth 5 cm?",
+      "type": "mcq",
+      "options": [
+        "13 sq cm",
+        "26 sq cm",
+        "40 sq cm",
+        "45 sq cm"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Area of a rectangle = Length × Breadth.",
+        "8 cm × 5 cm = 40 square centimeters (sq cm).",
+        "Therefore, Area = 40 sq cm."
+      ],
+      "hint": "Multiply length by breadth."
+    },
+    {
+      "id": "L4-EVS-006",
+      "subject": "EVS",
+      "topic": "Environment",
+      "difficulty": "easy",
+      "questionText": "Which of the following is a BIODEGRADABLE waste item?",
+      "type": "mcq",
+      "options": [
+        "Plastic bottle",
+        "Banana peel",
+        "Glass bottle",
+        "Aluminium can"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Biodegradable materials decompose naturally through microorganisms.",
+        "Plastics, glass, and metals take hundreds of years to break down.",
+        "A banana peel is organic matter and decomposes quickly into soil!"
+      ],
+      "hint": "Look for the natural fruit waste that rots into compost."
+    },
+    {
+      "id": "L4-MATH-007",
+      "subject": "Math",
+      "topic": "Fractions",
+      "difficulty": "medium",
+      "questionText": "What is 2/5 + 1/5?",
+      "type": "mcq",
+      "options": [
+        "3/10",
+        "3/5",
+        "2/10",
+        "1/5"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "When fractions have the same denominator (5), keep the denominator unchanged.",
+        "Add the numerators: 2 + 1 = 3.",
+        "The answer is 3/5."
+      ],
+      "hint": "Add only the top numbers when denominators match."
+    },
+    {
+      "id": "L4-EVS-008",
+      "subject": "EVS",
+      "topic": "Water Cycle",
+      "difficulty": "easy",
+      "questionText": "What is the process where water turns into water vapor due to heat?",
+      "type": "mcq",
+      "options": [
+        "Condensation",
+        "Evaporation",
+        "Precipitation",
+        "Freezing"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "The Sun heats up water in oceans, lakes, and rivers.",
+        "Warm liquid water changes into gaseous water vapor.",
+        "This phase change is called Evaporation."
+      ],
+      "hint": "Liquid turning into vapor is evaporation."
+    },
+    {
+      "id": "L4-MATH-009",
+      "subject": "Math",
+      "topic": "Division",
+      "difficulty": "medium",
+      "questionText": "What is the quotient and remainder when 53 is divided by 5?",
+      "type": "mcq",
+      "options": [
+        "Quotient = 10, Remainder = 3",
+        "Quotient = 9, Remainder = 8",
+        "Quotient = 10, Remainder = 0",
+        "Quotient = 11, Remainder = 2"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "5 goes into 53 ten times: 5 × 10 = 50.",
+        "Subtract 50 from 53: 53 - 50 = 3.",
+        "Quotient is 10, and Remainder is 3."
+      ],
+      "hint": "5 × 10 = 50, how much is left over?"
+    },
+    {
+      "id": "L4-EVS-010",
+      "subject": "EVS",
+      "topic": "Habitats",
+      "difficulty": "medium",
+      "questionText": "Why do aquatic animals like fish have gills instead of lungs?",
+      "type": "mcq",
+      "options": [
+        "To breathe air above water",
+        "To absorb dissolved oxygen from water",
+        "To filter food particles only",
+        "To stay warm in cold water"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Water contains dissolved oxygen gas.",
+        "Gills have thin membranes rich in blood vessels.",
+        "Water flowing over gills allows oxygen to pass directly into the fish's bloodstream."
+      ],
+      "hint": "Gills take dissolved oxygen directly from water."
+    },
+    {
+      "id": "L4-MATH-011",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 15 × 4?",
+      "type": "mcq",
+      "options": [
+        "50",
+        "60",
+        "70",
+        "45"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "15 × 2 = 30.",
+        "30 × 2 = 60.",
+        "So 15 × 4 = 60."
+      ],
+      "hint": "Think of 4 quarters of an hour: 15 × 4 = 60 minutes."
+    },
+    {
+      "id": "L4-EVS-012",
+      "subject": "EVS",
+      "topic": "Plants",
+      "difficulty": "easy",
+      "questionText": "Which part of a plant absorbs water and minerals from the soil?",
+      "type": "mcq",
+      "options": [
+        "Stem",
+        "Leaves",
+        "Roots",
+        "Flowers"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "The roots spread out deep into the moist ground.",
+        "Tiny root hairs absorb water and dissolved soil minerals.",
+        "Roots also anchor the plant firmly in the soil."
+      ],
+      "hint": "They grow underground."
+    },
+    {
+      "id": "L4-MATH-013",
+      "subject": "Math",
+      "topic": "Perimeter",
+      "difficulty": "medium",
+      "questionText": "An equilateral triangle has sides of length 7 cm each. What is its perimeter?",
+      "type": "mcq",
+      "options": [
+        "14 cm",
+        "21 cm",
+        "28 cm",
+        "49 cm"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "An equilateral triangle has 3 equal sides.",
+        "Perimeter = 3 × side length.",
+        "3 × 7 cm = 21 cm."
+      ],
+      "hint": "Multiply 3 by 7."
+    },
+    {
+      "id": "L4-EVS-014",
+      "subject": "EVS",
+      "topic": "Air & Atmosphere",
+      "difficulty": "easy",
+      "questionText": "Which gas do humans and animals breathe IN for respiration?",
+      "type": "mcq",
+      "options": [
+        "Carbon dioxide",
+        "Oxygen",
+        "Nitrogen",
+        "Argon"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Our lungs take in air from the atmosphere.",
+        "Our body absorbs Oxygen from this air to release energy from food.",
+        "We exhale carbon dioxide as a waste gas."
+      ],
+      "hint": "We breathe in oxygen and breathe out carbon dioxide."
+    },
+    {
+      "id": "L4-MATH-015",
+      "subject": "Math",
+      "topic": "Fractions",
+      "difficulty": "medium",
+      "questionText": "What is 3/4 - 1/4 in simplest form?",
+      "type": "mcq",
+      "options": [
+        "2/4 (which is 1/2)",
+        "1/4",
+        "3/8",
+        "1"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Subtract the numerators: 3 - 1 = 2.",
+        "Keep the denominator: 2/4.",
+        "Simplify by dividing top and bottom by 2: 2/4 = 1/2."
+      ],
+      "hint": "3 quarters minus 1 quarter leaves 2 quarters (half)."
+    },
+    {
+      "id": "L4-EVS-016",
+      "subject": "EVS",
+      "topic": "Ecosystems",
+      "difficulty": "medium",
+      "questionText": "In a simple food chain: Grass → Deer → Tiger, which organism is the PRODUCER?",
+      "type": "mcq",
+      "options": [
+        "Grass",
+        "Deer",
+        "Tiger",
+        "Sun"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Producers make their own food using sunlight via photosynthesis.",
+        "Animals must consume other living organisms.",
+        "Grass produces its own food, making it the producer!"
+      ],
+      "hint": "The plant that makes food using sunlight."
+    },
+    {
+      "id": "L4-MATH-017",
+      "subject": "Math",
+      "topic": "Decimals",
+      "difficulty": "medium",
+      "questionText": "What is 2.5 + 3.4?",
+      "type": "mcq",
+      "options": [
+        "5.8",
+        "5.9",
+        "6.0",
+        "6.1"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Align decimal points: tenths place is 5 + 4 = 9.",
+        "Ones place is 2 + 3 = 5.",
+        "Result = 5.9."
+      ],
+      "hint": "2 + 3 = 5, and 0.5 + 0.4 = 0.9."
+    },
+    {
+      "id": "L4-EVS-018",
+      "subject": "EVS",
+      "topic": "Earth & Space",
+      "difficulty": "easy",
+      "questionText": "What causes Day and Night on Earth?",
+      "type": "mcq",
+      "options": [
+        "Earth revolving around the Sun",
+        "Earth rotating on its own axis",
+        "The Moon blocking the Sun",
+        "The Sun moving across the sky"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Earth rotates like a spinning top on its axis once every 24 hours.",
+        "The side facing the Sun has daylight.",
+        "The side facing away experiences night!"
+      ],
+      "hint": "Rotation on its axis takes 24 hours."
+    },
+    {
+      "id": "L4-MATH-019",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 100 × 45?",
+      "type": "mcq",
+      "options": [
+        "450",
+        "4500",
+        "45000",
+        "4050"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Multiplying by 100 adds two zeros to the end of any whole number.",
+        "45 followed by 00 becomes 4,500.",
+        "100 × 45 = 4500."
+      ],
+      "hint": "Write 45 and add two zeros."
+    },
+    {
+      "id": "L4-EVS-020",
+      "subject": "EVS",
+      "topic": "Water",
+      "difficulty": "easy",
+      "questionText": "What happens to liquid water when its temperature drops to 0° Celsius?",
+      "type": "mcq",
+      "options": [
+        "It boils into steam",
+        "It freezes into solid ice",
+        "It dissolves",
+        "It disappears"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "0°C is the freezing point of pure water.",
+        "When cooled to 0°C, liquid water molecules lock into solid crystals of ice.",
+        "Water turns into solid ice."
+      ],
+      "hint": "0°C is the freezing point."
+    }
+  ]
+}

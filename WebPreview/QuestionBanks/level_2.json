@@ -1,0 +1,430 @@
+{
+  "level": 2,
+  "class": "2",
+  "subject": "Math",
+  "description": "Class 2: Addition and subtraction up to 100, 2/5/10 multiplication tables, place value, and word problems.",
+  "questions": [
+    {
+      "id": "L2-MATH-001",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "easy",
+      "questionText": "What is 24 + 15?",
+      "type": "mcq",
+      "options": [
+        "38",
+        "39",
+        "40",
+        "29"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Add the ones place first: 4 ones + 5 ones = 9 ones.",
+        "Now add the tens place: 2 tens + 1 ten = 3 tens.",
+        "Put them together: 3 tens and 9 ones make 39!"
+      ],
+      "hint": "Add 4+5 first, then add 20+10."
+    },
+    {
+      "id": "L2-MATH-002",
+      "subject": "Math",
+      "topic": "Subtraction",
+      "difficulty": "easy",
+      "questionText": "What is 50 - 25?",
+      "type": "mcq",
+      "options": [
+        "20",
+        "25",
+        "30",
+        "35"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Think of 50 as two 25s: 25 + 25 = 50.",
+        "If you take away 25 from 50, exactly 25 remains.",
+        "50 - 25 = 25."
+      ],
+      "hint": "Two quarters (25 + 25) make 50."
+    },
+    {
+      "id": "L2-MATH-003",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "easy",
+      "questionText": "What is 2 × 7?",
+      "type": "mcq",
+      "options": [
+        "12",
+        "14",
+        "16",
+        "18"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "2 × 7 means 7 added two times: 7 + 7.",
+        "7 + 7 = 14.",
+        "So, 2 × 7 = 14."
+      ],
+      "hint": "Double the number 7."
+    },
+    {
+      "id": "L2-MATH-004",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "easy",
+      "questionText": "What is 5 × 4?",
+      "type": "mcq",
+      "options": [
+        "15",
+        "20",
+        "25",
+        "30"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Count by 5s four times: 5, 10, 15, 20!",
+        "4 groups of 5 equal 20.",
+        "Therefore, 5 × 4 = 20."
+      ],
+      "hint": "Skip count by 5 four times."
+    },
+    {
+      "id": "L2-MATH-005",
+      "subject": "Math",
+      "topic": "Place Value",
+      "difficulty": "easy",
+      "questionText": "In the number 68, what is the value of the digit 6?",
+      "type": "mcq",
+      "options": [
+        "6",
+        "60",
+        "8",
+        "68"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Look at the position of each digit in 68.",
+        "8 is in the ones place, worth 8.",
+        "6 is in the tens place, so it represents 6 tens = 60!"
+      ],
+      "hint": "The 6 is in the tens column."
+    },
+    {
+      "id": "L2-MATH-006",
+      "subject": "Math",
+      "topic": "Word Problems",
+      "difficulty": "medium",
+      "questionText": "Riya has 18 stickers. Her brother gives her 12 more. How many stickers does she have now?",
+      "type": "mcq",
+      "options": [
+        "28",
+        "30",
+        "32",
+        "26"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Riya starts with 18 stickers and receives 12 more, so we add: 18 + 12.",
+        "Add the ones: 8 + 2 = 10 (carry over 1 ten).",
+        "Add the tens: 1 ten + 1 ten + 1 carried ten = 3 tens.",
+        "Total stickers = 30."
+      ],
+      "hint": "18 + 12 = ?"
+    },
+    {
+      "id": "L2-MATH-007",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "easy",
+      "questionText": "What is 10 × 6?",
+      "type": "mcq",
+      "options": [
+        "50",
+        "60",
+        "70",
+        "16"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Multiplying by 10 means placing a zero after the number.",
+        "6 with a 0 at the end becomes 60.",
+        "10 × 6 = 60."
+      ],
+      "hint": "Put a 0 at the end of 6."
+    },
+    {
+      "id": "L2-MATH-008",
+      "subject": "Math",
+      "topic": "Subtraction",
+      "difficulty": "medium",
+      "questionText": "What is 74 - 23?",
+      "type": "mcq",
+      "options": [
+        "51",
+        "52",
+        "49",
+        "61"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Subtract the ones digits: 4 - 3 = 1.",
+        "Subtract the tens digits: 7 - 2 = 5.",
+        "Combine tens and ones: 5 tens and 1 one = 51."
+      ],
+      "hint": "Subtract ones (4-3) then tens (7-2)."
+    },
+    {
+      "id": "L2-MATH-009",
+      "subject": "Math",
+      "topic": "Even and Odd",
+      "difficulty": "easy",
+      "questionText": "Which of the following numbers is an EVEN number?",
+      "type": "mcq",
+      "options": [
+        "13",
+        "17",
+        "24",
+        "31"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Even numbers end in 0, 2, 4, 6, or 8 and can be split into pairs.",
+        "13 ends in 3 (odd), 17 ends in 7 (odd), 31 ends in 1 (odd).",
+        "24 ends in 4, so it is an even number!"
+      ],
+      "hint": "Check the last digit. Even numbers end in 0, 2, 4, 6, or 8."
+    },
+    {
+      "id": "L2-MATH-010",
+      "subject": "Math",
+      "topic": "Time",
+      "difficulty": "medium",
+      "questionText": "How many minutes are in 1 hour?",
+      "type": "mcq",
+      "options": [
+        "30 minutes",
+        "50 minutes",
+        "60 minutes",
+        "100 minutes"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "A clock's minute hand goes all the way around the face in one full hour.",
+        "It counts 60 tick marks as it completes the circle.",
+        "Therefore, 1 hour = 60 minutes."
+      ],
+      "hint": "Think about how many minutes the long hand takes to travel from 12 back to 12."
+    },
+    {
+      "id": "L2-MATH-011",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "medium",
+      "questionText": "What is 45 + 35?",
+      "type": "mcq",
+      "options": [
+        "70",
+        "80",
+        "75",
+        "85"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Add the ones: 5 + 5 = 10 (write 0, carry 1 to tens).",
+        "Add the tens: 4 + 3 + 1 (carried) = 8 tens.",
+        "8 tens and 0 ones = 80."
+      ],
+      "hint": "40 + 30 = 70, and 5 + 5 = 10. Now add 70 + 10."
+    },
+    {
+      "id": "L2-MATH-012",
+      "subject": "Math",
+      "topic": "Word Problems",
+      "difficulty": "medium",
+      "questionText": "A basket has 35 apples. 15 apples are taken away. How many are left?",
+      "type": "mcq",
+      "options": [
+        "15",
+        "20",
+        "25",
+        "30"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "We subtract 15 from 35: 35 - 15.",
+        "Ones: 5 - 5 = 0.",
+        "Tens: 3 - 1 = 2.",
+        "Result = 20 apples left."
+      ],
+      "hint": "35 minus 15."
+    },
+    {
+      "id": "L2-MATH-013",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "easy",
+      "questionText": "What is 5 × 8?",
+      "type": "mcq",
+      "options": [
+        "35",
+        "40",
+        "45",
+        "50"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Counting by 5s eight times gives:",
+        "5, 10, 15, 20, 25, 30, 35, 40.",
+        "So 5 × 8 = 40."
+      ],
+      "hint": "Half of 10 × 8 is 40."
+    },
+    {
+      "id": "L2-MATH-014",
+      "subject": "Math",
+      "topic": "Place Value",
+      "difficulty": "medium",
+      "questionText": "What number has 7 tens and 3 ones?",
+      "type": "mcq",
+      "options": [
+        "37",
+        "73",
+        "703",
+        "10"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "7 tens equals 70.",
+        "3 ones equals 3.",
+        "70 + 3 = 73!"
+      ],
+      "hint": "Put the tens digit in front of the ones digit."
+    },
+    {
+      "id": "L2-MATH-015",
+      "subject": "Math",
+      "topic": "Money",
+      "difficulty": "easy",
+      "questionText": "How many 10-rupee notes make 50 rupees?",
+      "type": "mcq",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Count by 10s up to 50: 10, 20, 30, 40, 50.",
+        "That was 5 notes of 10 rupees.",
+        "50 ÷ 10 = 5."
+      ],
+      "hint": "50 divided by 10."
+    },
+    {
+      "id": "L2-MATH-016",
+      "subject": "Math",
+      "topic": "Addition",
+      "difficulty": "medium",
+      "questionText": "What is 56 + 21?",
+      "type": "mcq",
+      "options": [
+        "76",
+        "77",
+        "78",
+        "67"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Add ones: 6 + 1 = 7.",
+        "Add tens: 5 + 2 = 7.",
+        "Combining gives 77."
+      ],
+      "hint": "50+20=70, 6+1=7."
+    },
+    {
+      "id": "L2-MATH-017",
+      "subject": "Math",
+      "topic": "Subtraction",
+      "difficulty": "medium",
+      "questionText": "What is 88 - 33?",
+      "type": "mcq",
+      "options": [
+        "44",
+        "55",
+        "66",
+        "53"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Ones: 8 - 3 = 5.",
+        "Tens: 8 - 3 = 5.",
+        "Result = 55."
+      ],
+      "hint": "Both digits are 8 minus 3."
+    },
+    {
+      "id": "L2-MATH-018",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "easy",
+      "questionText": "What is 2 × 9?",
+      "type": "mcq",
+      "options": [
+        "16",
+        "18",
+        "20",
+        "22"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "2 × 9 is 9 doubled: 9 + 9.",
+        "9 + 9 = 18.",
+        "So 2 × 9 = 18."
+      ],
+      "hint": "Add 9 to 9."
+    },
+    {
+      "id": "L2-MATH-019",
+      "subject": "Math",
+      "topic": "Comparison",
+      "difficulty": "medium",
+      "questionText": "Fill in the blank: 63 ___ 72",
+      "type": "mcq",
+      "options": [
+        "> (greater than)",
+        "< (less than)",
+        "= (equal to)",
+        "+"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Compare the tens place: 6 tens is less than 7 tens.",
+        "Because 63 is smaller than 72, we use the '<' symbol.",
+        "63 < 72."
+      ],
+      "hint": "The small point points towards the smaller number (63)."
+    },
+    {
+      "id": "L2-MATH-020",
+      "subject": "Math",
+      "topic": "Word Problems",
+      "difficulty": "medium",
+      "questionText": "An alien ship has 4 rows of seats. Each row has 5 seats. How many seats are there?",
+      "type": "mcq",
+      "options": [
+        "15",
+        "18",
+        "20",
+        "25"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "4 rows with 5 seats each means 4 × 5.",
+        "Count by 5s: 5, 10, 15, 20.",
+        "Total seats = 20."
+      ],
+      "hint": "Multiply 4 rows by 5 seats."
+    }
+  ]
+}

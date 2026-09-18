@@ -1,0 +1,429 @@
+{
+  "level": 6,
+  "class": "6",
+  "subject": "Math & Science",
+  "description": "Class 6: Integers, introductory algebra, ratios, food nutrients, motion & measurement, and separating mixtures.",
+  "questions": [
+    {
+      "id": "L6-MATH-001",
+      "subject": "Math",
+      "topic": "Integers",
+      "difficulty": "medium",
+      "questionText": "What is the value of: (-7) + (+12)?",
+      "type": "mcq",
+      "options": [
+        "-5",
+        "+5",
+        "-19",
+        "+19"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Think of a number line starting at -7.",
+        "Moving 12 units in the positive direction (right):",
+        "-7 + 7 reaches 0, and we still have 5 more to move.",
+        "0 + 5 = +5."
+      ],
+      "hint": "Since 12 has the larger magnitude and is positive, the answer is positive."
+    },
+    {
+      "id": "L6-SCI-002",
+      "subject": "Science",
+      "topic": "Components of Food",
+      "difficulty": "easy",
+      "questionText": "Which nutrient group is primarily known as the 'body-building food' essential for growth and repair?",
+      "type": "mcq",
+      "options": [
+        "Carbohydrates",
+        "Fats",
+        "Proteins",
+        "Dietary fibers"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Carbohydrates and fats provide energy.",
+        "Proteins are the building blocks required for muscle growth, tissue repair, and enzymes.",
+        "Foods like pulses, milk, and eggs are rich in proteins."
+      ],
+      "hint": "Bodybuilders consume this nutrient to build muscle."
+    },
+    {
+      "id": "L6-MATH-003",
+      "subject": "Math",
+      "topic": "Algebra",
+      "difficulty": "medium",
+      "questionText": "If x + 8 = 20, what is the value of x?",
+      "type": "mcq",
+      "options": [
+        "10",
+        "12",
+        "14",
+        "28"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "To isolate x, subtract 8 from both sides of the equation:",
+        "x = 20 - 8.",
+        "x = 12."
+      ],
+      "hint": "Subtract 8 from 20."
+    },
+    {
+      "id": "L6-SCI-004",
+      "subject": "Science",
+      "topic": "Separation of Substances",
+      "difficulty": "medium",
+      "questionText": "Which method is best suited to separate iron pins accidentally dropped in sand?",
+      "type": "mcq",
+      "options": [
+        "Filtration",
+        "Evaporation",
+        "Magnetic separation",
+        "Sedimentation"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Iron is a ferromagnetic material attracted to magnets.",
+        "Sand is non-magnetic and not attracted.",
+        "Passing a magnet over the mixture quickly picks up all iron pins via Magnetic Separation."
+      ],
+      "hint": "Iron sticks to magnets."
+    },
+    {
+      "id": "L6-MATH-005",
+      "subject": "Math",
+      "topic": "Ratio and Proportion",
+      "difficulty": "medium",
+      "questionText": "What is the simplest form of the ratio 15 : 25?",
+      "type": "mcq",
+      "options": [
+        "1 : 2",
+        "3 : 5",
+        "5 : 3",
+        "2 : 3"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Find the greatest common divisor of 15 and 25, which is 5.",
+        "Divide both terms by 5: 15 ÷ 5 = 3 and 25 ÷ 5 = 5.",
+        "The ratio in simplest form is 3 : 5."
+      ],
+      "hint": "Divide both 15 and 25 by 5."
+    },
+    {
+      "id": "L6-SCI-006",
+      "subject": "Science",
+      "topic": "Motion and Measurement",
+      "difficulty": "medium",
+      "questionText": "The motion of the pendulum of a clock swinging back and forth is an example of:",
+      "type": "mcq",
+      "options": [
+        "Rectilinear motion",
+        "Periodic motion",
+        "Circular motion",
+        "Random motion"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "A motion that repeats itself at regular intervals of time is called Periodic Motion.",
+        "A clock's pendulum swings to and fro with a fixed time period.",
+        "Therefore, it exhibits periodic motion."
+      ],
+      "hint": "It repeats itself at regular time intervals."
+    },
+    {
+      "id": "L6-MATH-007",
+      "subject": "Math",
+      "topic": "Integers",
+      "difficulty": "medium",
+      "questionText": "What is (-4) × (-3)?",
+      "type": "mcq",
+      "options": [
+        "-12",
+        "+12",
+        "-7",
+        "+7"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Multiplying two negative numbers always yields a positive result.",
+        "Negative × Negative = Positive.",
+        "4 × 3 = 12, so (-4) × (-3) = +12."
+      ],
+      "hint": "Two negatives multiply to make a positive."
+    },
+    {
+      "id": "L6-SCI-008",
+      "subject": "Science",
+      "topic": "Living Organisms",
+      "difficulty": "medium",
+      "questionText": "Which adaptation helps birds to fly easily in air?",
+      "type": "mcq",
+      "options": [
+        "Solid heavy bones and thick fur",
+        "Hollow light bones and streamlined body",
+        "Broad flat webbed feet",
+        "Gills and fins"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Birds have pneumatic (hollow) bones that minimize body weight.",
+        "Their streamlined spindle-shaped body reduces air resistance during flight.",
+        "Forelimbs are modified into wings for lift."
+      ],
+      "hint": "Light bones with air cavities."
+    },
+    {
+      "id": "L6-MATH-009",
+      "subject": "Math",
+      "topic": "Algebra",
+      "difficulty": "medium",
+      "questionText": "Solve for y: 3y = 27.",
+      "type": "mcq",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correctIndex": 3,
+      "solutionSteps": [
+        "3y means 3 multiplied by y.",
+        "Divide both sides by 3: y = 27 ÷ 3.",
+        "y = 9."
+      ],
+      "hint": "27 divided by 3."
+    },
+    {
+      "id": "L6-SCI-010",
+      "subject": "Science",
+      "topic": "Electricity",
+      "difficulty": "easy",
+      "questionText": "A device that is used to easily open or close an electric circuit is called a:",
+      "type": "mcq",
+      "options": [
+        "Battery",
+        "Switch",
+        "Filament",
+        "Insulator"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "When the switch is ON, the circuit is closed and current flows.",
+        "When the switch is OFF, the circuit is open (broken) and current stops.",
+        "A switch controls the circuit flow."
+      ],
+      "hint": "You flip it on the wall to turn a light bulb on or off."
+    },
+    {
+      "id": "L6-MATH-011",
+      "subject": "Math",
+      "topic": "Decimals",
+      "difficulty": "medium",
+      "questionText": "What is 0.05 + 0.95?",
+      "type": "mcq",
+      "options": [
+        "0.90",
+        "1.00",
+        "0.10",
+        "1.10"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Align decimals: 5 hundredths + 95 hundredths = 100 hundredths.",
+        "100/100 = 1.00.",
+        "The sum is 1.00."
+      ],
+      "hint": "5 cents plus 95 cents makes 1 dollar."
+    },
+    {
+      "id": "L6-SCI-012",
+      "subject": "Science",
+      "topic": "Fibre to Fabric",
+      "difficulty": "medium",
+      "questionText": "Which of the following is a NATURAL plant fibre?",
+      "type": "mcq",
+      "options": [
+        "Nylon",
+        "Cotton",
+        "Polyester",
+        "Acrylic"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Nylon, polyester, and acrylic are synthetic fibres synthesized from chemicals.",
+        "Cotton is harvested directly from the cotton bolls of cotton plants.",
+        "Therefore, cotton is a natural plant fibre."
+      ],
+      "hint": "Grown in fields from cotton plants."
+    },
+    {
+      "id": "L6-MATH-013",
+      "subject": "Math",
+      "topic": "Fractions",
+      "difficulty": "medium",
+      "questionText": "Which is the proper fraction?",
+      "type": "mcq",
+      "options": [
+        "7/4",
+        "3/5",
+        "9/2",
+        "5/5"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "In a proper fraction, the numerator (top) is strictly less than the denominator (bottom).",
+        "In 3/5, 3 is less than 5, so it is a proper fraction.",
+        "7/4 and 9/2 are improper fractions."
+      ],
+      "hint": "The top number must be smaller than the bottom number."
+    },
+    {
+      "id": "L6-SCI-014",
+      "subject": "Science",
+      "topic": "Light and Shadows",
+      "difficulty": "easy",
+      "questionText": "Objects through which we cannot see at all are called:",
+      "type": "mcq",
+      "options": [
+        "Transparent",
+        "Translucent",
+        "Opaque",
+        "Reflective"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Transparent objects let all light pass through (clear glass).",
+        "Translucent objects let partial light pass (tracing paper).",
+        "Opaque objects completely block light and cast dark shadows (wood, metal)."
+      ],
+      "hint": "They cast solid shadows because light cannot pass through them."
+    },
+    {
+      "id": "L6-MATH-015",
+      "subject": "Math",
+      "topic": "Geometry",
+      "difficulty": "medium",
+      "questionText": "How many degrees are in a full circular turn?",
+      "type": "mcq",
+      "options": [
+        "90°",
+        "180°",
+        "270°",
+        "360°"
+      ],
+      "correctIndex": 3,
+      "solutionSteps": [
+        "A quarter turn is 90°.",
+        "A half turn (straight line) is 180°.",
+        "A full complete circle rotation is 360°."
+      ],
+      "hint": "360 degrees in a full circle."
+    },
+    {
+      "id": "L6-SCI-016",
+      "subject": "Science",
+      "topic": "Nutrient Deficiency",
+      "difficulty": "medium",
+      "questionText": "Deficiency of Iron in our daily food causes which condition?",
+      "type": "mcq",
+      "options": [
+        "Goitre",
+        "Anaemia",
+        "Rickets",
+        "Scurvy"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Iron is a vital component of hemoglobin, which carries oxygen in red blood cells.",
+        "Low iron levels lead to reduced hemoglobin, causing fatigue and paleness.",
+        "This condition is known as Anaemia."
+      ],
+      "hint": "Lack of red blood cells / hemoglobin."
+    },
+    {
+      "id": "L6-MATH-017",
+      "subject": "Math",
+      "topic": "Ratio",
+      "difficulty": "medium",
+      "questionText": "If the ratio of boys to girls in a class is 2:3 and there are 10 boys, how many girls are there?",
+      "type": "mcq",
+      "options": [
+        "12",
+        "15",
+        "18",
+        "20"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Ratio boys : girls = 2 : 3.",
+        "2 units = 10 boys, so 1 unit = 10 ÷ 2 = 5.",
+        "Girls = 3 units = 3 × 5 = 15 girls."
+      ],
+      "hint": "Multiply each part of 2:3 by 5."
+    },
+    {
+      "id": "L6-SCI-018",
+      "subject": "Science",
+      "topic": "Changes Around Us",
+      "difficulty": "easy",
+      "questionText": "Which of the following is an IRREVERSIBLE change?",
+      "type": "mcq",
+      "options": [
+        "Melting of ice",
+        "Boiling of water",
+        "Burning of paper",
+        "Stretching of a rubber band"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Melted ice can be frozen back, boiled water condenses back, rubber bands return to shape.",
+        "Burning paper turns it to ash, smoke, and gas; it can never be unburned.",
+        "Burning paper is an irreversible chemical change."
+      ],
+      "hint": "Once burned, you cannot get the paper back."
+    },
+    {
+      "id": "L6-MATH-019",
+      "subject": "Math",
+      "topic": "Integers",
+      "difficulty": "medium",
+      "questionText": "Which integer is greater: -15 or -3?",
+      "type": "mcq",
+      "options": [
+        "-15",
+        "-3",
+        "Both are equal",
+        "0"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "On the negative side of the number line, numbers closer to 0 have higher value.",
+        "-3 is only 3 steps left of 0, while -15 is 15 steps left.",
+        "-3 is greater than -15: -3 > -15."
+      ],
+      "hint": "Being 3 meters underwater is higher than 15 meters underwater."
+    },
+    {
+      "id": "L6-SCI-020",
+      "subject": "Science",
+      "topic": "Water",
+      "difficulty": "medium",
+      "questionText": "Tiny droplets of water condensing on cold surfaces in winter mornings are called:",
+      "type": "mcq",
+      "options": [
+        "Fog",
+        "Dew",
+        "Hail",
+        "Frost"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "During cool nights, surfaces like grass and leaves lose heat rapidly.",
+        "Moist air touching these cold surfaces cools below its dew point, condensing into water drops.",
+        "These droplets are called dew."
+      ],
+      "hint": "Morning dew on fresh leaves."
+    }
+  ]
+}

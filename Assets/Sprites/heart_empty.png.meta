@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: dd1d5f1ff6960252deb36543a1ee797a
+TextureImporter:
+  fileIDToRecycleName: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+  textureType: 8
+  textureShape: 1
+  spriteMode: 1
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spritePivot: {x: 0.5, y: 0.5}

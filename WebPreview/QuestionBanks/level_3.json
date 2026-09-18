@@ -1,0 +1,429 @@
+{
+  "level": 3,
+  "class": "3",
+  "subject": "Math",
+  "description": "Class 3: Multiplication tables up to 10, simple division, basic fractions (1/2, 1/4), and measurement units.",
+  "questions": [
+    {
+      "id": "L3-MATH-001",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 7 × 8?",
+      "type": "mcq",
+      "options": [
+        "54",
+        "56",
+        "58",
+        "64"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Use the 7 times table or 8 times table.",
+        "7 × 7 = 49, and 49 + 7 = 56.",
+        "Therefore, 7 × 8 = 56."
+      ],
+      "hint": "Remember the rhyme: 5, 6, 7, 8 -> 56 = 7 × 8!"
+    },
+    {
+      "id": "L3-MATH-002",
+      "subject": "Math",
+      "topic": "Division",
+      "difficulty": "easy",
+      "questionText": "What is 24 ÷ 4?",
+      "type": "mcq",
+      "options": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Division asks: How many 4s are in 24?",
+        "We know that 4 × 6 = 24.",
+        "So, 24 ÷ 4 = 6."
+      ],
+      "hint": "What number multiplied by 4 gives 24?"
+    },
+    {
+      "id": "L3-MATH-003",
+      "subject": "Math",
+      "topic": "Fractions",
+      "difficulty": "easy",
+      "questionText": "What is 1/2 of 18?",
+      "type": "mcq",
+      "options": [
+        "6",
+        "8",
+        "9",
+        "12"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Half of a number means dividing it by 2: 18 ÷ 2.",
+        "2 × 9 = 18.",
+        "So half of 18 is 9."
+      ],
+      "hint": "Split 18 into two equal groups."
+    },
+    {
+      "id": "L3-MATH-004",
+      "subject": "Math",
+      "topic": "Measurement",
+      "difficulty": "easy",
+      "questionText": "How many centimeters (cm) are in 1 meter (m)?",
+      "type": "mcq",
+      "options": [
+        "10 cm",
+        "100 cm",
+        "1000 cm",
+        "60 cm"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "'Centi' means one hundredth part of something.",
+        "There are exactly 100 centimeters in 1 meter.",
+        "1 m = 100 cm."
+      ],
+      "hint": "Think of a standard school meter ruler: 100 cm."
+    },
+    {
+      "id": "L3-MATH-005",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 9 × 6?",
+      "type": "mcq",
+      "options": [
+        "45",
+        "54",
+        "63",
+        "56"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "10 × 6 = 60.",
+        "Subtract one 6 from 60: 60 - 6 = 54.",
+        "So 9 × 6 = 54."
+      ],
+      "hint": "In the 9s table, the digits add up to 9: 5 + 4 = 9!"
+    },
+    {
+      "id": "L3-MATH-006",
+      "subject": "Math",
+      "topic": "Division",
+      "difficulty": "medium",
+      "questionText": "What is 45 ÷ 5?",
+      "type": "mcq",
+      "options": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Recall the 5 times table: 5 × 9 = 45.",
+        "When 45 is divided equally into 5 parts, each part is 9.",
+        "45 ÷ 5 = 9."
+      ],
+      "hint": "What number multiplied by 5 gives 45?"
+    },
+    {
+      "id": "L3-MATH-007",
+      "subject": "Math",
+      "topic": "Fractions",
+      "difficulty": "medium",
+      "questionText": "If a pizza is cut into 4 equal slices and you eat 1 slice, what fraction did you eat?",
+      "type": "mcq",
+      "options": [
+        "1/2",
+        "1/4",
+        "3/4",
+        "1/3"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "The bottom number (denominator) is the total equal slices: 4.",
+        "The top number (numerator) is the slices eaten: 1.",
+        "The fraction is 1/4 (one quarter)."
+      ],
+      "hint": "1 slice out of 4 total slices is written as 1/4."
+    },
+    {
+      "id": "L3-MATH-008",
+      "subject": "Math",
+      "topic": "Measurement",
+      "difficulty": "easy",
+      "questionText": "How many grams (g) make 1 kilogram (kg)?",
+      "type": "mcq",
+      "options": [
+        "100 g",
+        "500 g",
+        "1000 g",
+        "10000 g"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "The prefix 'kilo' means one thousand.",
+        "So 1 kilogram = 1000 grams.",
+        "1 kg = 1000 g."
+      ],
+      "hint": "'Kilo' always means 1,000."
+    },
+    {
+      "id": "L3-MATH-009",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 8 × 4?",
+      "type": "mcq",
+      "options": [
+        "24",
+        "28",
+        "32",
+        "36"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "8 × 2 = 16.",
+        "Double 16 to multiply by 4: 16 + 16 = 32.",
+        "8 × 4 = 32."
+      ],
+      "hint": "Double 8 twice: 8 -> 16 -> 32."
+    },
+    {
+      "id": "L3-MATH-010",
+      "subject": "Math",
+      "topic": "Geometry",
+      "difficulty": "medium",
+      "questionText": "A square has sides of length 5 cm. What is its perimeter?",
+      "type": "mcq",
+      "options": [
+        "15 cm",
+        "20 cm",
+        "25 cm",
+        "10 cm"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Perimeter is the distance all the way around the shape.",
+        "A square has 4 equal sides: Perimeter = 4 × side length.",
+        "4 × 5 cm = 20 cm."
+      ],
+      "hint": "Add up all 4 sides: 5 + 5 + 5 + 5."
+    },
+    {
+      "id": "L3-MATH-011",
+      "subject": "Math",
+      "topic": "Division",
+      "difficulty": "easy",
+      "questionText": "What is 36 ÷ 6?",
+      "type": "mcq",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Think: What number multiplied by 6 equals 36?",
+        "6 × 6 = 36.",
+        "Therefore, 36 ÷ 6 = 6."
+      ],
+      "hint": "6 times what is 36?"
+    },
+    {
+      "id": "L3-MATH-012",
+      "subject": "Math",
+      "topic": "Fractions",
+      "difficulty": "medium",
+      "questionText": "What is 1/4 of 20?",
+      "type": "mcq",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "10"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "To find 1/4 of 20, divide 20 by 4: 20 ÷ 4.",
+        "4 × 5 = 20.",
+        "So 1/4 of 20 is 5."
+      ],
+      "hint": "Divide 20 by 4."
+    },
+    {
+      "id": "L3-MATH-013",
+      "subject": "Math",
+      "topic": "Measurement",
+      "difficulty": "easy",
+      "questionText": "How many milliliters (mL) are in 1 liter (L)?",
+      "type": "mcq",
+      "options": [
+        "100 mL",
+        "500 mL",
+        "1000 mL",
+        "10000 mL"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "'Milli' means one thousandth part.",
+        "There are 1,000 milliliters in 1 whole liter.",
+        "1 L = 1000 mL."
+      ],
+      "hint": "Like grams in a kilogram, there are 1,000 milliliters in a liter."
+    },
+    {
+      "id": "L3-MATH-014",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 6 × 7?",
+      "type": "mcq",
+      "options": [
+        "36",
+        "42",
+        "48",
+        "49"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "6 × 6 = 36.",
+        "Add one more 6: 36 + 6 = 42.",
+        "So 6 × 7 = 42."
+      ],
+      "hint": "Count six 7s or seven 6s."
+    },
+    {
+      "id": "L3-MATH-015",
+      "subject": "Math",
+      "topic": "Division",
+      "difficulty": "medium",
+      "questionText": "Divide 32 space crystals equally among 8 alien explorers. How many crystals does each get?",
+      "type": "mcq",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Divide 32 by 8: 32 ÷ 8.",
+        "8 × 4 = 32.",
+        "Each alien gets 4 crystals."
+      ],
+      "hint": "32 ÷ 8 = ?"
+    },
+    {
+      "id": "L3-MATH-016",
+      "subject": "Math",
+      "topic": "Fractions",
+      "difficulty": "medium",
+      "questionText": "Which fraction is bigger: 1/2 or 1/4?",
+      "type": "mcq",
+      "options": [
+        "1/4",
+        "1/2",
+        "Both are equal",
+        "Cannot be determined"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Imagine cutting two identical cakes.",
+        "One cake is split into 2 big halves (1/2).",
+        "The other cake is cut into 4 smaller pieces (1/4).",
+        "One half (1/2) is much bigger than one quarter (1/4)!"
+      ],
+      "hint": "Fewer slices mean each slice is bigger."
+    },
+    {
+      "id": "L3-MATH-017",
+      "subject": "Math",
+      "topic": "Patterns",
+      "difficulty": "medium",
+      "questionText": "What is the missing number: 100, 200, 300, ___, 500?",
+      "type": "fill_blank",
+      "options": [
+        "350",
+        "400",
+        "450",
+        "600"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "The pattern increases by 100 every step: 100, 200, 300...",
+        "300 + 100 = 400.",
+        "The missing number is 400."
+      ],
+      "hint": "Add 100 to 300."
+    },
+    {
+      "id": "L3-MATH-018",
+      "subject": "Math",
+      "topic": "Multiplication",
+      "difficulty": "medium",
+      "questionText": "What is 9 × 9?",
+      "type": "mcq",
+      "options": [
+        "72",
+        "81",
+        "90",
+        "99"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "9 × 9 is nine squared.",
+        "10 × 9 = 90. Subtract 9: 90 - 9 = 81.",
+        "9 × 9 = 81."
+      ],
+      "hint": "9 times 9 is eighty-one."
+    },
+    {
+      "id": "L3-MATH-019",
+      "subject": "Math",
+      "topic": "Time",
+      "difficulty": "medium",
+      "questionText": "How many days are in a regular non-leap year?",
+      "type": "mcq",
+      "options": [
+        "360",
+        "365",
+        "366",
+        "350"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Earth takes about 365 days to orbit the Sun once.",
+        "A regular year has 365 days (a leap year has 366).",
+        "Correct answer = 365 days."
+      ],
+      "hint": "365 days in a standard year."
+    },
+    {
+      "id": "L3-MATH-020",
+      "subject": "Math",
+      "topic": "Geometry",
+      "difficulty": "medium",
+      "questionText": "What is the perimeter of a rectangle with length 6 cm and width 4 cm?",
+      "type": "mcq",
+      "options": [
+        "10 cm",
+        "20 cm",
+        "24 cm",
+        "14 cm"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "A rectangle has 2 lengths and 2 widths.",
+        "Perimeter = 2 × (length + width).",
+        "6 + 4 = 10 cm. 2 × 10 cm = 20 cm."
+      ],
+      "hint": "Add all four sides: 6 + 4 + 6 + 4."
+    }
+  ]
+}

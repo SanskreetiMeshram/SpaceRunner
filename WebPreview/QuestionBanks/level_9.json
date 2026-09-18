@@ -1,0 +1,436 @@
+{
+  "level": 9,
+  "class": "9",
+  "subject": "Full Science & Math",
+  "description": "Class 9: Polynomials, coordinate geometry, laws of motion, gravitation, atoms & molecules, and cell tissues.",
+  "questions": [
+    {
+      "id": "L9-PHY-001",
+      "subject": "Physics",
+      "topic": "Laws of Motion",
+      "difficulty": "medium",
+      "questionText": "According to Newton's Second Law of Motion, the rate of change of momentum is directly proportional to the applied force. What is the mathematical formula?",
+      "type": "mcq",
+      "options": [
+        "F = m / a",
+        "F = m × a",
+        "F = m × v²",
+        "F = a / m"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Momentum p = m × v.",
+        "Rate of change of momentum = d(mv)/dt = m(dv/dt) = m × a.",
+        "Applied Force F = mass × acceleration (F = ma).",
+        "Correct formula: F = m × a."
+      ],
+      "hint": "Force equals mass multiplied by acceleration."
+    },
+    {
+      "id": "L9-CHEM-002",
+      "subject": "Chemistry",
+      "topic": "Atoms and Molecules",
+      "difficulty": "medium",
+      "questionText": "What is the molecular mass of water (H₂O)? (Atomic masses: H = 1 u, O = 16 u)",
+      "type": "mcq",
+      "options": [
+        "17 u",
+        "18 u",
+        "20 u",
+        "34 u"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Water molecule contains 2 Hydrogen atoms and 1 Oxygen atom.",
+        "Mass of 2 Hydrogens = 2 × 1 u = 2 u.",
+        "Mass of 1 Oxygen = 1 × 16 u = 16 u.",
+        "Total Molecular Mass = 2 u + 16 u = 18 u."
+      ],
+      "hint": "2(1) + 16 = ?"
+    },
+    {
+      "id": "L9-BIO-003",
+      "subject": "Biology",
+      "topic": "Tissues",
+      "difficulty": "medium",
+      "questionText": "Which complex permanent tissue in vascular plants conducts synthesized organic food (sugars) bidirectionally from leaves to all other organs?",
+      "type": "mcq",
+      "options": [
+        "Xylem",
+        "Phloem",
+        "Parenchyma",
+        "Collenchyma"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Xylem transports water and inorganic minerals unidirectionally upwards.",
+        "Phloem comprises sieve tubes, companion cells, and phloem parenchyma.",
+        "It transports photosynthesized sucrose solutions bidirectionally.",
+        "Tissue = Phloem."
+      ],
+      "hint": "Phloem transports food (Ph = Food)."
+    },
+    {
+      "id": "L9-MATH-004",
+      "subject": "Math",
+      "topic": "Coordinate Geometry",
+      "difficulty": "easy",
+      "questionText": "In the Cartesian coordinate system, which quadrant contains the point (-4, 5)?",
+      "type": "mcq",
+      "options": [
+        "Quadrant I",
+        "Quadrant II",
+        "Quadrant III",
+        "Quadrant IV"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "In Quadrant I: x > 0, y > 0 (+, +).",
+        "In Quadrant II: x < 0, y > 0 (-, +).",
+        "In Quadrant III: x < 0, y < 0 (-, -).",
+        "In Quadrant IV: x > 0, y < 0 (+, -).",
+        "Here x = -4 (negative) and y = 5 (positive), which lies in Quadrant II."
+      ],
+      "hint": "Negative x and positive y is Quadrant II."
+    },
+    {
+      "id": "L9-PHY-005",
+      "subject": "Physics",
+      "topic": "Gravitation",
+      "difficulty": "medium",
+      "questionText": "What is the approximate standard acceleration due to Earth's gravity (g) near the surface?",
+      "type": "mcq",
+      "options": [
+        "9.8 m/s²",
+        "98 m/s²",
+        "0.98 m/s²",
+        "6.67 m/s²"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Universal formula: g = (G × M) ÷ R².",
+        "Substituting Earth's mass (5.97 × 10²⁴ kg) and radius (6.37 × 10⁶ m):",
+        "g ≈ 9.8 m/s² (directed downwards toward Earth's center)."
+      ],
+      "hint": "Around 9.8 meters per second squared."
+    },
+    {
+      "id": "L9-CHEM-006",
+      "subject": "Chemistry",
+      "topic": "Matter in Our Surroundings",
+      "difficulty": "medium",
+      "questionText": "The direct transition of a substance from solid phase directly into gas phase without passing through liquid phase is called:",
+      "type": "mcq",
+      "options": [
+        "Evaporation",
+        "Sublimation",
+        "Condensation",
+        "Deposition"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Normally, solids melt to liquid then vaporize to gas.",
+        "Substances like camphor, naphthalene, and dry ice (solid CO2) bypass liquid state completely.",
+        "This phase transition is called Sublimation."
+      ],
+      "hint": "Solid directly to vapor is sublimation (e.g. camphor)."
+    },
+    {
+      "id": "L9-BIO-007",
+      "subject": "Biology",
+      "topic": "Cell Biology",
+      "difficulty": "medium",
+      "questionText": "Which organelle contains digestive hydrolytic enzymes capable of digesting worn-out organelles, earning it the title 'Suicide Bag of the Cell'?",
+      "type": "mcq",
+      "options": [
+        "Vacuole",
+        "Centrosome",
+        "Lysosome",
+        "Ribosome"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Lysosomes are membrane-bound vesicles filled with powerful hydrolytic digestive enzymes.",
+        "When a cell is damaged or dies, lysosomes rupture and digest their own cellular components (autolysis).",
+        "Hence, they are termed 'Suicide Bags'."
+      ],
+      "hint": "Lysosome causes lysis (breakdown)."
+    },
+    {
+      "id": "L9-MATH-008",
+      "subject": "Math",
+      "topic": "Polynomials",
+      "difficulty": "medium",
+      "questionText": "What is the degree of the polynomial: P(x) = 5x⁴ - 3x² + 7x - 9?",
+      "type": "mcq",
+      "options": [
+        "1",
+        "2",
+        "4",
+        "5"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "The degree of a polynomial in a single variable is the highest exponent of the variable with a non-zero coefficient.",
+        "In 5x⁴ - 3x² + 7x - 9, the highest power of x is 4.",
+        "Therefore, the degree is 4."
+      ],
+      "hint": "Find the highest power of x."
+    },
+    {
+      "id": "L9-PHY-009",
+      "subject": "Physics",
+      "topic": "Work and Energy",
+      "difficulty": "medium",
+      "questionText": "What is the Kinetic Energy (KE) of an object with mass 4 kg moving at a velocity of 3 m/s?",
+      "type": "mcq",
+      "options": [
+        "12 J",
+        "18 J",
+        "24 J",
+        "36 J"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Kinetic Energy formula: KE = 1/2 × m × v².",
+        "v² = 3² = 9.",
+        "KE = 1/2 × 4 kg × 9 m²/s² = 2 × 9 = 18 Joules (J)."
+      ],
+      "hint": "1/2 × mass × velocity²: 0.5 × 4 × 9."
+    },
+    {
+      "id": "L9-CHEM-010",
+      "subject": "Chemistry",
+      "topic": "Structure of the Atom",
+      "difficulty": "medium",
+      "questionText": "Rutherford's gold-foil alpha-particle scattering experiment led to the discovery of which atomic component?",
+      "type": "mcq",
+      "options": [
+        "Electron",
+        "Neutron",
+        "Atomic Nucleus",
+        "Quark"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Most alpha particles passed straight through the foil, but a small fraction deflected at large angles or bounced straight back.",
+        "This proved that mass and positive charge are concentrated in a tiny dense core.",
+        "Rutherford thereby discovered the Atomic Nucleus."
+      ],
+      "hint": "The dense central core of the atom."
+    },
+    {
+      "id": "L9-BIO-011",
+      "subject": "Biology",
+      "topic": "Diversity in Living Organisms",
+      "difficulty": "medium",
+      "questionText": "Which kingdom in Whittaker's Five Kingdom Classification comprises prokaryotic, unicellular organisms like bacteria?",
+      "type": "mcq",
+      "options": [
+        "Protista",
+        "Monera",
+        "Fungi",
+        "Plantae"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Organisms lacking a defined nuclear membrane and membrane-bound organelles are prokaryotes.",
+        "In Whittaker's system, all prokaryotic bacteria belong exclusively to Kingdom Monera.",
+        "Correct kingdom: Monera."
+      ],
+      "hint": "Kingdom Monera contains all true bacteria."
+    },
+    {
+      "id": "L9-MATH-012",
+      "subject": "Math",
+      "topic": "Heron's Formula",
+      "difficulty": "medium",
+      "questionText": "If the semi-perimeter of a triangle with side lengths a, b, and c is s, what is the formula for s?",
+      "type": "mcq",
+      "options": [
+        "s = (a + b + c) / 3",
+        "s = (a + b + c) / 2",
+        "s = a × b × c",
+        "s = a² + b² + c²"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Perimeter is the sum of all sides: P = a + b + c.",
+        "'Semi' means half of the perimeter.",
+        "So semi-perimeter s = (a + b + c) ÷ 2."
+      ],
+      "hint": "Half of the perimeter."
+    },
+    {
+      "id": "L9-PHY-013",
+      "subject": "Physics",
+      "topic": "Sound",
+      "difficulty": "medium",
+      "questionText": "What is the audible frequency range of hearing for an average healthy human ear?",
+      "type": "mcq",
+      "options": [
+        "2 Hz to 2,000 Hz",
+        "20 Hz to 20,000 Hz",
+        "200 Hz to 200,000 Hz",
+        "0 Hz to 100 Hz"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Frequencies below 20 Hz are infrasonic (felt rather than heard).",
+        "Frequencies above 20,000 Hz (20 kHz) are ultrasonic (detectable by bats/dogs).",
+        "Human audible hearing range spans 20 Hz to 20,000 Hz."
+      ],
+      "hint": "20 Hertz to 20 kilohertz."
+    },
+    {
+      "id": "L9-CHEM-014",
+      "subject": "Chemistry",
+      "topic": "Isotopes",
+      "difficulty": "medium",
+      "questionText": "Isotopes of a chemical element possess the SAME number of ________ but a DIFFERENT number of ________.",
+      "type": "mcq",
+      "options": [
+        "Neutrons; Protons",
+        "Protons; Neutrons",
+        "Electrons; Protons",
+        "Neutrons; Electrons"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Isotopes belong to the same element, so they have the identical atomic number (Z = number of protons).",
+        "Their mass numbers (A) differ because their nuclei contain differing quantities of neutral neutrons.",
+        "Same protons; different neutrons."
+      ],
+      "hint": "Same atomic number (protons), different mass number (neutrons)."
+    },
+    {
+      "id": "L9-BIO-015",
+      "subject": "Biology",
+      "topic": "Epithelial Tissue",
+      "difficulty": "medium",
+      "questionText": "Which type of animal epithelial tissue forms a flat, mosaic tile-like protective lining in blood vessels and lung alveoli?",
+      "type": "mcq",
+      "options": [
+        "Squamous epithelium",
+        "Cuboidal epithelium",
+        "Columnar epithelium",
+        "Ciliated epithelium"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Squamous cells are extremely thin and flat with irregular boundaries.",
+        "Their thin profile facilitates rapid passive gas and nutrient diffusion across capillary walls and alveoli.",
+        "Tissue = Squamous epithelium."
+      ],
+      "hint": "'Squama' means scale or flat tile."
+    },
+    {
+      "id": "L9-MATH-016",
+      "subject": "Math",
+      "topic": "Linear Equations in Two Variables",
+      "difficulty": "medium",
+      "questionText": "Which of the following points satisfies the equation 2x + 3y = 12?",
+      "type": "mcq",
+      "options": [
+        "(3, 2)",
+        "(2, 3)",
+        "(0, 6)",
+        "(6, 2)"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Substitute (3, 2): x = 3, y = 2.",
+        "Left-hand side = 2(3) + 3(2) = 6 + 6 = 12.",
+        "Right-hand side = 12.",
+        "Point (3, 2) satisfies the equation."
+      ],
+      "hint": "Plug in x = 3 and y = 2: 2(3) + 3(2) = 12."
+    },
+    {
+      "id": "L9-PHY-017",
+      "subject": "Physics",
+      "topic": "Newton's Third Law",
+      "difficulty": "easy",
+      "questionText": "When a space rocket launches, hot exhaust gases are expelled downward at high velocity, propelling the rocket upward. This demonstrates:",
+      "type": "mcq",
+      "options": [
+        "Newton's First Law of Motion",
+        "Newton's Second Law of Motion",
+        "Newton's Third Law of Motion (Action and Reaction)",
+        "Ohm's Law"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Newton's Third Law states: To every action there is an equal and opposite reaction.",
+        "Action: Rocket engines forcefully expel gases downward.",
+        "Reaction: The escaping gases exert an equal upward thrust force on the rocket.",
+        "Newton's Third Law of Motion."
+      ],
+      "hint": "Action and reaction are equal and opposite."
+    },
+    {
+      "id": "L9-CHEM-018",
+      "subject": "Chemistry",
+      "topic": "Solutions and Mixtures",
+      "difficulty": "medium",
+      "questionText": "The scattering of a visible beam of light by colloidal particles is known as the:",
+      "type": "mcq",
+      "options": [
+        "Doppler effect",
+        "Tyndall effect",
+        "Photoelectric effect",
+        "Greenhouse effect"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Colloidal particles have diameters between 1 nm and 1000 nm, large enough to scatter light rays.",
+        "When a beam of light passes through a colloid (or smoke/fog), its path becomes luminous and visible.",
+        "This phenomenon is the Tyndall Effect."
+      ],
+      "hint": "John Tyndall discovered this scattering in colloids."
+    },
+    {
+      "id": "L9-BIO-019",
+      "subject": "Biology",
+      "topic": "Natural Resources",
+      "difficulty": "medium",
+      "questionText": "Which atmospheric layer contains the vital Ozone (O₃) shield that absorbs harmful ultraviolet (UV) radiation from the Sun?",
+      "type": "mcq",
+      "options": [
+        "Troposphere",
+        "Stratosphere",
+        "Mesosphere",
+        "Thermosphere"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "The troposphere is the lowest weather layer (0 to ~12 km).",
+        "Above it lies the Stratosphere (12 to 50 km).",
+        "The ozone layer resides in the lower stratosphere, filtering out solar UV-B and UV-C rays.",
+        "Atmospheric layer: Stratosphere."
+      ],
+      "hint": "The second layer of Earth's atmosphere, above troposphere."
+    },
+    {
+      "id": "L9-MATH-020",
+      "subject": "Math",
+      "topic": "Surface Area and Volume",
+      "difficulty": "medium",
+      "questionText": "What is the volume of a sphere of radius r?",
+      "type": "mcq",
+      "options": [
+        "4 π r²",
+        "(4/3) π r³",
+        "(2/3) π r³",
+        "2 π r h"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Surface area of a sphere is 4πr².",
+        "Integrating spherical shells yields volume = (4/3)πr³.",
+        "Volume = (4/3) π r³."
+      ],
+      "hint": "Four-thirds pi r cubed."
+    }
+  ]
+}
