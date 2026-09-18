@@ -1,0 +1,431 @@
+{
+  "level": 7,
+  "class": "7",
+  "subject": "Full Science & Math",
+  "description": "Class 7: Rational numbers, linear equations, heat transfer, speed & motion, acids & bases, and plant/animal nutrition.",
+  "questions": [
+    {
+      "id": "L7-PHY-001",
+      "subject": "Physics",
+      "topic": "Heat Transfer",
+      "difficulty": "medium",
+      "questionText": "By which method does heat transfer through solid metals like a silver spoon?",
+      "type": "mcq",
+      "options": [
+        "Convection",
+        "Conduction",
+        "Radiation",
+        "Evaporation"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "In solids, atoms are packed tightly in fixed lattice positions.",
+        "Heat vibrates atoms, passing thermal kinetic energy directly to neighboring atoms without atoms moving from place to place.",
+        "This mode of heat transfer is called Conduction."
+      ],
+      "hint": "Conduction occurs primarily in solids via particle-to-particle collisions."
+    },
+    {
+      "id": "L7-CHEM-002",
+      "subject": "Chemistry",
+      "topic": "Acids and Bases",
+      "difficulty": "medium",
+      "questionText": "What color does blue litmus paper turn when dipped into an acidic solution like lemon juice?",
+      "type": "mcq",
+      "options": [
+        "Yellow",
+        "Red",
+        "Green",
+        "Colorless"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Litmus is a natural indicator obtained from lichens.",
+        "Acids turn blue litmus paper RED.",
+        "Bases turn red litmus paper BLUE.",
+        "Lemon juice is acidic (citric acid), so it turns blue litmus red."
+      ],
+      "hint": "Remember: Acid turns litmus Red (A-R)."
+    },
+    {
+      "id": "L7-BIO-003",
+      "subject": "Biology",
+      "topic": "Nutrition in Plants",
+      "difficulty": "medium",
+      "questionText": "What gas is released into the atmosphere as a byproduct of photosynthesis?",
+      "type": "mcq",
+      "options": [
+        "Carbon dioxide",
+        "Nitrogen",
+        "Oxygen",
+        "Methane"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "During photosynthesis, plants take in 6CO2 and 6H2O using light energy.",
+        "Water molecules are split in photolysis.",
+        "The chemical reaction produces glucose (C6H12O6) and releases Oxygen (O2) gas."
+      ],
+      "hint": "The vital gas that animals and humans breathe."
+    },
+    {
+      "id": "L7-MATH-004",
+      "subject": "Math",
+      "topic": "Linear Equations",
+      "difficulty": "medium",
+      "questionText": "Solve the linear equation: 2x - 5 = 11.",
+      "type": "mcq",
+      "options": [
+        "x = 6",
+        "x = 8",
+        "x = 3",
+        "x = 16"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Add 5 to both sides: 2x = 11 + 5 = 16.",
+        "Divide both sides by 2: x = 16 ÷ 2.",
+        "x = 8."
+      ],
+      "hint": "Add 5 to 11 first, then divide by 2."
+    },
+    {
+      "id": "L7-PHY-005",
+      "subject": "Physics",
+      "topic": "Motion and Time",
+      "difficulty": "medium",
+      "questionText": "A high-speed train travels 240 kilometers in 2 hours. What is its speed?",
+      "type": "mcq",
+      "options": [
+        "100 km/h",
+        "120 km/h",
+        "140 km/h",
+        "480 km/h"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Formula for speed: Speed = Distance ÷ Time.",
+        "Speed = 240 km ÷ 2 h = 120 km/h.",
+        "The train's speed is 120 km/h."
+      ],
+      "hint": "Distance divided by time."
+    },
+    {
+      "id": "L7-CHEM-006",
+      "subject": "Chemistry",
+      "topic": "Neutralization",
+      "difficulty": "medium",
+      "questionText": "What are the two products formed when an acid reacts with a base in a neutralization reaction?",
+      "type": "mcq",
+      "options": [
+        "Hydrogen and Oxygen",
+        "Salt and Water",
+        "Carbon and Nitrogen",
+        "Sugar and Acid"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Neutralization occurs when H+ ions from acid combine with OH- ions from base.",
+        "H+ + OH- forms neutral water (H2O).",
+        "The remaining ions combine to form a chemical Salt.",
+        "Acid + Base → Salt + Water (+ heat)."
+      ],
+      "hint": "Acid + Base = Salt + Water."
+    },
+    {
+      "id": "L7-BIO-007",
+      "subject": "Biology",
+      "topic": "Nutrition in Animals",
+      "difficulty": "medium",
+      "questionText": "Which digestive organ produces bile juice to break down and emulsify fats?",
+      "type": "mcq",
+      "options": [
+        "Stomach",
+        "Pancreas",
+        "Liver",
+        "Large intestine"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "The liver is the largest internal gland in the human body.",
+        "It secretes bile juice, which is temporarily stored in the gall bladder.",
+        "Bile breaks large fat globules into tiny droplets (emulsification)."
+      ],
+      "hint": "The largest gland in the body."
+    },
+    {
+      "id": "L7-MATH-008",
+      "subject": "Math",
+      "topic": "Rational Numbers",
+      "difficulty": "medium",
+      "questionText": "What is (-3/7) + (5/7)?",
+      "type": "mcq",
+      "options": [
+        "-2/7",
+        "2/7",
+        "8/7",
+        "2/14"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Since the denominators are equal (7), add the numerators directly:",
+        "(-3) + 5 = +2.",
+        "Result = 2/7."
+      ],
+      "hint": "(-3 + 5) over 7."
+    },
+    {
+      "id": "L7-PHY-009",
+      "subject": "Physics",
+      "topic": "Radiation",
+      "difficulty": "medium",
+      "questionText": "How does solar heat travel from the Sun across the vacuum of outer space to reach Earth?",
+      "type": "mcq",
+      "options": [
+        "Conduction",
+        "Convection",
+        "Radiation",
+        "Advection"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Conduction and convection require material mediums (particles) to transfer thermal energy.",
+        "Outer space is a near-perfect vacuum with virtually no particles.",
+        "Thermal energy travels through vacuum as electromagnetic waves via Radiation."
+      ],
+      "hint": "Electromagnetic infrared waves travel through empty space."
+    },
+    {
+      "id": "L7-CHEM-010",
+      "subject": "Chemistry",
+      "topic": "Physical and Chemical Changes",
+      "difficulty": "medium",
+      "questionText": "Rusting of iron in the presence of moisture and air is a:",
+      "type": "mcq",
+      "options": [
+        "Physical change",
+        "Chemical change",
+        "Reversible change",
+        "Nuclear change"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Iron reacts with oxygen and moisture to form iron oxide (hydrated iron(III) oxide, Fe2O3·xH2O).",
+        "A completely new substance with different properties is formed, releasing heat.",
+        "This is a permanent Chemical Change."
+      ],
+      "hint": "A new substance (iron oxide) is formed."
+    },
+    {
+      "id": "L7-BIO-011",
+      "subject": "Biology",
+      "topic": "Transportation in Plants",
+      "difficulty": "medium",
+      "questionText": "Which vascular tissue transports water and dissolved minerals from roots upward to leaves?",
+      "type": "mcq",
+      "options": [
+        "Phloem",
+        "Xylem",
+        "Cortex",
+        "Epidermis"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Xylem tissue forms continuous tubular channels from roots through stems to leaves.",
+        "It transports water and inorganic minerals upwards via transpiration pull.",
+        "(Phloem transports prepared food sugars)."
+      ],
+      "hint": "Xylem carries water (Xy = Water)."
+    },
+    {
+      "id": "L7-MATH-012",
+      "subject": "Math",
+      "topic": "Exponents",
+      "difficulty": "medium",
+      "questionText": "What is the value of 3⁴?",
+      "type": "mcq",
+      "options": [
+        "12",
+        "27",
+        "81",
+        "64"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "3⁴ means 3 multiplied by itself 4 times:",
+        "3 × 3 = 9.",
+        "9 × 3 = 27.",
+        "27 × 3 = 81."
+      ],
+      "hint": "3 × 3 × 3 × 3 = ?"
+    },
+    {
+      "id": "L7-PHY-013",
+      "subject": "Physics",
+      "topic": "Optics",
+      "difficulty": "medium",
+      "questionText": "What type of mirror is commonly used as a side rear-view mirror in motor vehicles?",
+      "type": "mcq",
+      "options": [
+        "Concave mirror",
+        "Convex mirror",
+        "Plane mirror",
+        "Parabolic mirror"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Convex mirrors always form erect, virtual, and diminished (smaller) images of distant objects.",
+        "Because the images are smaller, convex mirrors provide a much wider field of view.",
+        "This allows drivers to see more traffic behind them."
+      ],
+      "hint": "A mirror that curves outward to give a wide field of view."
+    },
+    {
+      "id": "L7-CHEM-014",
+      "subject": "Chemistry",
+      "topic": "Bases",
+      "difficulty": "medium",
+      "questionText": "Which of the following is commonly known as baking soda?",
+      "type": "mcq",
+      "options": [
+        "Sodium chloride",
+        "Sodium hydrogen carbonate",
+        "Calcium hydroxide",
+        "Magnesium hydroxide"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Baking soda is a mild alkaline salt used in baking to release CO2.",
+        "Its chemical formula is NaHCO3.",
+        "Its chemical name is Sodium hydrogen carbonate (or sodium bicarbonate)."
+      ],
+      "hint": "NaHCO3."
+    },
+    {
+      "id": "L7-BIO-015",
+      "subject": "Biology",
+      "topic": "Respiration in Organisms",
+      "difficulty": "medium",
+      "questionText": "Earthworms breathe and exchange respiratory gases through their:",
+      "type": "mcq",
+      "options": [
+        "Lungs",
+        "Moist skin",
+        "Tracheae",
+        "Gills"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Earthworms do not have specialized lungs or gills.",
+        "Gases diffuse directly through their thin, moist skin into superficial blood capillaries.",
+        "Hence, they breathe through their moist skin."
+      ],
+      "hint": "They keep their slimy skin moist to absorb oxygen directly."
+    },
+    {
+      "id": "L7-MATH-016",
+      "subject": "Math",
+      "topic": "Triangles",
+      "difficulty": "medium",
+      "questionText": "In a right-angled triangle, if two angles are 90° and 35°, what is the third angle?",
+      "type": "mcq",
+      "options": [
+        "45°",
+        "55°",
+        "65°",
+        "35°"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Sum of angles in any triangle = 180°.",
+        "Third angle = 180° - (90° + 35°).",
+        "180° - 125° = 55°."
+      ],
+      "hint": "Subtract (90 + 35) from 180."
+    },
+    {
+      "id": "L7-PHY-017",
+      "subject": "Physics",
+      "topic": "Electric Current",
+      "difficulty": "medium",
+      "questionText": "Which safety device melts and breaks an electric circuit when excessive current flows through it?",
+      "type": "mcq",
+      "options": [
+        "Resistor",
+        "Fuse",
+        "Capacitor",
+        "Inductor"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "An electric fuse has a wire with a low melting point.",
+        "When current exceeds the safe threshold, Joule heating warms the wire past its melting point.",
+        "The wire melts, breaking the circuit and preventing fires or appliance damage."
+      ],
+      "hint": "It contains a thin wire designed to melt safely during power surges."
+    },
+    {
+      "id": "L7-CHEM-018",
+      "subject": "Chemistry",
+      "topic": "Indicators",
+      "difficulty": "medium",
+      "questionText": "Turmeric is a natural indicator. What color does turmeric turn in an alkaline (basic) solution?",
+      "type": "mcq",
+      "options": [
+        "Remains yellow",
+        "Turns deep red",
+        "Turns bright blue",
+        "Turns green"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Turmeric paste is yellow in neutral or acidic solutions.",
+        "When it comes into contact with a basic solution (such as soap or baking soda), it undergoes a color change to reddish-brown.",
+        "Turns deep reddish-brown."
+      ],
+      "hint": "Have you ever scrubbed a yellow curry stain with soap? It turns reddish."
+    },
+    {
+      "id": "L7-BIO-019",
+      "subject": "Biology",
+      "topic": "Circulation",
+      "difficulty": "medium",
+      "questionText": "Which blood cells are primarily responsible for fighting infections and disease-causing pathogens?",
+      "type": "mcq",
+      "options": [
+        "Red Blood Cells",
+        "Platelets",
+        "White Blood Cells",
+        "Plasma"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Red blood cells transport oxygen via hemoglobin.",
+        "Platelets assist in blood clotting.",
+        "White blood cells (leukocytes) produce antibodies and engulf harmful bacteria/viruses to fight disease."
+      ],
+      "hint": "Leukocytes, also known as WBCs."
+    },
+    {
+      "id": "L7-MATH-020",
+      "subject": "Math",
+      "topic": "Simple Interest",
+      "difficulty": "medium",
+      "questionText": "What is the Simple Interest on a principal of ₹1,000 at 10% per annum for 2 years?",
+      "type": "mcq",
+      "options": [
+        "₹100",
+        "₹150",
+        "₹200",
+        "₹250"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Simple Interest formula: SI = (P × R × T) ÷ 100.",
+        "SI = (1000 × 10 × 2) ÷ 100.",
+        "SI = 20,000 ÷ 100 = ₹200."
+      ],
+      "hint": "(Principal × Rate × Time) / 100."
+    }
+  ]
+}

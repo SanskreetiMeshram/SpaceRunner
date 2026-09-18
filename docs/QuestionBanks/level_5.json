@@ -1,0 +1,431 @@
+{
+  "level": 5,
+  "class": "5",
+  "subject": "Math & Science",
+  "description": "Class 5: Percentages, LCM/HCF basics, angles & geometry, states of matter, and human organ systems.",
+  "questions": [
+    {
+      "id": "L5-MATH-001",
+      "subject": "Math",
+      "topic": "Percentages",
+      "difficulty": "medium",
+      "questionText": "What is 50% of 240?",
+      "type": "mcq",
+      "options": [
+        "100",
+        "120",
+        "140",
+        "60"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "50% means 50 per 100, which simplifies to 1/2 (half).",
+        "To find 50% of 240, take half of 240: 240 ÷ 2.",
+        "240 ÷ 2 = 120."
+      ],
+      "hint": "50% is simply half of the number."
+    },
+    {
+      "id": "L5-SCI-002",
+      "subject": "Science",
+      "topic": "Human Body",
+      "difficulty": "easy",
+      "questionText": "Which organ in the human body continuously pumps blood to all organs?",
+      "type": "mcq",
+      "options": [
+        "Lungs",
+        "Brain",
+        "Heart",
+        "Kidneys"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "The heart is a muscular organ located in the chest.",
+        "It contracts rhythmically to pump oxygen-rich blood through arteries.",
+        "Therefore, the heart is the circulatory pump of our body."
+      ],
+      "hint": "It beats inside your chest about 70-80 times every minute."
+    },
+    {
+      "id": "L5-MATH-003",
+      "subject": "Math",
+      "topic": "LCM",
+      "difficulty": "medium",
+      "questionText": "What is the Lowest Common Multiple (LCM) of 4 and 6?",
+      "type": "mcq",
+      "options": [
+        "8",
+        "12",
+        "16",
+        "24"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "List multiples of 4: 4, 8, 12, 16, 20...",
+        "List multiples of 6: 6, 12, 18, 24...",
+        "The smallest number common to both lists is 12.",
+        "LCM(4, 6) = 12."
+      ],
+      "hint": "Find the smallest number that both 4 and 6 divide into evenly."
+    },
+    {
+      "id": "L5-SCI-004",
+      "subject": "Science",
+      "topic": "States of Matter",
+      "difficulty": "medium",
+      "questionText": "Which state of matter has a definite volume but NO fixed shape (takes the shape of its container)?",
+      "type": "mcq",
+      "options": [
+        "Solid",
+        "Liquid",
+        "Gas",
+        "Plasma"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Solids have both a fixed shape and fixed volume.",
+        "Gases have neither fixed shape nor fixed volume.",
+        "Liquids keep their volume constant but flow to take the shape of any container."
+      ],
+      "hint": "Think of water: 1 liter stays 1 liter whether in a bottle or a bowl."
+    },
+    {
+      "id": "L5-MATH-005",
+      "subject": "Math",
+      "topic": "Geometry",
+      "difficulty": "easy",
+      "questionText": "An angle that measures exactly 90 degrees is called what?",
+      "type": "mcq",
+      "options": [
+        "Acute angle",
+        "Right angle",
+        "Obtuse angle",
+        "Reflex angle"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Angles less than 90° are Acute.",
+        "Angles greater than 90° and less than 180° are Obtuse.",
+        "An angle of exactly 90° forms an 'L' shape and is called a Right Angle."
+      ],
+      "hint": "It looks like the corner of a square or book."
+    },
+    {
+      "id": "L5-SCI-006",
+      "subject": "Science",
+      "topic": "Simple Machines",
+      "difficulty": "easy",
+      "questionText": "A see-saw in a playground is an example of which simple machine?",
+      "type": "mcq",
+      "options": [
+        "Pulley",
+        "Lever",
+        "Wheel and axle",
+        "Screw"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "A see-saw consists of a rigid board pivoting on a central point (fulcrum).",
+        "This arrangement is a classic Class 1 Lever.",
+        "So a see-saw is a lever."
+      ],
+      "hint": "A rigid bar pivoting around a central point is a lever."
+    },
+    {
+      "id": "L5-MATH-007",
+      "subject": "Math",
+      "topic": "HCF",
+      "difficulty": "medium",
+      "questionText": "What is the Highest Common Factor (HCF) of 12 and 18?",
+      "type": "mcq",
+      "options": [
+        "2",
+        "3",
+        "6",
+        "12"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Factors of 12: 1, 2, 3, 4, 6, 12.",
+        "Factors of 18: 1, 2, 3, 6, 9, 18.",
+        "Common factors are 1, 2, 3, and 6.",
+        "The highest among them is 6!"
+      ],
+      "hint": "What is the largest number that divides both 12 and 18 without a remainder?"
+    },
+    {
+      "id": "L5-SCI-008",
+      "subject": "Science",
+      "topic": "Digestion",
+      "difficulty": "medium",
+      "questionText": "Where does the chemical digestion of carbohydrates begin in the human body?",
+      "type": "mcq",
+      "options": [
+        "Stomach",
+        "Mouth",
+        "Small intestine",
+        "Large intestine"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "When we chew food, salivary glands produce saliva containing the enzyme amylase.",
+        "Salivary amylase breaks down complex starches into simpler sugars right in the mouth.",
+        "Digestion begins in the mouth."
+      ],
+      "hint": "Saliva in your mouth starts breaking down food as you chew."
+    },
+    {
+      "id": "L5-MATH-009",
+      "subject": "Math",
+      "topic": "Percentages",
+      "difficulty": "medium",
+      "questionText": "What is 25% of 80?",
+      "type": "mcq",
+      "options": [
+        "15",
+        "20",
+        "25",
+        "30"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "25% is one quarter: 25/100 = 1/4.",
+        "To find 25% of 80, divide 80 by 4: 80 ÷ 4.",
+        "80 ÷ 4 = 20."
+      ],
+      "hint": "Divide 80 by 4."
+    },
+    {
+      "id": "L5-SCI-010",
+      "subject": "Science",
+      "topic": "Plant Reproduction",
+      "difficulty": "easy",
+      "questionText": "What are the three essential conditions required for a seed to germinate?",
+      "type": "mcq",
+      "options": [
+        "Water, Air (Oxygen), and Warmth",
+        "Darkness, Cold, and Fertilizer",
+        "Sunlight, Ice, and Salt",
+        "Wind, Rocks, and Sugar"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Seeds need moisture (water) to swell and activate enzymes.",
+        "They need air (oxygen) for cellular respiration.",
+        "They need warmth (suitable temperature) to grow.",
+        "Water, Air, and Warmth are the essential conditions."
+      ],
+      "hint": "Remember WOW: Warmth, Oxygen, Water."
+    },
+    {
+      "id": "L5-MATH-011",
+      "subject": "Math",
+      "topic": "Angles",
+      "difficulty": "easy",
+      "questionText": "An angle measuring 45 degrees is called an:",
+      "type": "mcq",
+      "options": [
+        "Acute angle",
+        "Right angle",
+        "Obtuse angle",
+        "Straight angle"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Angles measuring between 0° and 90° are acute angles.",
+        "Since 45° is less than 90°, it is an Acute Angle.",
+        "Acute angles are sharp and narrow."
+      ],
+      "hint": "Less than 90 degrees."
+    },
+    {
+      "id": "L5-SCI-012",
+      "subject": "Science",
+      "topic": "Ecosystems",
+      "difficulty": "medium",
+      "questionText": "Animals that eat BOTH plants and other animals are called:",
+      "type": "mcq",
+      "options": [
+        "Herbivores",
+        "Carnivores",
+        "Omnivores",
+        "Decomposers"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Herbivores eat only plants (e.g. cow).",
+        "Carnivores eat only meat/animals (e.g. lion).",
+        "Omnivores eat both plants and animal flesh (e.g. bears, humans)."
+      ],
+      "hint": "'Omni' means all or everything."
+    },
+    {
+      "id": "L5-MATH-013",
+      "subject": "Math",
+      "topic": "Fractions and Decimals",
+      "difficulty": "medium",
+      "questionText": "What is 3/4 converted into a decimal?",
+      "type": "mcq",
+      "options": [
+        "0.34",
+        "0.75",
+        "0.50",
+        "0.65"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "3/4 = 3 ÷ 4.",
+        "3.00 ÷ 4 = 0.75.",
+        "Think of money: 3 quarters of a dollar = 75 cents = $0.75."
+      ],
+      "hint": "Three quarters equal 75% or 0.75."
+    },
+    {
+      "id": "L5-SCI-014",
+      "subject": "Science",
+      "topic": "Skeletal System",
+      "difficulty": "easy",
+      "questionText": "How many bones are in an adult human skeleton?",
+      "type": "mcq",
+      "options": [
+        "106",
+        "206",
+        "306",
+        "406"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Babies are born with approximately 300 soft bones.",
+        "As we grow, several bones fuse together.",
+        "An adult human skeleton has exactly 206 bones."
+      ],
+      "hint": "Two hundred and six."
+    },
+    {
+      "id": "L5-MATH-015",
+      "subject": "Math",
+      "topic": "Geometry",
+      "difficulty": "medium",
+      "questionText": "What is the sum of all three angles inside ANY triangle?",
+      "type": "mcq",
+      "options": [
+        "90°",
+        "180°",
+        "270°",
+        "360°"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "No matter what shape of triangle you have (equilateral, isosceles, scalene),",
+        "The interior angles always add up to a straight line: 180°.",
+        "Sum of angles in a triangle = 180°."
+      ],
+      "hint": "Half of a full 360° circle."
+    },
+    {
+      "id": "L5-SCI-016",
+      "subject": "Science",
+      "topic": "Atmosphere",
+      "difficulty": "medium",
+      "questionText": "Which gas is the MOST abundant in Earth's atmosphere (about 78%)?",
+      "type": "mcq",
+      "options": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Nitrogen",
+        "Hydrogen"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Nitrogen makes up roughly 78% of Earth's atmosphere.",
+        "Oxygen makes up about 21%.",
+        "All other gases (Argon, CO2, water vapor) make up the remaining 1%."
+      ],
+      "hint": "Nitrogen makes up nearly four-fifths of our air."
+    },
+    {
+      "id": "L5-MATH-017",
+      "subject": "Math",
+      "topic": "Volume",
+      "difficulty": "medium",
+      "questionText": "What is the volume of a cube with side length 3 cm?",
+      "type": "mcq",
+      "options": [
+        "9 cubic cm",
+        "18 cubic cm",
+        "27 cubic cm",
+        "36 cubic cm"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Volume of a cube = side × side × side.",
+        "3 cm × 3 cm × 3 cm = 27 cm³.",
+        "Volume = 27 cubic cm."
+      ],
+      "hint": "3 cubed = 3 × 3 × 3."
+    },
+    {
+      "id": "L5-SCI-018",
+      "subject": "Science",
+      "topic": "States of Matter",
+      "difficulty": "medium",
+      "questionText": "What is the boiling point of pure water at normal sea-level atmospheric pressure?",
+      "type": "mcq",
+      "options": [
+        "50°C",
+        "80°C",
+        "100°C",
+        "150°C"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "Water freezes at 0°C.",
+        "Water boils rapidly into steam vapor at 100°C.",
+        "Normal boiling point = 100°C."
+      ],
+      "hint": "100 degrees Celsius."
+    },
+    {
+      "id": "L5-MATH-019",
+      "subject": "Math",
+      "topic": "Speed",
+      "difficulty": "medium",
+      "questionText": "A spaceship travels 300 kilometers in 3 hours. What is its speed?",
+      "type": "mcq",
+      "options": [
+        "90 km/h",
+        "100 km/h",
+        "150 km/h",
+        "300 km/h"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Speed = Distance ÷ Time.",
+        "Speed = 300 km ÷ 3 hours.",
+        "300 ÷ 3 = 100 km/h."
+      ],
+      "hint": "Divide total distance by total time."
+    },
+    {
+      "id": "L5-SCI-020",
+      "subject": "Science",
+      "topic": "Deficiency Diseases",
+      "difficulty": "medium",
+      "questionText": "A severe lack of Vitamin C in the diet causes which deficiency disease?",
+      "type": "mcq",
+      "options": [
+        "Rickets",
+        "Scurvy",
+        "Beriberi",
+        "Goitre"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Vitamin C is needed to make collagen and keep gums healthy.",
+        "Lack of Vitamin C causes Scurvy (bleeding gums, weakness).",
+        "Citrus fruits like lemons and oranges prevent scurvy."
+      ],
+      "hint": "Historically common among sailors without citrus fruits."
+    }
+  ]
+}

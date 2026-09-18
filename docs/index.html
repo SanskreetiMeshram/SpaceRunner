@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Spaceship Runner — 3D Space Runner (Class 1 to 10)</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Top Header Bar -->
+    <header id="top-bar">
+      <div class="logo-area">
+        <span class="logo-icon">🚀</span>
+        <div class="logo-text">
+          <span class="logo-title">Spaceship Runner</span>
+          <span class="logo-subtitle">Class 1 to 10 Curriculum Space Runner</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-sound-toggle" class="icon-btn" title="Toggle Sound">🔊</button>
+        <button id="btn-controls-toggle" class="nav-btn" title="Toggle On-Screen Virtual Controls">🕹️ Controls</button>
+        <button id="btn-map-nav" class="nav-btn">🗺️ Level Map</button>
+        <button id="btn-play-hero" class="btn-primary" style="padding: 6px 14px; font-size: 13px;">▶ Play Now</button>
+      </div>
+    </header>
+
+    <!-- Main Screen Viewport (Three.js 3D WebGL Canvas) -->
+    <div id="viewport-wrapper">
+      <!-- Cinematic Lens & Space Vignette Overlay -->
+      <div id="cinematic-lens-overlay"></div>
+
+      <!-- HUD Overlay (Active during gameplay) -->
+      <div id="hud-overlay" class="overlay-panel hidden">
+        <div class="hud-left">
+          <div class="hud-card level-badge" id="hud-level-badge">Class 1 • Playful Stardust</div>
+          <div class="hud-card lives-display" id="hud-lives">
+            <span class="heart-icon">❤️</span>
+            <span class="heart-icon">❤️</span>
+            <span class="heart-icon">❤️</span>
+          </div>
+        </div>
+
+        <div class="hud-center">
+          <div class="hud-progress-wrapper">
+            <div class="progress-bar-bg">
+              <div id="hud-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+            <span id="hud-progress-text">0 / 5 Coins</span>
+          </div>
+        </div>
+
+        <div class="hud-right">
+          <div class="hud-card score-display">
+            <span class="stat-label">SCORE</span>
+            <span id="hud-score-val" class="stat-value">0</span>
+          </div>
+          <div class="hud-card coins-display">
+            <span class="stat-label">COINS</span>
+            <span id="hud-coins-val" class="stat-value">🪙 0</span>
+          </div>
+        </div>
+
+        <!-- Dash Ready Indicator -->
+        <div id="hud-dash-indicator">
+          <div class="dash-bar-bg">
+            <div id="hud-dash-fill" class="dash-bar-fill"></div>
+          </div>
+          <span class="dash-label">WARP DASH [READY]</span>
+        </div>
+
+        <!-- Controls helper hint for kids (Auto adapts to desktop / mobile) -->
+        <div class="controls-hint" id="hud-controls-hint">
+          <span>⌨️ Move: WASD / Arrows / Touch Drag</span>
+          <span>•</span>
+          <span>⚡ Dash: [SHIFT] or Touch Button</span>
+          <span>•</span>
+          <span>Collect 🪙 Coins!</span>
+        </div>
+      </div>
+
+      <!-- Universal Mobile Touch Controls (Auto-shown on touch devices) -->
+      <div id="mobile-controls" class="mobile-touch-overlay hidden">
+        <!-- Virtual Joystick Area (Left) -->
+        <div id="mobile-joystick-zone">
+          <div id="joystick-base">
+            <div id="joystick-thumb"></div>
+          </div>
+          <span class="joystick-hint">STEER</span>
+        </div>
+
+        <!-- Action Area (Right) -->
+        <div id="mobile-action-zone">
+          <button id="btn-mobile-dash" class="mobile-dash-btn" title="Warp Dash">
+            <span class="dash-btn-icon">⚡</span>
+            <span class="dash-btn-text">DASH</span>
+            <div class="dash-btn-cooldown" id="mobile-dash-cooldown"></div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Level Map Modal / Screen -->
+      <div id="level-map-screen" class="screen-view">
+        <div class="map-header">
+          <h2>🌟 Space Learning Trail (Classes 1–10)</h2>
+          <p>Choose your school grade to start flying and learning!</p>
+          <div class="hero-actions" style="margin-top: 14px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+            <button id="btn-quick-play" class="btn-primary" style="font-size: 16px; padding: 12px 28px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); cursor: pointer;">🚀 QUICK PLAY (CLASS 1)</button>
+            <button id="btn-unlock-all" class="btn-secondary" style="font-size: 14px; padding: 10px 20px; cursor: pointer;">🔓 All Grades Unlocked</button>
+          </div>
+        </div>
+
+        <div class="map-trail-container" id="map-trail">
+          <!-- 10 Level Nodes dynamically injected -->
+        </div>
+
+        <div class="map-footer">
+          <div class="stats-pill" id="map-total-stars">⭐ Stars Earned: 0 / 30</div>
+          <button id="btn-custom-skin" class="btn-secondary">🛸 Change UFO Skin</button>
+        </div>
+      </div>
+
+      <!-- Question Panel Modal (Pauses Gameplay) -->
+      <div id="question-modal" class="screen-view hidden modal-center">
+        <div class="modal-card question-card">
+          <div class="question-header">
+            <div class="subject-badge" id="q-subject-badge">🧮 MATH</div>
+            <div class="topic-tag" id="q-topic-tag">Counting</div>
+          </div>
+
+          <div class="question-body">
+            <p id="q-text">How many stars are there: ★ ★ ★ ★ ★ ?</p>
+          </div>
+
+          <div class="options-grid" id="q-options-grid">
+            <button class="opt-btn opt-a" data-index="0">A. 3</button>
+            <button class="opt-btn opt-b" data-index="1">B. 4</button>
+            <button class="opt-btn opt-c" data-index="2">C. 5</button>
+            <button class="opt-btn opt-d" data-index="3">D. 6</button>
+          </div>
+
+          <div class="question-mascot-footer">
+            <img src="Sprites/mascot_nova.png" alt="Mascot Nova" class="mascot-avatar" id="q-mascot-img">
+            <div class="mascot-bubble" id="q-mascot-speech">
+              You can do it! Take your time and pick the best answer.
+            </div>
+            <button id="btn-hint" class="hint-btn">💡 Hint</button>
+          </div>
+          <div id="q-hint-box" class="hint-box hidden"></div>
+        </div>
+      </div>
+
+      <!-- "Let's Learn!" Screen (Wrong Answer Educational View) -->
+      <div id="learn-mode-modal" class="screen-view hidden modal-center">
+        <div class="modal-card learn-card">
+          <div class="learn-header">
+            <span class="learn-icon">💡</span>
+            <h3>Not quite — let's learn this together!</h3>
+          </div>
+
+          <div class="learn-question-restated" id="learn-q-restated">
+            A force applied on a smaller area produces greater pressure...
+          </div>
+
+          <div class="answer-comparison">
+            <div class="ans-box ans-wrong">
+              <span class="ans-tag">Your Choice</span>
+              <p id="learn-chosen-ans">Because the nail is heavier</p>
+            </div>
+            <div class="ans-box ans-correct">
+              <span class="ans-tag">Correct Answer ✓</span>
+              <p id="learn-correct-ans">Because the area of the tip is very small, increasing pressure</p>
+            </div>
+          </div>
+
+          <div class="solution-steps-panel">
+            <h4 class="steps-heading">Step-by-Step Solution:</h4>
+            <div class="steps-list" id="learn-steps-list">
+              <!-- Numbered plain language steps injected here -->
+            </div>
+          </div>
+
+          <div class="learn-mascot-banner">
+            <img src="Sprites/mascot_nova.png" alt="Mascot Nova" class="mascot-avatar">
+            <div class="mascot-speech-encouraging">
+              "Great try! Now you know it — let's keep flying!" 🚀
+            </div>
+          </div>
+
+          <div class="learn-actions">
+            <button id="btn-learn-retry" class="btn-primary">🔄 Try Again (Same Question)</button>
+            <button id="btn-learn-continue" class="btn-success">🚀 Continue Flying</button>
+            <button id="btn-learn-map" class="btn-secondary">🗺️ Back to Map</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Level Complete Modal -->
+      <div id="level-complete-modal" class="screen-view hidden modal-center">
+        <div class="modal-card complete-card">
+          <div class="complete-header">
+            <div class="confetti-icon">🎉</div>
+            <h2 id="complete-level-title">Class 1 Cleared!</h2>
+            <p id="complete-subtitle">Fantastic job flying through the nebula!</p>
+          </div>
+
+          <div class="stars-earned-row" id="complete-stars-row">
+            <span class="star-award">⭐</span>
+            <span class="star-award">⭐</span>
+            <span class="star-award">⭐</span>
+          </div>
+
+          <div class="complete-stats-row">
+            <div class="stat-tile">
+              <span class="stat-num" id="complete-score-val">50</span>
+              <span class="stat-lbl">Points</span>
+            </div>
+            <div class="stat-tile">
+              <span class="stat-num" id="complete-coins-val">5</span>
+              <span class="stat-lbl">Coins</span>
+            </div>
+            <div class="stat-tile">
+              <span class="stat-num" id="complete-accuracy-val">100%</span>
+              <span class="stat-lbl">Accuracy</span>
+            </div>
+          </div>
+
+          <!-- Subject Accuracy Report -->
+          <div class="accuracy-breakdown-card">
+            <h4>📊 Subject Accuracy Report:</h4>
+            <div id="complete-subject-metrics" class="metrics-list">
+              <!-- Injected per-subject stats -->
+            </div>
+          </div>
+
+          <div class="complete-actions">
+            <button id="btn-next-level" class="btn-primary">Next Grade 🚀</button>
+            <button id="btn-replay-level" class="btn-secondary">Replay 🔄</button>
+            <button id="btn-complete-map" class="btn-secondary">Level Map 🗺️</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shields Depleted / Try Again Modal -->
+      <div id="gameover-modal" class="screen-view hidden modal-center">
+        <div class="modal-card learn-card" style="text-align: center; align-items: center;">
+          <div class="learn-header">
+            <span class="learn-icon" style="font-size: 38px;">🛡️</span>
+            <h3 style="color: #f87171; font-size: 22px;">Shields Depleted!</h3>
+          </div>
+          <p style="color: #cbd5e1; font-size: 15px; max-width: 480px; line-height: 1.5;">
+            No worries, space cadet! Every asteroid makes you a sharper pilot. Let's recharge your shields and take another flight!
+          </p>
+          <div class="learn-actions" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <button id="btn-gameover-retry" class="btn-primary" style="font-size: 15px; padding: 12px 24px;">🔄 Recharge & Try Again</button>
+            <button id="btn-gameover-map" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;">🗺️ Choose Level</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skin Customizer Modal -->
+      <div id="skin-modal" class="screen-view hidden modal-center">
+        <div class="modal-card skin-card">
+          <h3>🛸 Choose Your UFO Spaceship</h3>
+          <p>Clear higher school grades to unlock special fleet skins!</p>
+
+          <div class="skins-grid">
+            <div class="skin-item" data-skin="saucer">
+              <img src="Sprites/ufo_saucer.png" alt="Classic Saucer">
+              <span class="skin-name">Classic Saucer</span>
+              <span class="skin-status unlocked">Default</span>
+            </div>
+            <div class="skin-item locked" data-skin="dart" id="skin-dart">
+              <img src="Sprites/ufo_dart.png" alt="Neon Dart">
+              <span class="skin-name">Neon Dart</span>
+              <span class="skin-status" id="skin-dart-status">Unlocks at Class 3</span>
+            </div>
+            <div class="skin-item locked" data-skin="cruiser" id="skin-cruiser">
+              <img src="Sprites/ufo_saucer.png" alt="Cosmic Cruiser" style="filter: hue-rotate(180deg);">
+              <span class="skin-name">Cosmic Cruiser</span>
+              <span class="skin-status" id="skin-cruiser-status">Unlocks at Class 6</span>
+            </div>
+            <div class="skin-item locked" data-skin="quantum" id="skin-quantum">
+              <img src="Sprites/ufo_dart.png" alt="Quantum Explorer" style="filter: hue-rotate(280deg);">
+              <span class="skin-name">Quantum Explorer</span>
+              <span class="skin-status" id="skin-quantum-status">Unlocks at Class 9</span>
+            </div>
+          </div>
+
+          <button id="btn-close-skin" class="btn-secondary">Done</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="three.min.js"></script>
+  <script src="game3d.js"></script>
+</body>
+</html>

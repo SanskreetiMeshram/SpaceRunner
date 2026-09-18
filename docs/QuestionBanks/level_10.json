@@ -1,0 +1,440 @@
+{
+  "level": 10,
+  "class": "10",
+  "subject": "Full Science & Math (Board Level)",
+  "description": "Class 10: Quadratic equations, trigonometry, light & optics, electricity, chemical reactions, acids & bases, and genetics.",
+  "questions": [
+    {
+      "id": "L10-MATH-001",
+      "subject": "Math",
+      "topic": "Quadratic Equations",
+      "difficulty": "hard",
+      "questionText": "For the quadratic equation ax² + bx + c = 0, what is the discriminant (D) and its condition for having TWO DISTINCT REAL ROOTS?",
+      "type": "mcq",
+      "options": [
+        "D = b² - 4ac > 0",
+        "D = b² - 4ac = 0",
+        "D = b² - 4ac < 0",
+        "D = 2a / b > 0"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "The roots of ax² + bx + c = 0 are given by x = (-b ± √D) / (2a).",
+        "The discriminant is D = b² - 4ac.",
+        "If D > 0, the square root is real and non-zero, producing two distinct real roots.",
+        "(If D = 0 roots are equal; if D < 0 roots are imaginary)."
+      ],
+      "hint": "D must be strictly positive (b² - 4ac > 0)."
+    },
+    {
+      "id": "L10-PHY-002",
+      "subject": "Physics",
+      "topic": "Electricity",
+      "difficulty": "medium",
+      "questionText": "According to Ohm's Law, at constant temperature, the current (I) flowing through a conductor is directly proportional to potential difference (V). What is the formula?",
+      "type": "mcq",
+      "options": [
+        "V = I × R",
+        "V = I / R",
+        "I = V × R",
+        "P = V × I"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Ohm's Law states: V ∝ I.",
+        "Introducing the constant of proportionality R (Resistance):",
+        "V = I × R (Voltage = Current × Resistance).",
+        "Standard formula: V = IR."
+      ],
+      "hint": "V = IR."
+    },
+    {
+      "id": "L10-CHEM-003",
+      "subject": "Chemistry",
+      "topic": "Chemical Reactions",
+      "difficulty": "medium",
+      "questionText": "What type of chemical reaction is represented by: 2Mg + O₂ → 2MgO?",
+      "type": "mcq",
+      "options": [
+        "Decomposition reaction",
+        "Combination reaction",
+        "Displacement reaction",
+        "Double displacement reaction"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Two separate reactants (Magnesium metal and Oxygen gas) react together.",
+        "They combine into a single chemical product (Magnesium oxide, MgO).",
+        "Reactions where two or more reactants combine into one single product are Combination Reactions."
+      ],
+      "hint": "Two elements combine to form a single compound."
+    },
+    {
+      "id": "L10-BIO-004",
+      "subject": "Biology",
+      "topic": "Life Processes",
+      "difficulty": "medium",
+      "questionText": "What is the structural and functional microscopic filtration unit of the human kidney?",
+      "type": "mcq",
+      "options": [
+        "Neuron",
+        "Nephron",
+        "Alveolus",
+        "Villus"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Neurons are the structural units of the nervous system.",
+        "Alveoli are units of respiratory gas exchange in the lungs.",
+        "Each kidney contains approximately 1 million Nephrons, which filter blood through Bowman's capsules and tubules to form urine."
+      ],
+      "hint": "Starts with Neph- (Nephron)."
+    },
+    {
+      "id": "L10-MATH-005",
+      "subject": "Math",
+      "topic": "Trigonometry",
+      "difficulty": "medium",
+      "questionText": "Which of the following is a fundamental Pythagorean trigonometric identity for any acute angle θ?",
+      "type": "mcq",
+      "options": [
+        "sin²θ + cos²θ = 1",
+        "sin²θ - cos²θ = 1",
+        "tan²θ + 1 = cos²θ",
+        "sinθ × cosθ = 1"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "From a right triangle with sides a (opposite), b (adjacent), and c (hypotenuse): a² + b² = c².",
+        "Divide by c²: (a/c)² + (b/c)² = 1.",
+        "Since sinθ = a/c and cosθ = b/c:",
+        "sin²θ + cos²θ = 1."
+      ],
+      "hint": "Sine squared plus cosine squared equals one."
+    },
+    {
+      "id": "L10-PHY-006",
+      "subject": "Physics",
+      "topic": "Light and Optics",
+      "difficulty": "medium",
+      "questionText": "What is the Lens Formula relating focal length (f), image distance (v), and object distance (u)?",
+      "type": "mcq",
+      "options": [
+        "1/f = 1/v - 1/u",
+        "1/f = 1/v + 1/u",
+        "f = v × u",
+        "1/f = u - v"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "For spherical mirrors, the mirror formula is 1/f = 1/v + 1/u.",
+        "For thin optical lenses, refraction reverses the sign:",
+        "1/f = 1/v - 1/u.",
+        "Correct lens formula: 1/f = 1/v - 1/u."
+      ],
+      "hint": "Minus sign between 1/v and 1/u for lenses."
+    },
+    {
+      "id": "L10-CHEM-007",
+      "subject": "Chemistry",
+      "topic": "Carbon and Its Compounds",
+      "difficulty": "medium",
+      "questionText": "Carbon forms millions of organic compounds due to its unique ability to form strong covalent bonds with other carbon atoms. This property is called:",
+      "type": "mcq",
+      "options": [
+        "Allotropy",
+        "Catenation",
+        "Electronegativity",
+        "Isomerism"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Carbon has a valency of 4 (tetravalency) and a very small atomic size, creating exceptionally strong C-C covalent bonds.",
+        "The self-linking capability of carbon atoms into long chains, branched networks, and rings is called Catenation."
+      ],
+      "hint": "Self-linking of atoms into long chains = Catenation."
+    },
+    {
+      "id": "L10-BIO-008",
+      "subject": "Biology",
+      "topic": "Heredity and Evolution",
+      "difficulty": "medium",
+      "questionText": "In Gregor Mendel's monohybrid cross of pure tall (TT) and pure dwarf (tt) pea plants, what is the PHENOTYPIC ratio in the F2 generation?",
+      "type": "mcq",
+      "options": [
+        "1 : 1",
+        "3 : 1 (Tall : Dwarf)",
+        "1 : 2 : 1",
+        "9 : 3 : 3 : 1"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "F1 generation offspring are all heterozygous tall (Tt).",
+        "Self-crossing F1 (Tt × Tt) gives genotypes: 1 TT : 2 Tt : 1 tt.",
+        "Phenotypically, TT and Tt are tall (3 parts), while tt is dwarf (1 part).",
+        "Phenotypic ratio = 3 : 1."
+      ],
+      "hint": "3 Tall to 1 Dwarf."
+    },
+    {
+      "id": "L10-MATH-009",
+      "subject": "Math",
+      "topic": "Trigonometry",
+      "difficulty": "easy",
+      "questionText": "What is the exact value of tan 45°?",
+      "type": "mcq",
+      "options": [
+        "0",
+        "1/2",
+        "1",
+        "√3"
+      ],
+      "correctIndex": 2,
+      "solutionSteps": [
+        "In a 45°-45°-90° right isosceles triangle, both legs are equal in length (opposite = adjacent).",
+        "tan 45° = opposite / adjacent = x / x = 1.",
+        "Therefore, tan 45° = 1."
+      ],
+      "hint": "Opposite and adjacent sides are equal at 45 degrees."
+    },
+    {
+      "id": "L10-PHY-010",
+      "subject": "Physics",
+      "topic": "Electricity",
+      "difficulty": "medium",
+      "questionText": "Two resistors of 6 Ω and 3 Ω are connected in PARALLEL. What is their equivalent resistance (R_eq)?",
+      "type": "mcq",
+      "options": [
+        "9 Ω",
+        "2 Ω",
+        "4.5 Ω",
+        "18 Ω"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Parallel resistance formula: 1/R_eq = 1/R1 + 1/R2.",
+        "1/R_eq = 1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2.",
+        "Taking the reciprocal: R_eq = 2 Ω.",
+        "Equivalent parallel resistance = 2 Ω."
+      ],
+      "hint": "Product over sum: (6 × 3) / (6 + 3) = 18 / 9 = 2."
+    },
+    {
+      "id": "L10-CHEM-011",
+      "subject": "Chemistry",
+      "topic": "Acids, Bases and Salts",
+      "difficulty": "medium",
+      "questionText": "What is the chemical formula of Plaster of Paris (POP)?",
+      "type": "mcq",
+      "options": [
+        "CaSO₄ · 2H₂O",
+        "CaSO₄ · ½H₂O",
+        "Na₂CO₃ · 10H₂O",
+        "CaOCl₂"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Gypsum is Calcium sulphate dihydrate: CaSO₄ · 2H₂O.",
+        "When gypsum is carefully heated to 373 K (100°C), it loses three-fourths of its crystallization water.",
+        "It forms Calcium sulphate hemihydrate: CaSO₄ · ½H₂O (Plaster of Paris)."
+      ],
+      "hint": "Calcium sulphate hemihydrate (half water molecule per CaSO4)."
+    },
+    {
+      "id": "L10-BIO-012",
+      "subject": "Biology",
+      "topic": "Control and Coordination",
+      "difficulty": "medium",
+      "questionText": "Which plant hormone promotes cell elongation, apical dominance, and causes phototropic bending towards sunlight?",
+      "type": "mcq",
+      "options": [
+        "Auxin",
+        "Gibberellin",
+        "Abscisic acid",
+        "Cytokinin"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Auxin is synthesized at shoot tips.",
+        "When light comes from one direction, auxin diffuses to the shaded side of the shoot.",
+        "Higher auxin concentration stimulates cells on the shaded side to grow longer, bending the shoot toward light.",
+        "Hormone = Auxin."
+      ],
+      "hint": "Synthesized at shoot tips for elongation."
+    },
+    {
+      "id": "L10-MATH-013",
+      "subject": "Math",
+      "topic": "Arithmetic Progressions",
+      "difficulty": "medium",
+      "questionText": "In an Arithmetic Progression (AP) with first term a = 3 and common difference d = 4, what is the 10th term (a₁₀)?",
+      "type": "mcq",
+      "options": [
+        "36",
+        "39",
+        "40",
+        "43"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "General formula for the nth term of an AP: aₙ = a + (n - 1)d.",
+        "a₁₀ = 3 + (10 - 1) × 4.",
+        "a₁₀ = 3 + (9 × 4) = 3 + 36 = 39."
+      ],
+      "hint": "3 + 9(4) = 39."
+    },
+    {
+      "id": "L10-PHY-014",
+      "subject": "Physics",
+      "topic": "Magnetic Effects of Current",
+      "difficulty": "medium",
+      "questionText": "Which rule predicts the direction of force experienced by a current-carrying conductor placed inside a magnetic field?",
+      "type": "mcq",
+      "options": [
+        "Fleming's Left-Hand Rule",
+        "Fleming's Right-Hand Rule",
+        "Maxwell's Right-Hand Corkscrew Rule",
+        "Ampere's Circuital Law"
+      ],
+      "correctIndex": 0,
+      "solutionSteps": [
+        "Fleming's Left-Hand Rule is used for electric motors:",
+        "Thumb points to Force (Motion), Forefinger points to Magnetic Field, and Middle finger points to Current.",
+        "(Right-Hand rule is for induced current in generators).",
+        "Correct rule: Fleming's Left-Hand Rule."
+      ],
+      "hint": "Left hand for motors/force, right hand for generators/induced current."
+    },
+    {
+      "id": "L10-CHEM-015",
+      "subject": "Chemistry",
+      "topic": "Metals and Reactivity",
+      "difficulty": "medium",
+      "questionText": "What happens when an iron nail is dipped into a blue copper sulphate (CuSO₄) solution?",
+      "type": "mcq",
+      "options": [
+        "No reaction takes place",
+        "Iron displaces copper, turning solution green and depositing reddish-brown copper on the nail",
+        "The solution turns deep purple with gas bubbling",
+        "The nail completely dissolves in seconds"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Iron is more reactive than Copper in the metal reactivity series.",
+        "Fe + CuSO₄ → FeSO₄ + Cu.",
+        "Blue copper sulphate transforms into pale green ferrous sulphate (FeSO₄).",
+        "Reddish-brown copper metal plates out onto the iron nail."
+      ],
+      "hint": "Single displacement reaction: Iron kicks out copper."
+    },
+    {
+      "id": "L10-BIO-016",
+      "subject": "Biology",
+      "topic": "Life Processes",
+      "difficulty": "medium",
+      "questionText": "During intense strenuous exercise, muscle cells experience oxygen deficiency and break down pyruvate anaerobically into:",
+      "type": "mcq",
+      "options": [
+        "Ethanol + CO₂",
+        "Lactic acid + Energy",
+        "Water + CO₂",
+        "Urea"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "In high-intensity sprinting, oxygen delivery to muscles cannot meet cellular energy demands.",
+        "Pyruvate is converted via anaerobic glycolysis into 3-carbon Lactic Acid.",
+        "Accumulation of lactic acid in muscle fibers causes fatigue and muscle cramps."
+      ],
+      "hint": "Lactic acid accumulation causes muscle cramps."
+    },
+    {
+      "id": "L10-MATH-017",
+      "subject": "Math",
+      "topic": "Circles",
+      "difficulty": "medium",
+      "questionText": "How many tangents can be drawn to a circle from a single point lying OUTSIDE the circle?",
+      "type": "mcq",
+      "options": [
+        "Exactly 1",
+        "Exactly 2",
+        "Infinitely many",
+        "Zero"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "From an external point P outside a circle with center O,",
+        "Two straight lines can be drawn that touch the circle at exactly one point each (tangency points A and B).",
+        "Moreover, both tangent segments PA and PB are equal in length.",
+        "Exactly 2 tangents."
+      ],
+      "hint": "From an external point, exactly two tangents touch the circle."
+    },
+    {
+      "id": "L10-PHY-018",
+      "subject": "Physics",
+      "topic": "Optics and Human Eye",
+      "difficulty": "medium",
+      "questionText": "Myopia (near-sightedness), where distant objects appear blurry, is corrected using which optical lens?",
+      "type": "mcq",
+      "options": [
+        "Convex lens",
+        "Concave lens",
+        "Cylindrical lens",
+        "Bifocal lens"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "In a myopic eye, rays from distant objects converge in front of the retina.",
+        "A diverging Concave Lens spreads the incoming parallel rays slightly outward.",
+        "This pushes the focal convergence point backward directly onto the retinal screen.",
+        "Corrective lens = Concave lens."
+      ],
+      "hint": "A diverging (concave) lens corrects myopia."
+    },
+    {
+      "id": "L10-CHEM-019",
+      "subject": "Chemistry",
+      "topic": "pH Scale",
+      "difficulty": "easy",
+      "questionText": "A solution turns universal indicator purple and has a pH of 13. This solution is:",
+      "type": "mcq",
+      "options": [
+        "Strongly acidic",
+        "Weakly acidic",
+        "Neutral",
+        "Strongly alkaline (basic)"
+      ],
+      "correctIndex": 3,
+      "solutionSteps": [
+        "The pH scale ranges from 0 to 14.",
+        "pH 7 is neutral (pure water).",
+        "pH 0 to 6 is acidic (lower is stronger).",
+        "pH 8 to 14 is basic/alkaline. pH 13 has very high OH- concentration, so it is Strongly Basic."
+      ],
+      "hint": "pH > 7 is basic; pH 13 is near maximum alkalinity (14)."
+    },
+    {
+      "id": "L10-BIO-020",
+      "subject": "Biology",
+      "topic": "Genetics",
+      "difficulty": "medium",
+      "questionText": "In humans, which combination of sex chromosomes determines a biological MALE offspring?",
+      "type": "mcq",
+      "options": [
+        "XX",
+        "XY",
+        "YY",
+        "XO"
+      ],
+      "correctIndex": 1,
+      "solutionSteps": [
+        "Human somatic cells carry 22 pairs of autosomes and 1 pair of sex chromosomes (total 46).",
+        "Females have two homologous X chromosomes: XX.",
+        "Males have one X chromosome and one Y chromosome: XY.",
+        "Offspring inheriting a Y chromosome from the father develops as male (XY)."
+      ],
+      "hint": "XX is female, XY is male."
+    }
+  ]
+}
