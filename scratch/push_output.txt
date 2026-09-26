@@ -1,4 +1,0 @@
-==============================================
-Pushing SpaceRunner to GitHub...
-Target: https://github.com/SanskreetiMeshram/SpaceRunner.git
-==============================================
