@@ -1877,11 +1877,31 @@ class SpaceGame3D {
   fireLaser(playSound = false) {
     if (this.state !== "PLAYING" || this.ufoBlastPending) return;
     const now = performance.now();
-    if (now - this.lastLaserTime < 160) return;
+    if (now - this.lastLaserTime < 150) return;
     this.lastLaserTime = now;
 
     if (playSound) {
       this.sound.playLaser();
+    }
+
+    // Ensure there is always a target UFO in front if none is currently visible
+    const hasUFOAhead = this.coinsInWorld.some(u => u.mesh.position.z < 10 && u.mesh.position.z > -125);
+    if (!hasUFOAhead) {
+      this.spawn3DCoin(-45, this.player.x, this.player.y);
+    }
+
+    // Find the nearest UFO in front of the spaceship to lock onto
+    let targetUFO = null;
+    let bestZDist = 999;
+    for (let i = 0; i < this.coinsInWorld.length; i++) {
+      const u = this.coinsInWorld[i];
+      if (u.mesh.position.z < 10 && u.mesh.position.z > -130) {
+        const zDist = Math.abs(this.player.z - u.mesh.position.z);
+        if (zDist < bestZDist) {
+          bestZDist = zDist;
+          targetUFO = u;
+        }
+      }
     }
 
     // Twin laser cannons mounted on left & right wing pylons
@@ -1889,19 +1909,19 @@ class SpaceGame3D {
       const boltGroup = new THREE.Group();
 
       // White-hot inner laser core
-      const coreGeo = new THREE.CylinderGeometry(0.1, 0.1, 3.8, 8);
+      const coreGeo = new THREE.CylinderGeometry(0.11, 0.11, 4.2, 8);
       coreGeo.rotateX(Math.PI / 2);
       const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
       const core = new THREE.Mesh(coreGeo, coreMat);
       boltGroup.add(core);
 
       // Neon plasma outer aura
-      const auraGeo = new THREE.CylinderGeometry(0.26, 0.26, 4.2, 8);
+      const auraGeo = new THREE.CylinderGeometry(0.28, 0.28, 4.6, 8);
       auraGeo.rotateX(Math.PI / 2);
       const auraMat = new THREE.MeshBasicMaterial({
         color: 0x00f5ff,
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.85,
         blending: THREE.AdditiveBlending
       });
       const aura = new THREE.Mesh(auraGeo, auraMat);
@@ -1915,7 +1935,8 @@ class SpaceGame3D {
       this.scene.add(boltGroup);
       this.lasers.push({
         mesh: boltGroup,
-        vz: -145
+        targetUFO: targetUFO,
+        vz: -165
       });
     });
   }
@@ -2106,49 +2127,47 @@ class SpaceGame3D {
     // 0. Update Spaceship Laser Bolts (fired by Shift key on laptop or SHOOT button on mobile) & Check Laser-to-UFO Hits
     for (let i = this.lasers.length - 1; i >= 0; i--) {
       const laser = this.lasers[i];
-      laser.mesh.position.z += laser.vz * dt;
 
-      // Smart targeting assist toward nearest UFO in front of the bolt
-      let closestUFO = null;
-      let closestDist = 15.0;
-      for (let j = 0; j < this.coinsInWorld.length; j++) {
-        const ufo = this.coinsInWorld[j];
-        const dz = laser.mesh.position.z - ufo.mesh.position.z;
-        if (dz > -4.0 && dz < 95.0) {
-          const xyDist = Math.hypot(ufo.mesh.position.x - laser.mesh.position.x, ufo.mesh.position.y - laser.mesh.position.y);
-          if (xyDist < closestDist) {
-            closestDist = xyDist;
-            closestUFO = ufo;
-          }
-        }
-      }
-      if (closestUFO) {
-        laser.mesh.position.x = THREE.MathUtils.lerp(laser.mesh.position.x, closestUFO.mesh.position.x, 16.0 * dt);
-        laser.mesh.position.y = THREE.MathUtils.lerp(laser.mesh.position.y, closestUFO.mesh.position.y, 16.0 * dt);
+      // Find or keep tracking the nearest UFO in front
+      let target = (laser.targetUFO && this.coinsInWorld.includes(laser.targetUFO)) ? laser.targetUFO : null;
+      if (!target && this.coinsInWorld.length > 0) {
+        target = this.coinsInWorld[0];
       }
 
-      // Check collision between this laser bolt and any UFO
-      let hitUFO = false;
-      if (!this.ufoBlastPending) {
-        for (let j = this.coinsInWorld.length - 1; j >= 0; j--) {
-          const ufo = this.coinsInWorld[j];
-          const ldx = laser.mesh.position.x - ufo.mesh.position.x;
-          const ldy = laser.mesh.position.y - ufo.mesh.position.y;
-          const ldz = laser.mesh.position.z - ufo.mesh.position.z;
-          const lDist = Math.hypot(ldx, ldy, ldz);
+      if (target) {
+        // Direct guided laser trajectory straight into the target UFO
+        const tx = target.mesh.position.x - laser.mesh.position.x;
+        const ty = target.mesh.position.y - laser.mesh.position.y;
+        const tz = target.mesh.position.z - laser.mesh.position.z;
+        const distToTarget = Math.hypot(tx, ty, tz);
+        const step = 165 * dt;
 
-          if (lDist < ufo.radius + 1.8 && ufo.mesh.position.z > -125) {
-            const ufoPos = ufo.mesh.position.clone();
-            this.scene.remove(ufo.mesh);
-            this.coinsInWorld.splice(j, 1);
+        if (distToTarget <= step + target.radius + 1.5 || laser.mesh.position.z <= target.mesh.position.z + 1.2) {
+          // Direct Laser Hit on UFO! Blast the UFO and pop up the Question Panel!
+          if (!this.ufoBlastPending) {
+            const ufoPos = target.mesh.position.clone();
+            const uIdx = this.coinsInWorld.indexOf(target);
+            this.scene.remove(target.mesh);
+            if (uIdx !== -1) this.coinsInWorld.splice(uIdx, 1);
+
+            // Clear remaining laser bolts from this volley
+            this.lasers.forEach(l => this.scene.remove(l.mesh));
+            this.lasers = [];
+
             this.collectCoin3D(ufoPos);
-            hitUFO = true;
             break;
           }
+        } else {
+          laser.mesh.position.x += (tx / distToTarget) * step;
+          laser.mesh.position.y += (ty / distToTarget) * step;
+          laser.mesh.position.z += (tz / distToTarget) * step;
+          laser.mesh.lookAt(target.mesh.position);
         }
+      } else {
+        laser.mesh.position.z += laser.vz * dt;
       }
 
-      if (hitUFO || laser.mesh.position.z < -150) {
+      if (laser && laser.mesh.position.z < -150) {
         this.scene.remove(laser.mesh);
         this.lasers.splice(i, 1);
       }
@@ -2225,25 +2244,36 @@ class SpaceGame3D {
     if (this.ufoBlastPending) return;
     this.ufoBlastPending = true;
 
-    // 1. Play UFO Blast sound & spawn huge 3D UFO explosion!
+    // 1. Play UFO Blast sound & spawn 3D UFO explosion + saucer rubble!
     this.sound.playCoin();
     if (pos && this.particleFX) {
       this.particleFX.spawnCoinExplosion(pos.x, pos.y, pos.z);
+      this.particleFX.spawnImpactRubble(pos.x, pos.y, pos.z);
     }
 
-    if (this.questionQueue.length === 0 && this.currentBank) {
+    if (this.questionQueue.length === 0 && this.currentBank && this.currentBank.questions) {
       this.questionQueue = [...this.currentBank.questions].sort(() => Math.random() - 0.5);
     }
 
-    this.activeQuestion = this.questionQueue.shift();
+    this.activeQuestion = this.questionQueue.shift() || {
+      id: "FB-001",
+      subject: "Math",
+      topic: "Space Numbers",
+      difficulty: "easy",
+      questionText: "How many stars are there: ★ ★ ★ ★ ★ ?",
+      options: ["3", "4", "5", "6"],
+      correctIndex: 2,
+      solutionSteps: ["Count each star one by one.", "1, 2, 3, 4, 5!", "There are 5 stars in total."],
+      hint: "Count the stars carefully!"
+    };
 
-    // Let the 3D UFO Blast fireball & shockwave ring burst on screen for 260ms, then pop up the Question Panel!
+    // Let the 3D UFO Blast fireball & shockwave ring burst on screen for 240ms, then pop up the Question Panel!
     setTimeout(() => {
       this.ufoBlastPending = false;
-      if (this.activeQuestion && this.state === "PLAYING") {
+      if (this.activeQuestion) {
         this.showQuestionModal(this.activeQuestion);
       }
-    }, 260);
+    }, 240);
   }
 
   showQuestionModal(q) {
