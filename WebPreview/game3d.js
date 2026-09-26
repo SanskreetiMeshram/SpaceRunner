@@ -3,64 +3,64 @@
  * Built with Three.js WebGL, procedural 3D models, dynamic lighting, and curriculum quizzes.
  */
 
-// 10 Level Grade Configurations (Class 1 to Class 10)
+// 10 Space Mission Level Configurations (Level 1 to Level 10)
 const LEVEL_CONFIGS_3D = [
   {
-    level: 1, class: "Class 1", zone: "Playful Stardust Nebula", subjects: "Math (Counting & Shapes)",
+    level: 1, class: "Level 1", zone: "Playful Stardust Nebula", subjects: "Counting & Shapes",
     speed: 16.0, obsRate: 3.2, coinRate: 3.4, targetCoins: 5,
     fogColor: 0x14052b, starColor: 0xffa0e0, ufoColor: 0xfce7f3, planetColor: 0xf472b6,
     ambient: 0x6d28d9, sunColor: 0xffb7eb, emoji: "🪐"
   },
   {
-    level: 2, class: "Class 2", zone: "Azure Crystal Belt", subjects: "Math (2-Digit Add/Sub & Tables)",
+    level: 2, class: "Level 2", zone: "Azure Crystal Belt", subjects: "Numbers & Tables",
     speed: 18.0, obsRate: 2.9, coinRate: 3.2, targetCoins: 5,
     fogColor: 0x051329, starColor: 0x67e8f9, ufoColor: 0xe0f2fe, planetColor: 0x38bdf8,
     ambient: 0x0369a1, sunColor: 0x7dd3fc, emoji: "💎"
   },
   {
-    level: 3, class: "Class 3", zone: "Emerald Aurora Fields", subjects: "Math (Division & Fractions)",
+    level: 3, class: "Level 3", zone: "Emerald Aurora Fields", subjects: "Division & Fractions",
     speed: 20.0, obsRate: 2.7, coinRate: 3.0, targetCoins: 5,
     fogColor: 0x042018, starColor: 0x6ee7b7, ufoColor: 0xd1fae5, planetColor: 0x34d399,
     ambient: 0x047857, sunColor: 0xa7f3d0, emoji: "🌌"
   },
   {
-    level: 4, class: "Class 4", zone: "Golden Solar Flare Way", subjects: "Math + Environmental Studies (EVS)",
+    level: 4, class: "Level 4", zone: "Golden Solar Flare Way", subjects: "Math & Nature Quest",
     speed: 22.0, obsRate: 2.5, coinRate: 2.9, targetCoins: 6,
     fogColor: 0x241103, starColor: 0xfde68a, ufoColor: 0xfef3c7, planetColor: 0xfbbf24,
     ambient: 0xb45309, sunColor: 0xfef08a, emoji: "☀️"
   },
   {
-    level: 5, class: "Class 5", zone: "Deep Ocean Galaxy", subjects: "Math + Intro Science & Anatomy",
+    level: 5, class: "Level 5", zone: "Deep Ocean Galaxy", subjects: "Science & Discovery",
     speed: 24.0, obsRate: 2.3, coinRate: 2.8, targetCoins: 6,
     fogColor: 0x050c24, starColor: 0x93c5fd, ufoColor: 0xdbeafe, planetColor: 0x60a5fa,
     ambient: 0x1d4ed8, sunColor: 0xbfdbfe, emoji: "🌊"
   },
   {
-    level: 6, class: "Class 6", zone: "Amethyst Pulsar Cluster", subjects: "Math (Integers) + Food & Motion",
+    level: 6, class: "Level 6", zone: "Amethyst Pulsar Cluster", subjects: "Energy & Motion",
     speed: 26.0, obsRate: 2.2, coinRate: 2.7, targetCoins: 6,
     fogColor: 0x1b052c, starColor: 0xd8b4fe, ufoColor: 0xf3e8ff, planetColor: 0xc084fc,
     ambient: 0x7e22ce, sunColor: 0xe9d5ff, emoji: "🔮"
   },
   {
-    level: 7, class: "Class 7", zone: "Plasma Storm Expanse", subjects: "Math + Physics + Chemistry + Biology",
+    level: 7, class: "Level 7", zone: "Plasma Storm Expanse", subjects: "Cosmic Science Mix",
     speed: 28.0, obsRate: 2.0, coinRate: 2.6, targetCoins: 7,
     fogColor: 0x26070a, starColor: 0xfca5a5, ufoColor: 0xffe4e6, planetColor: 0xf87171,
     ambient: 0xb91c1c, sunColor: 0xfecdd3, emoji: "⚡"
   },
   {
-    level: 8, class: "Class 8", zone: "Quantum Magnetic Rings", subjects: "Full Syllabus: Forces, Pressure, Cells",
+    level: 8, class: "Level 8", zone: "Quantum Magnetic Rings", subjects: "Forces, Pressure & Cells",
     speed: 30.0, obsRate: 1.9, coinRate: 2.5, targetCoins: 7,
     fogColor: 0x041c1c, starColor: 0x5eead4, ufoColor: 0xccfbf1, planetColor: 0x2dd4bf,
     ambient: 0x0f766e, sunColor: 0x99f6e4, emoji: "🌀"
   },
   {
-    level: 9, class: "Class 9", zone: "Supernova Deep Core", subjects: "Full Syllabus: Motion, Gravity, Atoms",
+    level: 9, class: "Level 9", zone: "Supernova Deep Core", subjects: "Gravity & Atoms",
     speed: 32.0, obsRate: 1.8, coinRate: 2.4, targetCoins: 8,
     fogColor: 0x260d04, starColor: 0xfdba74, ufoColor: 0xffedd5, planetColor: 0xfb923c,
     ambient: 0xc2410c, sunColor: 0xfed7aa, emoji: "💥"
   },
   {
-    level: 10, class: "Class 10", zone: "Master Academy Cosmos", subjects: "Board Syllabus: Optics, Electricity, Genetics",
+    level: 10, class: "Level 10", zone: "Master Academy Cosmos", subjects: "Optics, Space & Genetics",
     speed: 34.0, obsRate: 1.7, coinRate: 2.3, targetCoins: 8,
     fogColor: 0x21020a, starColor: 0xfda4af, ufoColor: 0xffe4e6, planetColor: 0xe11d48,
     ambient: 0x9f1239, sunColor: 0xfecdd3, emoji: "👑"
@@ -98,6 +98,24 @@ class Sound3D {
     } catch (e) {}
   }
 
+  playLaser() {
+    if (!this.enabled) return;
+    this.init();
+    try {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(880, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(180, this.ctx.currentTime + 0.11);
+      gain.gain.setValueAtTime(0.09, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.11);
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.11);
+    } catch (e) {}
+  }
+
   playCorrect() {
     [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
       setTimeout(() => this.playTone(f, "sine", 0.35, 0.25), i * 90);
@@ -110,8 +128,11 @@ class Sound3D {
   }
 
   playCoin() {
-    this.playTone(987.77, "sine", 0.15, 0.22);
-    setTimeout(() => this.playTone(1318.51, "sine", 0.25, 0.28), 80);
+    // UFO Blast explosion + arcade chime
+    this.playTone(110, "sawtooth", 0.28, 0.28);
+    setTimeout(() => this.playTone(75, "square", 0.24, 0.25), 40);
+    setTimeout(() => this.playTone(987.77, "sine", 0.15, 0.22), 110);
+    setTimeout(() => this.playTone(1318.51, "sine", 0.25, 0.28), 180);
   }
 
   playDash() {
@@ -569,50 +590,57 @@ class ParticleFX3D {
   }
 
   spawnCoinExplosion(x, y, z) {
-    // 24 glowing gold star particles
-    for (let i = 0; i < 24; i++) {
-      const geo = new THREE.PlaneGeometry(0.85, 0.85);
+    // 36 vibrant multi-color plasma sparks for UFO Blast!
+    const blastColors = [0x4ade80, 0xff007f, 0x00f5ff, 0xffea00, 0xf97316, 0xa855f7];
+    for (let i = 0; i < 36; i++) {
+      const geo = new THREE.PlaneGeometry(1.15, 1.15);
+      const col = blastColors[i % blastColors.length];
       const mat = new THREE.MeshBasicMaterial({
         map: this.glowTexture,
         transparent: true,
         opacity: 1.0,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
-        color: 0xffea00
+        color: col
       });
       const p = new THREE.Mesh(geo, mat);
       p.position.set(x, y, z);
       this.scene.add(p);
 
-      const angle = (i / 24) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
-      const speed = Math.random() * 14 + 6;
+      const angle = (i / 36) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
+      const speed = Math.random() * 18 + 7;
       this.particles.push({
         mesh: p,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
-        vz: (Math.random() - 0.5) * 10,
+        vz: (Math.random() - 0.5) * 14,
         life: 0,
-        maxLife: 0.65
+        maxLife: 0.75
       });
     }
 
-    // Expanding shockwave ring
-    const ringGeo = new THREE.RingGeometry(0.6, 0.9, 32);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: 0xffea00,
-      transparent: true,
-      opacity: 0.9,
-      side: THREE.DoubleSide,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending
-    });
-    const ring = new THREE.Mesh(ringGeo, ringMat);
-    ring.position.set(x, y, z);
-    this.scene.add(ring);
-    this.rings.push({
-      mesh: ring,
-      life: 0,
-      maxLife: 0.48
+    // Saucer debris chunks
+    this.spawnImpactRubble(x, y, z);
+
+    // Dual expanding shockwave rings (Neon Green & Golden Magenta)
+    [0x4ade80, 0xff007f].forEach((ringCol, idx) => {
+      const ringGeo = new THREE.RingGeometry(0.6 + idx * 0.3, 1.1 + idx * 0.3, 32);
+      const ringMat = new THREE.MeshBasicMaterial({
+        color: ringCol,
+        transparent: true,
+        opacity: 0.95,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+      });
+      const ring = new THREE.Mesh(ringGeo, ringMat);
+      ring.position.set(x, y, z);
+      this.scene.add(ring);
+      this.rings.push({
+        mesh: ring,
+        life: 0,
+        maxLife: 0.52 + idx * 0.12
+      });
     });
   }
 
@@ -725,10 +753,13 @@ class SpaceGame3D {
     // 3D world arrays
     this.obstacles = [];
     this.coinsInWorld = [];
+    this.lasers = [];
     this.exhaustParticles = [];
     this.navLights = [];
     this.lastObsSpawn = 0;
     this.lastCoinSpawn = 0;
+    this.lastLaserTime = 0;
+    this.ufoBlastPending = false;
 
     // Questions
     this.questionBanks = {};
@@ -1289,8 +1320,11 @@ class SpaceGame3D {
     // Keyboard inputs
     window.addEventListener("keydown", (e) => {
       this.keys[e.code] = true;
-      if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "Space") {
+      if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
         this.triggerDash();
+      }
+      if (e.code === "Space") {
+        this.fireLaser(true);
       }
     });
 
@@ -1306,7 +1340,7 @@ class SpaceGame3D {
         if (mobileControls) mobileControls.classList.remove("hidden");
         const hint = document.getElementById("hud-controls-hint");
         if (hint) {
-          hint.innerHTML = "<span>🕹️ Drag Stick to Steer</span> • <span>⚡ Tap DASH</span> • <span>Collect 🪙 Coins!</span>";
+          hint.innerHTML = "<span>🕹️ Drag Stick to Steer</span> • <span>🔥 Tap SHOOT</span> • <span>💥 Blast 🛸 UFOs!</span>";
         }
       }
     };
@@ -1317,6 +1351,7 @@ class SpaceGame3D {
     canvasEl.addEventListener("mousedown", (e) => {
       this.mouse.isDown = true;
       this.updateMouseCoords(e);
+      if (this.state === "PLAYING") this.fireLaser(true);
     });
     canvasEl.addEventListener("mousemove", (e) => {
       if (this.mouse.isDown) this.updateMouseCoords(e);
@@ -1327,6 +1362,7 @@ class SpaceGame3D {
       checkTouch();
       this.mouse.isDown = true;
       if (e.touches.length > 0) this.updateMouseCoords(e.touches[0]);
+      if (this.state === "PLAYING") this.fireLaser(true);
     }, { passive: true });
     canvasEl.addEventListener("touchmove", (e) => {
       if (e.touches.length > 0) this.updateMouseCoords(e.touches[0]);
@@ -1390,6 +1426,19 @@ class SpaceGame3D {
 
       window.addEventListener("touchend", resetJoy);
       window.addEventListener("touchcancel", resetJoy);
+    }
+
+    // Mobile Shoot Laser Button
+    const mobileShootBtn = document.getElementById("btn-mobile-shoot");
+    if (mobileShootBtn) {
+      mobileShootBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        checkTouch();
+        this.fireLaser(true);
+      }, { passive: false });
+      mobileShootBtn.addEventListener("click", () => {
+        this.fireLaser(true);
+      });
     }
 
     // Mobile Warp Dash Button
@@ -1595,7 +1644,7 @@ class SpaceGame3D {
           ${isUnlocked ? lvl.emoji : "🔒"}
         </div>
         <div class="node-class-name">${lvl.class}</div>
-        <div class="node-subjects">${lvl.subjects}</div>
+        <div class="node-subjects">${lvl.zone}</div>
         <div class="node-stars">${isUnlocked ? starsStr : "Locked"}</div>
         ${isUnlocked ? `<button class="node-play-btn">▶ Play ${lvl.class}</button>` : ''}
       `;
@@ -1619,6 +1668,7 @@ class SpaceGame3D {
     this.coins = 0;
     this.correctCount = 0;
     this.attemptCount = 0;
+    this.ufoBlastPending = false;
 
     // Reset 3D player position & physics
     this.player.x = 0;
@@ -1644,19 +1694,22 @@ class SpaceGame3D {
     // Clear old entities
     this.obstacles.forEach(o => this.scene.remove(o.mesh));
     this.coinsInWorld.forEach(c => this.scene.remove(c.mesh));
+    this.lasers.forEach(l => this.scene.remove(l.mesh));
     this.obstacles = [];
     this.coinsInWorld = [];
+    this.lasers = [];
 
     this.lastObsSpawn = performance.now();
     this.lastCoinSpawn = performance.now() + 800;
+    this.lastLaserTime = performance.now();
 
     await this.loadQuestionBank(lvlNum);
     this.updateHUD();
     this.showScreen("PLAYING");
 
-    // Immediate initial wave ahead so player sees action in 2 seconds!
+    // Immediate initial wave of UFOs & Asteroids ahead so player can shoot & blast right away!
     this.spawn3DCoin(-45, 0, 0);
-    this.spawn3DAsteroid(-75, -2.5, 1);
+    this.spawn3DAsteroid(-75, -3.5, 1.5);
     this.spawn3DCoin(-110, 2.5, 0);
   }
 
@@ -1689,7 +1742,7 @@ class SpaceGame3D {
   updateHUD() {
     document.getElementById("hud-level-badge").textContent = `${this.config.class} • ${this.config.zone}`;
     document.getElementById("hud-score-val").textContent = this.score;
-    document.getElementById("hud-coins-val").textContent = `🪙 ${this.coins}`;
+    document.getElementById("hud-coins-val").textContent = `🛸 ${this.coins}`;
 
     // Lives
     const livesDiv = document.getElementById("hud-lives");
@@ -1704,7 +1757,7 @@ class SpaceGame3D {
     // Progress Bar
     const pct = Math.min(100, Math.floor((this.coins / this.config.targetCoins) * 100));
     document.getElementById("hud-progress-fill").style.width = `${pct}%`;
-    document.getElementById("hud-progress-text").textContent = `${this.coins} / ${this.config.targetCoins} Coins`;
+    document.getElementById("hud-progress-text").textContent = `${this.coins} / ${this.config.targetCoins} UFOs`;
   }
 
   handlePlayerInput(dt) {
@@ -1813,6 +1866,52 @@ class SpaceGame3D {
     }
   }
 
+  fireLaser(playSound = false) {
+    if (this.state !== "PLAYING" || this.ufoBlastPending) return;
+    const now = performance.now();
+    if (now - this.lastLaserTime < 140) return;
+    this.lastLaserTime = now;
+
+    if (playSound) {
+      this.sound.playLaser();
+    }
+
+    // Twin laser cannons mounted on left & right wing pylons
+    [-2.1, 2.1].forEach((offsetX) => {
+      const boltGroup = new THREE.Group();
+
+      // White-hot inner laser core
+      const coreGeo = new THREE.CylinderGeometry(0.09, 0.09, 3.6, 8);
+      coreGeo.rotateX(Math.PI / 2);
+      const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+      const core = new THREE.Mesh(coreGeo, coreMat);
+      boltGroup.add(core);
+
+      // Neon plasma outer aura
+      const auraGeo = new THREE.CylinderGeometry(0.24, 0.24, 4.0, 8);
+      auraGeo.rotateX(Math.PI / 2);
+      const auraMat = new THREE.MeshBasicMaterial({
+        color: 0x00f5ff,
+        transparent: true,
+        opacity: 0.75,
+        blending: THREE.AdditiveBlending
+      });
+      const aura = new THREE.Mesh(auraGeo, auraMat);
+      boltGroup.add(aura);
+
+      boltGroup.position.set(
+        this.player.x + offsetX,
+        this.player.y + 0.05,
+        this.player.z - 2.8
+      );
+      this.scene.add(boltGroup);
+      this.lasers.push({
+        mesh: boltGroup,
+        vz: -115
+      });
+    });
+  }
+
   spawn3DEntities(now) {
     const ramp = this.coins * 0.05;
     const obsInterval = Math.max(1300, (this.config.obsRate - ramp) * 1000);
@@ -1824,7 +1923,7 @@ class SpaceGame3D {
       this.spawn3DAsteroid();
     }
 
-    // Spawn 3D Question Coin
+    // Spawn 3D Alien UFO
     if (now - this.lastCoinSpawn > coinInterval) {
       this.lastCoinSpawn = now;
       this.spawn3DCoin();
@@ -1879,60 +1978,185 @@ class SpaceGame3D {
   }
 
   spawn3DCoin(customZ, customX, customY) {
-    const coinGroup = new THREE.Group();
+    // 3D Alien Flying Saucer UFO (replaces Coin)
+    const ufoGroup = new THREE.Group();
 
-    // 1. 3D Golden Disc with Embossed Star Crest & High-Gloss Lacquer
-    const coinGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.26, 32);
-    const coinMat = new THREE.MeshPhysicalMaterial({
-      color: 0xffd700,
-      metalness: 0.95,
-      roughness: 0.18,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.1,
-      emissive: 0x4a2e00,
-      bumpMap: this.textures.coin,
-      bumpScale: 0.1
+    // 1. Metallic Flying Saucer Upper & Lower Hull Disc
+    const upperHullGeo = new THREE.CylinderGeometry(1.15, 2.35, 0.42, 32);
+    const hullMat = new THREE.MeshStandardMaterial({
+      color: 0xcbd5e1,
+      metalness: 0.88,
+      roughness: 0.2,
+      bumpMap: this.textures.hull,
+      bumpScale: 0.03
     });
-    const disc = new THREE.Mesh(coinGeo, coinMat);
-    disc.rotation.x = Math.PI / 2;
-    disc.castShadow = true;
-    coinGroup.add(disc);
+    const upperHull = new THREE.Mesh(upperHullGeo, hullMat);
+    upperHull.position.y = 0.12;
+    upperHull.castShadow = true;
+    ufoGroup.add(upperHull);
 
-    // 2. Kinetic Concentric Energy Rings (Inner Cyan & Outer Gold)
-    const innerRingGeo = new THREE.TorusGeometry(1.65, 0.06, 16, 40);
-    const innerRingMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
-    const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
-    coinGroup.add(innerRing);
+    const lowerHullGeo = new THREE.CylinderGeometry(2.35, 0.95, 0.34, 32);
+    const darkHullMat = new THREE.MeshStandardMaterial({
+      color: 0x475569,
+      metalness: 0.85,
+      roughness: 0.28
+    });
+    const lowerHull = new THREE.Mesh(lowerHullGeo, darkHullMat);
+    lowerHull.position.y = -0.22;
+    ufoGroup.add(lowerHull);
 
-    const outerRingGeo = new THREE.TorusGeometry(2.1, 0.05, 16, 48);
-    const outerRingMat = new THREE.MeshBasicMaterial({ color: 0xfacc15 });
+    // 2. Glowing Neon Rim Ring around the Saucer
+    const rimGeo = new THREE.TorusGeometry(2.32, 0.13, 16, 48);
+    rimGeo.rotateX(Math.PI / 2);
+    const rimMat = new THREE.MeshBasicMaterial({ color: 0xff007f });
+    const innerRing = new THREE.Mesh(rimGeo, rimMat);
+    innerRing.position.y = -0.04;
+    ufoGroup.add(innerRing);
+
+    // 3. 6 Colorful Alien Rim Orbs around Saucer Edge
+    const orbColors = [0x4ade80, 0x00f5ff, 0xffea00, 0xff007f, 0xa855f7, 0xf97316];
+    const orbGeo = new THREE.SphereGeometry(0.22, 12, 12);
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2;
+      const orbMat = new THREE.MeshBasicMaterial({ color: orbColors[i] });
+      const orb = new THREE.Mesh(orbGeo, orbMat);
+      orb.position.set(Math.cos(angle) * 2.15, 0.05, Math.sin(angle) * 2.15);
+      ufoGroup.add(orb);
+    }
+
+    // 4. Translucent Glowing Alien Glass Dome on Top
+    const domeGeo = new THREE.SphereGeometry(1.15, 24, 16, 0, Math.PI * 2, 0, Math.PI * 0.55);
+    const domeMat = new THREE.MeshPhysicalMaterial({
+      color: 0x38bdf8,
+      emissive: 0x0284c7,
+      emissiveIntensity: 0.35,
+      transparent: true,
+      opacity: 0.68,
+      roughness: 0.1,
+      metalness: 0.2,
+      transmission: 0.5
+    });
+    const dome = new THREE.Mesh(domeGeo, domeMat);
+    dome.position.y = 0.25;
+    ufoGroup.add(dome);
+
+    // 5. Cute Little Green Alien Pilot inside the Dome
+    const alienHeadGeo = new THREE.SphereGeometry(0.48, 16, 16);
+    const alienMat = new THREE.MeshBasicMaterial({ color: 0x4ade80 });
+    const alienHead = new THREE.Mesh(alienHeadGeo, alienMat);
+    alienHead.position.set(0, 0.62, 0);
+    alienHead.scale.set(1.0, 1.15, 0.95);
+    ufoGroup.add(alienHead);
+
+    const eyeGeo = new THREE.SphereGeometry(0.1, 8, 8);
+    const eyeMat = new THREE.MeshBasicMaterial({ color: 0x0f172a });
+    [-0.18, 0.18].forEach((ex) => {
+      const eye = new THREE.Mesh(eyeGeo, eyeMat);
+      eye.position.set(ex, 0.68, 0.42);
+      ufoGroup.add(eye);
+    });
+
+    // 6. Underneath Tractor-Beam Glow Ring & Orbiting Plasma Ring
+    const outerRingGeo = new THREE.TorusGeometry(2.75, 0.06, 12, 48);
+    const outerRingMat = new THREE.MeshBasicMaterial({
+      color: 0x4ade80,
+      transparent: true,
+      opacity: 0.85
+    });
     const outerRing = new THREE.Mesh(outerRingGeo, outerRingMat);
-    outerRing.rotation.x = 0.55;
-    coinGroup.add(outerRing);
+    outerRing.rotation.x = 1.25;
+    ufoGroup.add(outerRing);
 
-    // 3. Dynamic Radiant Point Light
-    const light = new THREE.PointLight(0xffea00, 2.5, 14);
-    coinGroup.add(light);
+    // 7. Dynamic Radiant Point Light
+    const light = new THREE.PointLight(0x4ade80, 2.8, 16);
+    light.position.set(0, -0.5, 0);
+    ufoGroup.add(light);
 
     const spawnX = customX !== undefined ? customX : (Math.random() - 0.5) * 18;
     const spawnY = customY !== undefined ? customY : (Math.random() - 0.5) * 12 + 1;
     const spawnZ = customZ !== undefined ? customZ : -130;
-    coinGroup.position.set(spawnX, spawnY, spawnZ);
+    ufoGroup.position.set(spawnX, spawnY, spawnZ);
 
-    this.scene.add(coinGroup);
+    // Slight tilt toward the camera so player sees the dome & saucer clearly
+    ufoGroup.rotation.x = 0.22;
+
+    this.scene.add(ufoGroup);
 
     this.coinsInWorld.push({
-      mesh: coinGroup,
+      mesh: ufoGroup,
       innerRing: innerRing,
       outerRing: outerRing,
       baseY: spawnY,
-      radius: 1.6,
+      radius: 2.4,
       life: 0
     });
   }
 
   update3DEntities(dt) {
     const forwardSpeed = this.config.speed * (this.player.isDashing ? 1.35 : 1.0);
+
+    // Auto-fire spaceship lasers while flying so player continuously shoots at UFOs!
+    const now = performance.now();
+    if (!this.ufoBlastPending && now - this.lastLaserTime > 260) {
+      // Play soft laser sound when a UFO is lined up ahead
+      const hasTargetAhead = this.coinsInWorld.some(u =>
+        u.mesh.position.z < this.player.z &&
+        u.mesh.position.z > -95 &&
+        Math.hypot(u.mesh.position.x - this.player.x, u.mesh.position.y - this.player.y) < 6.0
+      );
+      this.fireLaser(hasTargetAhead);
+    }
+
+    // 0. Update Spaceship Laser Bolts & Check Laser-to-UFO Hits
+    for (let i = this.lasers.length - 1; i >= 0; i--) {
+      const laser = this.lasers[i];
+      laser.mesh.position.z += laser.vz * dt;
+
+      // Smart targeting assist toward nearest UFO in front of the bolt
+      let closestUFO = null;
+      let closestDist = 9.0;
+      for (let j = 0; j < this.coinsInWorld.length; j++) {
+        const ufo = this.coinsInWorld[j];
+        const dz = laser.mesh.position.z - ufo.mesh.position.z;
+        if (dz > -3.0 && dz < 65.0) {
+          const xyDist = Math.hypot(ufo.mesh.position.x - laser.mesh.position.x, ufo.mesh.position.y - laser.mesh.position.y);
+          if (xyDist < closestDist) {
+            closestDist = xyDist;
+            closestUFO = ufo;
+          }
+        }
+      }
+      if (closestUFO) {
+        laser.mesh.position.x = THREE.MathUtils.lerp(laser.mesh.position.x, closestUFO.mesh.position.x, 9.5 * dt);
+        laser.mesh.position.y = THREE.MathUtils.lerp(laser.mesh.position.y, closestUFO.mesh.position.y, 9.5 * dt);
+      }
+
+      // Check collision between this laser bolt and any UFO
+      let hitUFO = false;
+      if (!this.ufoBlastPending) {
+        for (let j = this.coinsInWorld.length - 1; j >= 0; j--) {
+          const ufo = this.coinsInWorld[j];
+          const ldx = laser.mesh.position.x - ufo.mesh.position.x;
+          const ldy = laser.mesh.position.y - ufo.mesh.position.y;
+          const ldz = laser.mesh.position.z - ufo.mesh.position.z;
+          const lDist = Math.hypot(ldx, ldy, ldz);
+
+          if (lDist < ufo.radius + 1.5 && ufo.mesh.position.z > -115) {
+            const ufoPos = ufo.mesh.position.clone();
+            this.scene.remove(ufo.mesh);
+            this.coinsInWorld.splice(j, 1);
+            this.collectCoin3D(ufoPos);
+            hitUFO = true;
+            break;
+          }
+        }
+      }
+
+      if (hitUFO || laser.mesh.position.z < -150) {
+        this.scene.remove(laser.mesh);
+        this.lasers.splice(i, 1);
+      }
+    }
 
     // 1. Asteroids
     for (let i = this.obstacles.length - 1; i >= 0; i--) {
@@ -1947,7 +2171,7 @@ class SpaceGame3D {
       const dz = this.player.z - obs.mesh.position.z;
       const dist = Math.hypot(dx, dy, dz);
 
-      if (dist < obs.radius + 2.0 && this.player.invulnerableTimer <= 0 && !this.player.isDashing) {
+      if (dist < obs.radius + 2.0 && this.player.invulnerableTimer <= 0 && !this.player.isDashing && !this.ufoBlastPending) {
         this.playerHit3D(obs.mesh.position);
       }
 
@@ -1958,37 +2182,33 @@ class SpaceGame3D {
       }
     }
 
-    // 2. Coins
+    // 2. 3D Alien UFOs
     for (let i = this.coinsInWorld.length - 1; i >= 0; i--) {
       const coin = this.coinsInWorld[i];
       coin.life += dt;
       coin.mesh.position.z += forwardSpeed * dt * 1.2;
       coin.mesh.position.y = coin.baseY + Math.sin(coin.life * 4) * 0.8;
-      coin.mesh.rotation.y += 3.5 * dt;
+      coin.mesh.rotation.y += 3.2 * dt;
+      coin.mesh.rotation.z = Math.sin(coin.life * 3.0) * 0.14;
 
-      // Concentric kinetic ring counter-rotation
-      if (coin.innerRing) {
-        coin.innerRing.rotation.z += 4.5 * dt;
-      }
+      // Orbiting plasma ring rotation
       if (coin.outerRing) {
         coin.outerRing.rotation.z -= 3.8 * dt;
-        coin.outerRing.rotation.y += 2.0 * dt;
       }
 
-      // 3D Collision check & Magnetic Tractor Pull
+      // 3D Direct Ship-to-UFO Blast check & Magnetic Alignment
       const dx = this.player.x - coin.mesh.position.x;
       const dy = this.player.y - coin.mesh.position.y;
       const dz = this.player.z - coin.mesh.position.z;
       const dist = Math.hypot(dx, dy, dz);
 
-      // Gentle magnetic tractor pull: when close, coin glides toward ship
-      if (dist < 8.0 && dist > 0.1) {
-        const pullSpeed = 16.0 * dt;
+      if (dist < 9.0 && dist > 0.1) {
+        const pullSpeed = 14.0 * dt;
         coin.mesh.position.x += dx * pullSpeed;
         coin.mesh.position.y += dy * pullSpeed;
       }
 
-      if (dist < coin.radius + 2.8) {
+      if (!this.ufoBlastPending && dist < coin.radius + 2.8) {
         const coinPos = coin.mesh.position.clone();
         this.scene.remove(coin.mesh);
         this.coinsInWorld.splice(i, 1);
@@ -2026,6 +2246,10 @@ class SpaceGame3D {
   }
 
   collectCoin3D(pos) {
+    if (this.ufoBlastPending) return;
+    this.ufoBlastPending = true;
+
+    // 1. Play UFO Blast sound & spawn huge 3D UFO explosion!
     this.sound.playCoin();
     if (pos && this.particleFX) {
       this.particleFX.spawnCoinExplosion(pos.x, pos.y, pos.z);
@@ -2036,9 +2260,14 @@ class SpaceGame3D {
     }
 
     this.activeQuestion = this.questionQueue.shift();
-    if (this.activeQuestion) {
-      this.showQuestionModal(this.activeQuestion);
-    }
+
+    // Let the 3D UFO Blast fireball & shockwave ring burst on screen for 260ms, then pop up the Question Panel!
+    setTimeout(() => {
+      this.ufoBlastPending = false;
+      if (this.activeQuestion && this.state === "PLAYING") {
+        this.showQuestionModal(this.activeQuestion);
+      }
+    }, 260);
   }
 
   showQuestionModal(q) {
@@ -2046,23 +2275,23 @@ class SpaceGame3D {
 
     const badge = document.getElementById("q-subject-badge");
     badge.textContent = `${this.getSubjectEmoji(q.subject)} ${q.subject.toUpperCase()}`;
-    document.getElementById("q-topic-tag").textContent = `Topic: ${q.topic}`;
+    document.getElementById("q-topic-tag").textContent = `✨ ${q.topic}`;
     document.getElementById("q-text").textContent = q.questionText;
 
     const hintBox = document.getElementById("q-hint-box");
-    hintBox.textContent = q.hint || "Take your time and read carefully!";
+    hintBox.textContent = `💡 ${q.hint || "Take your time and read carefully!"}`;
     hintBox.classList.add("hidden");
 
-    // 4 pastel buttons
+    // 4 colorful childish creative buttons with playful badges
+    const badges = ["🅰️", "🅱️", "🅲", "🅳"];
     const buttons = document.querySelectorAll(".opt-btn");
     buttons.forEach((btn, i) => {
       btn.className = `opt-btn opt-${['a','b','c','d'][i]}`;
       btn.disabled = false;
-      const letter = String.fromCharCode(65 + i);
-      btn.textContent = `${letter}. ${q.options[i]}`;
+      btn.textContent = `${badges[i]}  ${q.options[i]}`;
     });
 
-    document.getElementById("q-mascot-speech").textContent = "You can do it! Take your time and pick the best answer.";
+    document.getElementById("q-mascot-speech").textContent = "Awesome shot! You blasted the UFO! Pick the right answer! 🚀🌈";
   }
 
   getSubjectEmoji(sub) {

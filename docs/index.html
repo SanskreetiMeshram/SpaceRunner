@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Spaceship Runner — 3D Space Runner (Class 1 to 10)</title>
+  <title>Spaceship Runner — 3D Space UFO Blaster</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
         <span class="logo-icon">🚀</span>
         <div class="logo-text">
           <span class="logo-title">Spaceship Runner</span>
-          <span class="logo-subtitle">Class 1 to 10 Curriculum Space Runner</span>
+          <span class="logo-subtitle">3D Cosmic UFO Blaster & Brain Adventure</span>
         </div>
       </div>
       <div class="header-actions">
@@ -36,7 +36,7 @@
       <!-- HUD Overlay (Active during gameplay) -->
       <div id="hud-overlay" class="overlay-panel hidden">
         <div class="hud-left">
-          <div class="hud-card level-badge" id="hud-level-badge">Class 1 • Playful Stardust</div>
+          <div class="hud-card level-badge" id="hud-level-badge">Level 1 • Playful Stardust</div>
           <div class="hud-card lives-display" id="hud-lives">
             <span class="heart-icon">❤️</span>
             <span class="heart-icon">❤️</span>
@@ -49,7 +49,7 @@
             <div class="progress-bar-bg">
               <div id="hud-progress-fill" class="progress-bar-fill" style="width: 0%;"></div>
             </div>
-            <span id="hud-progress-text">0 / 5 Coins</span>
+            <span id="hud-progress-text">0 / 5 UFOs</span>
           </div>
         </div>
 
@@ -59,8 +59,8 @@
             <span id="hud-score-val" class="stat-value">0</span>
           </div>
           <div class="hud-card coins-display">
-            <span class="stat-label">COINS</span>
-            <span id="hud-coins-val" class="stat-value">🪙 0</span>
+            <span class="stat-label">UFOs</span>
+            <span id="hud-coins-val" class="stat-value">🛸 0</span>
           </div>
         </div>
 
@@ -74,11 +74,11 @@
 
         <!-- Controls helper hint for kids (Auto adapts to desktop / mobile) -->
         <div class="controls-hint" id="hud-controls-hint">
-          <span>⌨️ Move: WASD / Arrows / Touch Drag</span>
+          <span>⌨️ Move: WASD / Arrows / Drag</span>
           <span>•</span>
-          <span>⚡ Dash: [SHIFT] or Touch Button</span>
+          <span>🔫 Shoot: Auto / [SPACE] / Click</span>
           <span>•</span>
-          <span>Collect 🪙 Coins!</span>
+          <span>💥 Blast 🛸 UFOs!</span>
         </div>
       </div>
 
@@ -93,7 +93,11 @@
         </div>
 
         <!-- Action Area (Right) -->
-        <div id="mobile-action-zone">
+        <div id="mobile-action-zone" style="display: flex; gap: 12px; align-items: center;">
+          <button id="btn-mobile-shoot" class="mobile-dash-btn" title="Shoot Laser" style="border-color: rgba(250, 204, 21, 0.8); background: radial-gradient(circle, rgba(234, 179, 8, 0.45) 0%, rgba(15, 23, 42, 0.85) 100%); box-shadow: 0 0 22px rgba(250, 204, 21, 0.45);">
+            <span class="dash-btn-icon">🔥</span>
+            <span class="dash-btn-text" style="color: #fde047;">SHOOT</span>
+          </button>
           <button id="btn-mobile-dash" class="mobile-dash-btn" title="Warp Dash">
             <span class="dash-btn-icon">⚡</span>
             <span class="dash-btn-text">DASH</span>
@@ -105,11 +109,11 @@
       <!-- Level Map Modal / Screen -->
       <div id="level-map-screen" class="screen-view">
         <div class="map-header">
-          <h2>🌟 Space Learning Trail (Classes 1–10)</h2>
-          <p>Choose your school grade to start flying and learning!</p>
+          <h2>🌟 Cosmic Space Mission Trail</h2>
+          <p>Choose a galaxy zone to launch your spaceship, shoot UFOs, and play!</p>
           <div class="hero-actions" style="margin-top: 14px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-            <button id="btn-quick-play" class="btn-primary" style="font-size: 16px; padding: 12px 28px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); cursor: pointer;">🚀 QUICK PLAY (CLASS 1)</button>
-            <button id="btn-unlock-all" class="btn-secondary" style="font-size: 14px; padding: 10px 20px; cursor: pointer;">🔓 All Grades Unlocked</button>
+            <button id="btn-quick-play" class="btn-primary" style="font-size: 16px; padding: 12px 28px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); cursor: pointer;">🚀 QUICK PLAY (LEVEL 1)</button>
+            <button id="btn-unlock-all" class="btn-secondary" style="font-size: 14px; padding: 10px 20px; cursor: pointer;">🔓 All Levels Unlocked</button>
           </div>
         </div>
 
@@ -119,16 +123,22 @@
 
         <div class="map-footer">
           <div class="stats-pill" id="map-total-stars">⭐ Stars Earned: 0 / 30</div>
-          <button id="btn-custom-skin" class="btn-secondary">🛸 Change UFO Skin</button>
+          <button id="btn-custom-skin" class="btn-secondary">🛸 Change Spaceship Skin</button>
         </div>
       </div>
 
-      <!-- Question Panel Modal (Pauses Gameplay) -->
+      <!-- Question Panel Modal (Pauses Gameplay - Colorful Childish Creative Theme) -->
       <div id="question-modal" class="screen-view hidden modal-center">
         <div class="modal-card question-card">
+          <div class="question-blast-banner">
+            <span class="banner-sparkle">🛸💥</span>
+            <span class="banner-title">UFO BLASTED! SUPER QUIZ TIME!</span>
+            <span class="banner-sparkle">🌈⭐</span>
+          </div>
+
           <div class="question-header">
             <div class="subject-badge" id="q-subject-badge">🧮 MATH</div>
-            <div class="topic-tag" id="q-topic-tag">Counting</div>
+            <div class="topic-tag" id="q-topic-tag">✨ Counting</div>
           </div>
 
           <div class="question-body">
@@ -145,9 +155,9 @@
           <div class="question-mascot-footer">
             <img src="Sprites/mascot_nova.png" alt="Mascot Nova" class="mascot-avatar" id="q-mascot-img">
             <div class="mascot-bubble" id="q-mascot-speech">
-              You can do it! Take your time and pick the best answer.
+              Awesome shot! Pick the right answer to power up your spaceship! 🚀✨
             </div>
-            <button id="btn-hint" class="hint-btn">💡 Hint</button>
+            <button id="btn-hint" class="hint-btn">💡 Magic Hint</button>
           </div>
           <div id="q-hint-box" class="hint-box hidden"></div>
         </div>
@@ -203,8 +213,8 @@
         <div class="modal-card complete-card">
           <div class="complete-header">
             <div class="confetti-icon">🎉</div>
-            <h2 id="complete-level-title">Class 1 Cleared!</h2>
-            <p id="complete-subtitle">Fantastic job flying through the nebula!</p>
+            <h2 id="complete-level-title">Level 1 Cleared!</h2>
+            <p id="complete-subtitle">Fantastic job blasting UFOs through the nebula!</p>
           </div>
 
           <div class="stars-earned-row" id="complete-stars-row">
@@ -220,7 +230,7 @@
             </div>
             <div class="stat-tile">
               <span class="stat-num" id="complete-coins-val">5</span>
-              <span class="stat-lbl">Coins</span>
+              <span class="stat-lbl">UFOs Blasted</span>
             </div>
             <div class="stat-tile">
               <span class="stat-num" id="complete-accuracy-val">100%</span>
@@ -237,7 +247,7 @@
           </div>
 
           <div class="complete-actions">
-            <button id="btn-next-level" class="btn-primary">Next Grade 🚀</button>
+            <button id="btn-next-level" class="btn-primary">Next Level 🚀</button>
             <button id="btn-replay-level" class="btn-secondary">Replay 🔄</button>
             <button id="btn-complete-map" class="btn-secondary">Level Map 🗺️</button>
           </div>
@@ -264,8 +274,8 @@
       <!-- Skin Customizer Modal -->
       <div id="skin-modal" class="screen-view hidden modal-center">
         <div class="modal-card skin-card">
-          <h3>🛸 Choose Your UFO Spaceship</h3>
-          <p>Clear higher school grades to unlock special fleet skins!</p>
+          <h3>🛸 Choose Your Spaceship</h3>
+          <p>Clear higher space missions to unlock special fleet skins!</p>
 
           <div class="skins-grid">
             <div class="skin-item" data-skin="saucer">
@@ -276,17 +286,17 @@
             <div class="skin-item locked" data-skin="dart" id="skin-dart">
               <img src="Sprites/ufo_dart.png" alt="Neon Dart">
               <span class="skin-name">Neon Dart</span>
-              <span class="skin-status" id="skin-dart-status">Unlocks at Class 3</span>
+              <span class="skin-status" id="skin-dart-status">Unlocks at Level 3</span>
             </div>
             <div class="skin-item locked" data-skin="cruiser" id="skin-cruiser">
               <img src="Sprites/ufo_saucer.png" alt="Cosmic Cruiser" style="filter: hue-rotate(180deg);">
               <span class="skin-name">Cosmic Cruiser</span>
-              <span class="skin-status" id="skin-cruiser-status">Unlocks at Class 6</span>
+              <span class="skin-status" id="skin-cruiser-status">Unlocks at Level 6</span>
             </div>
             <div class="skin-item locked" data-skin="quantum" id="skin-quantum">
               <img src="Sprites/ufo_dart.png" alt="Quantum Explorer" style="filter: hue-rotate(280deg);">
               <span class="skin-name">Quantum Explorer</span>
-              <span class="skin-status" id="skin-quantum-status">Unlocks at Class 9</span>
+              <span class="skin-status" id="skin-quantum-status">Unlocks at Level 9</span>
             </div>
           </div>
 
