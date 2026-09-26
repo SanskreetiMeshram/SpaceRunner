@@ -384,13 +384,13 @@ class TextureGenerator3D {
     ctx.bezierCurveTo(350, 220, 600, 300, 950, 240);
     ctx.stroke();
 
-    // Thousands of multi-spectral stars
-    for (let i = 0; i < 2200; i++) {
+    // Clean, sparse background stars for smooth reflections
+    for (let i = 0; i < 120; i++) {
       const sx = Math.random() * 1024;
       const sy = Math.random() * 512;
-      const sz = Math.random() * 1.8 + 0.4;
+      const sz = Math.random() * 1.2 + 0.4;
       const pick = Math.random();
-      const col = pick < 0.6 ? "#ffffff" : (pick < 0.8 ? "#93c5fd" : (pick < 0.95 ? "#fed7aa" : "#fda4af"));
+      const col = pick < 0.7 ? "#ffffff" : "#93c5fd";
       ctx.fillStyle = col;
       ctx.beginPath();
       ctx.arc(sx, sy, sz, 0, Math.PI * 2);
@@ -590,15 +590,15 @@ class ParticleFX3D {
   }
 
   spawnCoinExplosion(x, y, z) {
-    // 36 vibrant multi-color plasma sparks for UFO Blast!
-    const blastColors = [0x4ade80, 0xff007f, 0x00f5ff, 0xffea00, 0xf97316, 0xa855f7];
-    for (let i = 0; i < 36; i++) {
-      const geo = new THREE.PlaneGeometry(1.15, 1.15);
+    // 16 clean, sorted radial plasma sparks for UFO Blast
+    const blastColors = [0x4ade80, 0x00f5ff, 0xffea00, 0xff007f];
+    for (let i = 0; i < 16; i++) {
+      const geo = new THREE.PlaneGeometry(0.85, 0.85);
       const col = blastColors[i % blastColors.length];
       const mat = new THREE.MeshBasicMaterial({
         map: this.glowTexture,
         transparent: true,
-        opacity: 1.0,
+        opacity: 0.95,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
         color: col
@@ -607,49 +607,44 @@ class ParticleFX3D {
       p.position.set(x, y, z);
       this.scene.add(p);
 
-      const angle = (i / 36) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
-      const speed = Math.random() * 18 + 7;
+      const angle = (i / 16) * Math.PI * 2;
+      const speed = 12 + (i % 2) * 4;
       this.particles.push({
         mesh: p,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
-        vz: (Math.random() - 0.5) * 14,
+        vz: (Math.random() - 0.5) * 6,
         life: 0,
-        maxLife: 0.75
+        maxLife: 0.5
       });
     }
 
-    // Saucer debris chunks
-    this.spawnImpactRubble(x, y, z);
-
-    // Dual expanding shockwave rings (Neon Green & Golden Magenta)
-    [0x4ade80, 0xff007f].forEach((ringCol, idx) => {
-      const ringGeo = new THREE.RingGeometry(0.6 + idx * 0.3, 1.1 + idx * 0.3, 32);
-      const ringMat = new THREE.MeshBasicMaterial({
-        color: ringCol,
-        transparent: true,
-        opacity: 0.95,
-        side: THREE.DoubleSide,
-        depthWrite: false,
-        blending: THREE.AdditiveBlending
-      });
-      const ring = new THREE.Mesh(ringGeo, ringMat);
-      ring.position.set(x, y, z);
-      this.scene.add(ring);
-      this.rings.push({
-        mesh: ring,
-        life: 0,
-        maxLife: 0.52 + idx * 0.12
-      });
+    // Crisp expanding shockwave ring
+    const ringGeo = new THREE.RingGeometry(0.7, 1.15, 32);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color: 0x4ade80,
+      transparent: true,
+      opacity: 0.9,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
+    });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.set(x, y, z);
+    this.scene.add(ring);
+    this.rings.push({
+      mesh: ring,
+      life: 0,
+      maxLife: 0.45
     });
   }
 
   spawnImpactRubble(x, y, z) {
-    for (let i = 0; i < 16; i++) {
-      const geo = new THREE.DodecahedronGeometry(0.32, 0);
+    for (let i = 0; i < 8; i++) {
+      const geo = new THREE.DodecahedronGeometry(0.28, 0);
       const mat = new THREE.MeshStandardMaterial({
-        color: 0x85756c,
-        roughness: 0.9
+        color: 0x94a3b8,
+        roughness: 0.8
       });
       const chunk = new THREE.Mesh(geo, mat);
       chunk.position.set(x, y, z);
@@ -657,13 +652,13 @@ class ParticleFX3D {
 
       this.particles.push({
         mesh: chunk,
-        vx: (Math.random() - 0.5) * 18,
-        vy: (Math.random() - 0.5) * 18,
-        vz: (Math.random() - 0.5) * 18,
-        rotX: Math.random() * 8,
-        rotY: Math.random() * 8,
+        vx: (Math.random() - 0.5) * 14,
+        vy: (Math.random() - 0.5) * 14,
+        vz: (Math.random() - 0.5) * 14,
+        rotX: Math.random() * 6,
+        rotY: Math.random() * 6,
         life: 0,
-        maxLife: 0.75
+        maxLife: 0.55
       });
     }
   }
@@ -899,12 +894,12 @@ class SpaceGame3D {
   buildSunCorona() {
     const sunGroup = new THREE.Group();
 
-    // Intense central solar flare billboard
-    const flareGeo = new THREE.PlaneGeometry(85, 85);
+    // Subtle distant solar flare billboard
+    const flareGeo = new THREE.PlaneGeometry(45, 45);
     const flareMat = new THREE.MeshBasicMaterial({
       map: this.textures.sunFlare,
       transparent: true,
-      opacity: 0.82,
+      opacity: 0.45,
       depthWrite: false,
       blending: THREE.AdditiveBlending
     });
@@ -912,43 +907,44 @@ class SpaceGame3D {
     sunGroup.add(this.sunCorona);
 
     // Glowing solar sphere
-    const sunSphereGeo = new THREE.SphereGeometry(14, 24, 24);
+    const sunSphereGeo = new THREE.SphereGeometry(9, 24, 24);
     const sunSphereMat = new THREE.MeshBasicMaterial({
       color: 0xfffbeb,
       transparent: true,
-      opacity: 0.95
+      opacity: 0.9
     });
     const sunSphere = new THREE.Mesh(sunSphereGeo, sunSphereMat);
     sunGroup.add(sunSphere);
 
-    sunGroup.position.set(65, 105, -280);
+    sunGroup.position.set(-95, 80, -340);
     this.scene.add(sunGroup);
     this.sunCoronaGroup = sunGroup;
   }
 
   buildVolumetricNebulae() {
     this.nebulaGroup = new THREE.Group();
-    const cloudGeo = new THREE.PlaneGeometry(120, 120);
+    const cloudGeo = new THREE.PlaneGeometry(110, 110);
 
-    for (let i = 0; i < 10; i++) {
+    // Only 3 soft, subtle distant background clouds so the flight path stays clean
+    const positions = [
+      { x: -85, y: 35, z: -290 },
+      { x: 95, y: -25, z: -310 },
+      { x: 0, y: 55, z: -340 }
+    ];
+    positions.forEach((pos, i) => {
       const cloudMat = new THREE.MeshBasicMaterial({
         map: this.textures.nebula,
         transparent: true,
-        opacity: 0.18 + Math.random() * 0.12,
+        opacity: 0.08,
         depthWrite: false,
         blending: THREE.AdditiveBlending,
         color: this.config.ambient
       });
       const cloud = new THREE.Mesh(cloudGeo, cloudMat);
-      cloud.position.set(
-        (Math.random() - 0.5) * 160,
-        (Math.random() - 0.5) * 80 + 10,
-        -140 - Math.random() * 200
-      );
-      cloud.rotation.z = Math.random() * Math.PI * 2;
-      cloud.scale.setScalar(0.8 + Math.random() * 0.6);
+      cloud.position.set(pos.x, pos.y, pos.z);
+      cloud.rotation.z = i * 1.2;
       this.nebulaGroup.add(cloud);
-    }
+    });
     this.scene.add(this.nebulaGroup);
   }
 
@@ -1264,23 +1260,26 @@ class SpaceGame3D {
   }
 
   buildWarpStarfield() {
-    const starCount = 3200;
+    // Clean, minimal starfield (120 peripheral stars so the center gameplay area stays uncluttered)
+    const starCount = 120;
     const starGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(starCount * 3);
     const colors = new Float32Array(starCount * 3);
 
     const baseColor = new THREE.Color(this.config.starColor);
     const blueStar = new THREE.Color(0x93c5fd);
-    const amberStar = new THREE.Color(0xfde047);
     const whiteStar = new THREE.Color(0xffffff);
 
     for (let i = 0; i < starCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 180;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 130;
-      positions[i * 3 + 2] = -Math.random() * 460;
+      // Place stars in an outer ring around the flight corridor so the middle stays clean
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 34 + Math.random() * 65;
+      positions[i * 3] = Math.cos(angle) * dist * 1.3;
+      positions[i * 3 + 1] = Math.sin(angle) * dist * 0.85;
+      positions[i * 3 + 2] = -40 - Math.random() * 380;
 
       const pick = Math.random();
-      const col = pick < 0.5 ? baseColor : (pick < 0.75 ? whiteStar : (pick < 0.9 ? blueStar : amberStar));
+      const col = pick < 0.65 ? whiteStar : (pick < 0.85 ? blueStar : baseColor);
       colors[i * 3] = col.r;
       colors[i * 3 + 1] = col.g;
       colors[i * 3 + 2] = col.b;
@@ -1290,10 +1289,13 @@ class SpaceGame3D {
     starGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
 
     const starMat = new THREE.PointsMaterial({
-      size: 1.8,
+      size: 0.9,
+      map: this.textures.glow,
       vertexColors: true,
       transparent: true,
-      opacity: 0.95
+      opacity: 0.45,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
     });
 
     this.starPoints = new THREE.Points(starGeo, starMat);
@@ -1303,14 +1305,16 @@ class SpaceGame3D {
   updateWarpStarfield(dt, speedMultiplier) {
     if (!this.starPoints) return;
     const positions = this.starPoints.geometry.attributes.position.array;
-    const speed = this.config.speed * speedMultiplier * dt * 4.5;
+    const speed = this.config.speed * speedMultiplier * dt * 1.2;
 
     for (let i = 0; i < positions.length; i += 3) {
       positions[i + 2] += speed;
-      if (positions[i + 2] > 20) {
-        positions[i + 2] = -450;
-        positions[i] = (Math.random() - 0.5) * 180;
-        positions[i + 1] = (Math.random() - 0.5) * 130;
+      if (positions[i + 2] > 10) {
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 34 + Math.random() * 65;
+        positions[i] = Math.cos(angle) * dist * 1.3;
+        positions[i + 1] = Math.sin(angle) * dist * 0.85;
+        positions[i + 2] = -420;
       }
     }
     this.starPoints.geometry.attributes.position.needsUpdate = true;
@@ -2424,20 +2428,20 @@ class SpaceGame3D {
       this.update3DEntities(dt);
       this.updateWarpStarfield(dt, this.player.isDashing ? 1.5 : 1.0);
 
-      // Continuous high-velocity engine spark particles behind twin nacelles
-      if (this.particleFX && this.player.mesh) {
+      // Spawn engine boost sparks only during Warp Dash to keep normal flight clean and sorted
+      if (this.particleFX && this.player.mesh && this.player.isDashing) {
         [-3.6, 3.6].forEach((offset) => {
           this.particleFX.spawnEngineSparks(
             this.player.x + offset * 0.78,
             this.player.y + 0.15,
             this.player.z + 3.2,
-            this.player.isDashing
+            true
           );
         });
       }
     } else {
       // Gentle idle starfield motion when paused/in modal
-      this.updateWarpStarfield(dt, 0.25);
+      this.updateWarpStarfield(dt, 0.2);
     }
 
     // Update real-time particle systems (sparks, explosions, rubble, rings)
