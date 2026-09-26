@@ -64,25 +64,23 @@
           </div>
         </div>
 
-        <!-- Dash Ready Indicator -->
+        <!-- Laser Cannon Indicator -->
         <div id="hud-dash-indicator">
           <div class="dash-bar-bg">
             <div id="hud-dash-fill" class="dash-bar-fill"></div>
           </div>
-          <span class="dash-label">WARP DASH [READY]</span>
+          <span class="dash-label">🔫 LASER CANNON [SHIFT]</span>
         </div>
 
         <!-- Controls helper hint for kids (Auto adapts to desktop / mobile) -->
         <div class="controls-hint" id="hud-controls-hint">
-          <span>⌨️ Move: WASD / Arrows / Drag</span>
+          <span>⌨️ Steer: WASD / Arrows / Touch</span>
           <span>•</span>
-          <span>🔫 Shoot: Auto / [SPACE] / Click</span>
-          <span>•</span>
-          <span>💥 Blast 🛸 UFOs!</span>
+          <span>🔫 Shoot UFO: Press [SHIFT] or Tap 🎯 SHOOT</span>
         </div>
       </div>
 
-      <!-- Universal Mobile Touch Controls (Auto-shown on touch devices) -->
+      <!-- Universal Mobile & On-Screen Controls (Shown automatically during gameplay) -->
       <div id="mobile-controls" class="mobile-touch-overlay hidden">
         <!-- Virtual Joystick Area (Left) -->
         <div id="mobile-joystick-zone">
@@ -92,16 +90,11 @@
           <span class="joystick-hint">STEER</span>
         </div>
 
-        <!-- Action Area (Right) -->
-        <div id="mobile-action-zone" style="display: flex; gap: 12px; align-items: center;">
-          <button id="btn-mobile-shoot" class="mobile-dash-btn" title="Shoot Laser" style="border-color: rgba(250, 204, 21, 0.8); background: radial-gradient(circle, rgba(234, 179, 8, 0.45) 0%, rgba(15, 23, 42, 0.85) 100%); box-shadow: 0 0 22px rgba(250, 204, 21, 0.45);">
-            <span class="dash-btn-icon">🔥</span>
-            <span class="dash-btn-text" style="color: #fde047;">SHOOT</span>
-          </button>
-          <button id="btn-mobile-dash" class="mobile-dash-btn" title="Warp Dash">
-            <span class="dash-btn-icon">⚡</span>
-            <span class="dash-btn-text">DASH</span>
-            <div class="dash-btn-cooldown" id="mobile-dash-cooldown"></div>
+        <!-- Shoot Button Area (Right) -->
+        <div id="mobile-action-zone">
+          <button id="btn-mobile-shoot" class="mobile-dash-btn" title="Shoot UFO (Shift)">
+            <span class="dash-btn-icon">🎯</span>
+            <span class="dash-btn-text">SHOOT</span>
           </button>
         </div>
       </div>

@@ -1321,14 +1321,14 @@ class SpaceGame3D {
   }
 
   bindEvents() {
-    // Keyboard inputs
+    // Keyboard inputs: Shift button (and Space) shoots the laser at UFOs!
     window.addEventListener("keydown", (e) => {
       this.keys[e.code] = true;
-      if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
-        this.triggerDash();
-      }
-      if (e.code === "Space") {
-        this.fireLaser(true);
+      if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "Space") {
+        if (this.state === "PLAYING") {
+          e.preventDefault();
+          this.fireLaser(true);
+        }
       }
     });
 
@@ -1340,11 +1340,13 @@ class SpaceGame3D {
     const checkTouch = () => {
       if (!this.touchActive) {
         this.touchActive = true;
-        const mobileControls = document.getElementById("mobile-controls");
-        if (mobileControls) mobileControls.classList.remove("hidden");
+        if (this.state === "PLAYING") {
+          const mobileControls = document.getElementById("mobile-controls");
+          if (mobileControls) mobileControls.classList.remove("hidden");
+        }
         const hint = document.getElementById("hud-controls-hint");
         if (hint) {
-          hint.innerHTML = "<span>🕹️ Drag Stick to Steer</span> • <span>🔥 Tap SHOOT</span> • <span>💥 Blast 🛸 UFOs!</span>";
+          hint.innerHTML = "<span>🕹️ Drag Stick to Steer</span> • <span>🎯 Tap SHOOT Button to Blast 🛸 UFOs!</span>";
         }
       }
     };
@@ -1355,7 +1357,6 @@ class SpaceGame3D {
     canvasEl.addEventListener("mousedown", (e) => {
       this.mouse.isDown = true;
       this.updateMouseCoords(e);
-      if (this.state === "PLAYING") this.fireLaser(true);
     });
     canvasEl.addEventListener("mousemove", (e) => {
       if (this.mouse.isDown) this.updateMouseCoords(e);
@@ -1366,7 +1367,6 @@ class SpaceGame3D {
       checkTouch();
       this.mouse.isDown = true;
       if (e.touches.length > 0) this.updateMouseCoords(e.touches[0]);
-      if (this.state === "PLAYING") this.fireLaser(true);
     }, { passive: true });
     canvasEl.addEventListener("touchmove", (e) => {
       if (e.touches.length > 0) this.updateMouseCoords(e.touches[0]);
@@ -1433,28 +1433,33 @@ class SpaceGame3D {
     }
 
     // Mobile Shoot Laser Button
+    this.shootHeld = false;
     const mobileShootBtn = document.getElementById("btn-mobile-shoot");
     if (mobileShootBtn) {
       mobileShootBtn.addEventListener("touchstart", (e) => {
         e.preventDefault();
+        e.stopPropagation();
         checkTouch();
+        this.shootHeld = true;
         this.fireLaser(true);
       }, { passive: false });
-      mobileShootBtn.addEventListener("click", () => {
+      mobileShootBtn.addEventListener("touchend", () => {
+        this.shootHeld = false;
+      });
+      mobileShootBtn.addEventListener("touchcancel", () => {
+        this.shootHeld = false;
+      });
+      mobileShootBtn.addEventListener("mousedown", (e) => {
+        e.stopPropagation();
+        this.shootHeld = true;
         this.fireLaser(true);
       });
-    }
-
-    // Mobile Warp Dash Button
-    const mobileDashBtn = document.getElementById("btn-mobile-dash");
-    if (mobileDashBtn) {
-      mobileDashBtn.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        checkTouch();
-        this.triggerDash();
-      }, { passive: false });
-      mobileDashBtn.addEventListener("click", () => {
-        this.triggerDash();
+      mobileShootBtn.addEventListener("mouseup", () => {
+        this.shootHeld = false;
+      });
+      mobileShootBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        this.fireLaser(true);
       });
     }
 
@@ -1598,12 +1603,14 @@ class SpaceGame3D {
     const qModal = document.getElementById("question-modal");
     const lModal = document.getElementById("learn-mode-modal");
     const cModal = document.getElementById("level-complete-modal");
+    const mobileControls = document.getElementById("mobile-controls");
 
     hud.classList.add("hidden");
     map.classList.add("hidden");
     qModal.classList.add("hidden");
     lModal.classList.add("hidden");
     cModal.classList.add("hidden");
+    if (mobileControls) mobileControls.classList.add("hidden");
     const gModal = document.getElementById("gameover-modal");
     if (gModal) gModal.classList.add("hidden");
 
@@ -1612,6 +1619,8 @@ class SpaceGame3D {
       this.renderLevelMap();
     } else if (target === "PLAYING") {
       hud.classList.remove("hidden");
+      // Always show the on-screen controls (Joystick + SHOOT button) during gameplay so mobile & touch users have the SHOOT button immediately
+      if (mobileControls) mobileControls.classList.remove("hidden");
     } else if (target === "QUESTION") {
       hud.classList.remove("hidden");
       qModal.classList.remove("hidden");
@@ -1846,23 +1855,18 @@ class SpaceGame3D {
       this.player.dashCooldown -= dt;
     }
 
-    // Dash HUD gauge
-    const dashRatio = Math.max(0, 1 - (this.player.dashCooldown / 1.8));
-    document.getElementById("hud-dash-fill").style.width = `${dashRatio * 100}%`;
+    // Laser Cannon HUD gauge
+    const dashFill = document.getElementById("hud-dash-fill");
+    if (dashFill) dashFill.style.width = "100%";
     const label = document.querySelector(".dash-label");
-    if (this.player.dashCooldown <= 0) {
-      label.textContent = "WARP DASH [READY]";
+    if (label) {
+      label.textContent = "🔫 LASER CANNON [SHIFT]";
       label.style.color = "#00e5ff";
-    } else {
-      label.textContent = "CHARGING...";
-      label.style.color = "#8da4c4";
     }
 
-    // Mobile Dash button cooldown
-    const mobileCooldownEl = document.getElementById("mobile-dash-cooldown");
-    if (mobileCooldownEl) {
-      const cdPct = Math.max(0, this.player.dashCooldown / 1.8) * 100;
-      mobileCooldownEl.style.transform = `translateY(${100 - cdPct}%)`;
+    // Continuous laser firing while holding Shift / Space on laptop or holding SHOOT button on mobile
+    if (this.keys["ShiftLeft"] || this.keys["ShiftRight"] || this.keys["Space"] || this.shootHeld) {
+      this.fireLaser(true);
     }
 
     if (this.player.invulnerableTimer > 0) {
@@ -1873,7 +1877,7 @@ class SpaceGame3D {
   fireLaser(playSound = false) {
     if (this.state !== "PLAYING" || this.ufoBlastPending) return;
     const now = performance.now();
-    if (now - this.lastLaserTime < 140) return;
+    if (now - this.lastLaserTime < 160) return;
     this.lastLaserTime = now;
 
     if (playSound) {
@@ -1885,19 +1889,19 @@ class SpaceGame3D {
       const boltGroup = new THREE.Group();
 
       // White-hot inner laser core
-      const coreGeo = new THREE.CylinderGeometry(0.09, 0.09, 3.6, 8);
+      const coreGeo = new THREE.CylinderGeometry(0.1, 0.1, 3.8, 8);
       coreGeo.rotateX(Math.PI / 2);
       const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
       const core = new THREE.Mesh(coreGeo, coreMat);
       boltGroup.add(core);
 
       // Neon plasma outer aura
-      const auraGeo = new THREE.CylinderGeometry(0.24, 0.24, 4.0, 8);
+      const auraGeo = new THREE.CylinderGeometry(0.26, 0.26, 4.2, 8);
       auraGeo.rotateX(Math.PI / 2);
       const auraMat = new THREE.MeshBasicMaterial({
         color: 0x00f5ff,
         transparent: true,
-        opacity: 0.75,
+        opacity: 0.8,
         blending: THREE.AdditiveBlending
       });
       const aura = new THREE.Mesh(auraGeo, auraMat);
@@ -1906,12 +1910,12 @@ class SpaceGame3D {
       boltGroup.position.set(
         this.player.x + offsetX,
         this.player.y + 0.05,
-        this.player.z - 2.8
+        this.player.z + 1.0
       );
       this.scene.add(boltGroup);
       this.lasers.push({
         mesh: boltGroup,
-        vz: -115
+        vz: -145
       });
     });
   }
@@ -2099,30 +2103,18 @@ class SpaceGame3D {
   update3DEntities(dt) {
     const forwardSpeed = this.config.speed * (this.player.isDashing ? 1.35 : 1.0);
 
-    // Auto-fire spaceship lasers while flying so player continuously shoots at UFOs!
-    const now = performance.now();
-    if (!this.ufoBlastPending && now - this.lastLaserTime > 260) {
-      // Play soft laser sound when a UFO is lined up ahead
-      const hasTargetAhead = this.coinsInWorld.some(u =>
-        u.mesh.position.z < this.player.z &&
-        u.mesh.position.z > -95 &&
-        Math.hypot(u.mesh.position.x - this.player.x, u.mesh.position.y - this.player.y) < 6.0
-      );
-      this.fireLaser(hasTargetAhead);
-    }
-
-    // 0. Update Spaceship Laser Bolts & Check Laser-to-UFO Hits
+    // 0. Update Spaceship Laser Bolts (fired by Shift key on laptop or SHOOT button on mobile) & Check Laser-to-UFO Hits
     for (let i = this.lasers.length - 1; i >= 0; i--) {
       const laser = this.lasers[i];
       laser.mesh.position.z += laser.vz * dt;
 
       // Smart targeting assist toward nearest UFO in front of the bolt
       let closestUFO = null;
-      let closestDist = 9.0;
+      let closestDist = 15.0;
       for (let j = 0; j < this.coinsInWorld.length; j++) {
         const ufo = this.coinsInWorld[j];
         const dz = laser.mesh.position.z - ufo.mesh.position.z;
-        if (dz > -3.0 && dz < 65.0) {
+        if (dz > -4.0 && dz < 95.0) {
           const xyDist = Math.hypot(ufo.mesh.position.x - laser.mesh.position.x, ufo.mesh.position.y - laser.mesh.position.y);
           if (xyDist < closestDist) {
             closestDist = xyDist;
@@ -2131,8 +2123,8 @@ class SpaceGame3D {
         }
       }
       if (closestUFO) {
-        laser.mesh.position.x = THREE.MathUtils.lerp(laser.mesh.position.x, closestUFO.mesh.position.x, 9.5 * dt);
-        laser.mesh.position.y = THREE.MathUtils.lerp(laser.mesh.position.y, closestUFO.mesh.position.y, 9.5 * dt);
+        laser.mesh.position.x = THREE.MathUtils.lerp(laser.mesh.position.x, closestUFO.mesh.position.x, 16.0 * dt);
+        laser.mesh.position.y = THREE.MathUtils.lerp(laser.mesh.position.y, closestUFO.mesh.position.y, 16.0 * dt);
       }
 
       // Check collision between this laser bolt and any UFO
@@ -2145,7 +2137,7 @@ class SpaceGame3D {
           const ldz = laser.mesh.position.z - ufo.mesh.position.z;
           const lDist = Math.hypot(ldx, ldy, ldz);
 
-          if (lDist < ufo.radius + 1.5 && ufo.mesh.position.z > -115) {
+          if (lDist < ufo.radius + 1.8 && ufo.mesh.position.z > -125) {
             const ufoPos = ufo.mesh.position.clone();
             this.scene.remove(ufo.mesh);
             this.coinsInWorld.splice(j, 1);
@@ -2198,26 +2190,6 @@ class SpaceGame3D {
       // Orbiting plasma ring rotation
       if (coin.outerRing) {
         coin.outerRing.rotation.z -= 3.8 * dt;
-      }
-
-      // 3D Direct Ship-to-UFO Blast check & Magnetic Alignment
-      const dx = this.player.x - coin.mesh.position.x;
-      const dy = this.player.y - coin.mesh.position.y;
-      const dz = this.player.z - coin.mesh.position.z;
-      const dist = Math.hypot(dx, dy, dz);
-
-      if (dist < 9.0 && dist > 0.1) {
-        const pullSpeed = 14.0 * dt;
-        coin.mesh.position.x += dx * pullSpeed;
-        coin.mesh.position.y += dy * pullSpeed;
-      }
-
-      if (!this.ufoBlastPending && dist < coin.radius + 2.8) {
-        const coinPos = coin.mesh.position.clone();
-        this.scene.remove(coin.mesh);
-        this.coinsInWorld.splice(i, 1);
-        this.collectCoin3D(coinPos);
-        break;
       }
 
       if (coin.mesh.position.z > 25) {
