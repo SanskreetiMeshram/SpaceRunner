@@ -13,7 +13,7 @@
   <div id="game-container">
     <!-- Top Header Bar -->
     <header id="top-bar">
-      <div class="logo-area">
+      <div class="logo-area" id="brand-home-link" style="cursor: pointer;" title="Go to Start Screen">
         <span class="logo-icon">🚀</span>
         <div class="logo-text">
           <span class="logo-title">Spaceship Runner</span>
@@ -22,8 +22,11 @@
       </div>
       <div class="header-actions">
         <button id="btn-sound-toggle" class="icon-btn" title="Toggle Sound">🔊</button>
+        <button id="btn-home-nav" class="nav-btn" title="Main Menu / Start Screen">🏠 Home</button>
+        <button id="btn-map-nav" class="nav-btn" title="Cosmic Mission Trail">🗺️ Level Map</button>
+        <button id="btn-hangar-nav" class="nav-btn" title="Spaceship Hangar & Fleet Skins">🛸 Hangar</button>
+        <button id="btn-review-nav" class="nav-btn" title="Answer Review & Step-by-Step Solutions">📖 Review</button>
         <button id="btn-controls-toggle" class="nav-btn" title="Toggle On-Screen Virtual Controls">🕹️ Controls</button>
-        <button id="btn-map-nav" class="nav-btn">🗺️ Level Map</button>
         <button id="btn-play-hero" class="btn-primary" style="padding: 6px 14px; font-size: 13px;">▶ Play Now</button>
       </div>
     </header>
@@ -33,7 +36,111 @@
       <!-- Cinematic Lens & Space Vignette Overlay -->
       <div id="cinematic-lens-overlay"></div>
 
-      <!-- HUD Overlay (Active during gameplay) -->
+      <!-- =========================================================
+           1. START SCREEN (Title / Main Menu)
+           ========================================================= -->
+      <div id="start-screen" class="screen-view">
+        <div class="start-hero-card">
+          <div class="start-badge-pill">⚡ 3D COSMIC FIGHTER & BRAIN CHALLENGE ⚡</div>
+          <h1 class="start-title">SPACESHIP RUNNER</h1>
+          <p class="start-subtitle">Pilot your supersonic starfighter, blast alien UFOs with guided lasers, and supercharge your brain!</p>
+
+          <div class="start-hero-actions">
+            <button id="btn-start-launch" class="btn-primary start-btn-giant">🚀 LAUNCH MISSION</button>
+            <button id="btn-start-map" class="btn-secondary start-btn-action">🗺️ Cosmic Mission Trail</button>
+            <button id="btn-start-hangar" class="btn-secondary start-btn-action">🛸 Spaceship Hangar</button>
+            <button id="btn-start-review" class="btn-secondary start-btn-action">📖 Answer Review & Solutions</button>
+          </div>
+
+          <!-- Pilot Career Summary -->
+          <div class="start-stats-grid">
+            <div class="start-stat-item">
+              <span class="stat-icon">⭐</span>
+              <div class="stat-details">
+                <span class="stat-number" id="start-stars-val">0 / 30</span>
+                <span class="stat-label">Stars Earned</span>
+              </div>
+            </div>
+            <div class="start-stat-item">
+              <span class="stat-icon">🛸</span>
+              <div class="stat-details">
+                <span class="stat-number" id="start-ufos-val">0</span>
+                <span class="stat-label">UFOs Blasted</span>
+              </div>
+            </div>
+            <div class="start-stat-item">
+              <span class="stat-icon">🏆</span>
+              <div class="stat-details">
+                <span class="stat-number" id="start-score-val">0</span>
+                <span class="stat-label">High Score</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pilot Briefing / How to Play -->
+          <div class="start-briefing-card">
+            <h3>🎮 Cadet Flight Briefing</h3>
+            <div class="briefing-columns">
+              <div class="briefing-col">
+                <span class="col-icon">💻</span>
+                <strong>PC / Laptop:</strong>
+                <p>• Steer with <b>WASD</b> or <b>Arrow Keys</b></p>
+                <p>• Shoot UFOs with <b>[SHIFT]</b> or <b>[SPACE]</b></p>
+              </div>
+              <div class="briefing-col">
+                <span class="col-icon">📱</span>
+                <strong>Mobile / Touch:</strong>
+                <p>• Steer with the <b>On-Screen Joystick</b></p>
+                <p>• Shoot UFOs with the <b>🎯 SHOOT</b> button</p>
+              </div>
+              <div class="briefing-col highlight">
+                <span class="col-icon">🛸💥</span>
+                <strong>Brain Challenge:</strong>
+                <p>• Every UFO blasted triggers a cosmic quiz</p>
+                <p>• Solve correctly to recharge shields & win stars!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mascot Nova Greeting -->
+          <div class="start-mascot-row">
+            <img src="Sprites/mascot_nova.png" alt="Mascot Nova" class="mascot-avatar">
+            <div class="start-mascot-speech">
+              "Welcome aboard, Cadet! Ready to shoot down alien UFOs and blast into deep space?" 🚀🌟
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           2. LEVEL MAP (Cosmic Space Mission Trail)
+           ========================================================= -->
+      <div id="level-map-screen" class="screen-view hidden">
+        <div class="map-header">
+          <h2>🌟 Cosmic Space Mission Trail</h2>
+          <p>Choose a galaxy zone to launch your spaceship, shoot UFOs, and play!</p>
+          <div class="hero-actions" style="margin-top: 14px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <button id="btn-quick-play" class="btn-primary" style="font-size: 15px; padding: 10px 24px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); cursor: pointer;">🚀 QUICK PLAY</button>
+            <button id="btn-map-to-start" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;">🏠 Main Menu</button>
+            <button id="btn-map-to-hangar" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;">🛸 Hangar & Skins</button>
+            <button id="btn-map-to-review" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;">📖 Review Solutions</button>
+            <button id="btn-unlock-all" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;">🔓 Unlock All Levels</button>
+          </div>
+        </div>
+
+        <div class="map-trail-container" id="map-trail">
+          <!-- 10 Level Nodes dynamically injected -->
+        </div>
+
+        <div class="map-footer">
+          <div class="stats-pill" id="map-total-stars">⭐ Stars Earned: 0 / 30</div>
+          <button id="btn-custom-skin" class="btn-secondary">🛸 Change Spaceship Skin</button>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           3. GAMEPLAY SCREEN WITH HUD OVERLAY
+           ========================================================= -->
       <div id="hud-overlay" class="overlay-panel hidden">
         <div class="hud-left">
           <div class="hud-card level-badge" id="hud-level-badge">Level 1 • Playful Stardust</div>
@@ -72,7 +179,7 @@
           <span class="dash-label">🔫 LASER CANNON [SHIFT]</span>
         </div>
 
-        <!-- Controls helper hint for kids (Auto adapts to desktop / mobile) -->
+        <!-- Controls helper hint for kids -->
         <div class="controls-hint" id="hud-controls-hint">
           <span>⌨️ Steer: WASD / Arrows / Touch</span>
           <span>•</span>
@@ -80,7 +187,7 @@
         </div>
       </div>
 
-      <!-- Universal Mobile & On-Screen Controls (Shown automatically during gameplay) -->
+      <!-- Universal Mobile & On-Screen Virtual Controls -->
       <div id="mobile-controls" class="mobile-touch-overlay hidden">
         <!-- Virtual Joystick Area (Left) -->
         <div id="mobile-joystick-zone">
@@ -99,28 +206,9 @@
         </div>
       </div>
 
-      <!-- Level Map Modal / Screen -->
-      <div id="level-map-screen" class="screen-view">
-        <div class="map-header">
-          <h2>🌟 Cosmic Space Mission Trail</h2>
-          <p>Choose a galaxy zone to launch your spaceship, shoot UFOs, and play!</p>
-          <div class="hero-actions" style="margin-top: 14px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
-            <button id="btn-quick-play" class="btn-primary" style="font-size: 16px; padding: 12px 28px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); cursor: pointer;">🚀 QUICK PLAY (LEVEL 1)</button>
-            <button id="btn-unlock-all" class="btn-secondary" style="font-size: 14px; padding: 10px 20px; cursor: pointer;">🔓 All Levels Unlocked</button>
-          </div>
-        </div>
-
-        <div class="map-trail-container" id="map-trail">
-          <!-- 10 Level Nodes dynamically injected -->
-        </div>
-
-        <div class="map-footer">
-          <div class="stats-pill" id="map-total-stars">⭐ Stars Earned: 0 / 30</div>
-          <button id="btn-custom-skin" class="btn-secondary">🛸 Change Spaceship Skin</button>
-        </div>
-      </div>
-
-      <!-- Question Panel Modal (Pauses Gameplay - Colorful Childish Creative Theme) -->
+      <!-- =========================================================
+           4. QUESTION PANEL AFTER A UFO IS DESTROYED
+           ========================================================= -->
       <div id="question-modal" class="screen-view hidden modal-center">
         <div class="modal-card question-card">
           <div class="question-blast-banner">
@@ -156,7 +244,9 @@
         </div>
       </div>
 
-      <!-- "Let's Learn!" Screen (Wrong Answer Educational View) -->
+      <!-- =========================================================
+           5. ANSWER REVIEW WITH STEP-BY-STEP SOLUTION (Immediate wrong-answer learning)
+           ========================================================= -->
       <div id="learn-mode-modal" class="screen-view hidden modal-center">
         <div class="modal-card learn-card">
           <div class="learn-header">
@@ -196,12 +286,49 @@
           <div class="learn-actions">
             <button id="btn-learn-retry" class="btn-primary">🔄 Try Again (Same Question)</button>
             <button id="btn-learn-continue" class="btn-success">🚀 Continue Flying</button>
+            <button id="btn-learn-review-all" class="btn-secondary">📖 Review All Solutions</button>
             <button id="btn-learn-map" class="btn-secondary">🗺️ Back to Map</button>
           </div>
         </div>
       </div>
 
-      <!-- Level Complete Modal -->
+      <!-- =========================================================
+           5B. DEDICATED ANSWER REVIEW & SOLUTIONS STUDY SCREEN
+           ========================================================= -->
+      <div id="answer-review-modal" class="screen-view hidden modal-center">
+        <div class="modal-card review-card">
+          <div class="review-header">
+            <div class="review-title-group">
+              <span class="review-badge-icon">📖</span>
+              <div>
+                <h2>Answer Review & Step-by-Step Solutions</h2>
+                <p>Study question breakdowns and step-by-step solutions to master every cosmic zone!</p>
+              </div>
+            </div>
+            <button id="btn-close-review-x" class="close-card-btn" title="Close Review">✕</button>
+          </div>
+
+          <!-- Level Selector Bar for Questions -->
+          <div class="review-level-filter-bar" id="review-level-filters">
+            <!-- Filter buttons injected dynamically (All, Level 1, Level 2, ...) -->
+          </div>
+
+          <!-- Questions & Solutions Container -->
+          <div class="review-questions-list" id="review-questions-container">
+            <!-- Dynamically populated cards with question, correct answer, and step-by-step solution -->
+          </div>
+
+          <div class="review-footer">
+            <button id="btn-review-back-game" class="btn-primary">🚀 Play Level</button>
+            <button id="btn-review-back-map" class="btn-secondary">🗺️ Mission Trail</button>
+            <button id="btn-review-back-home" class="btn-secondary">🏠 Main Menu</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           6. LEVEL CLEARED SCREEN WITH SUBJECT ACCURACY REPORT
+           ========================================================= -->
       <div id="level-complete-modal" class="screen-view hidden modal-center">
         <div class="modal-card complete-card">
           <div class="complete-header">
@@ -235,65 +362,139 @@
           <div class="accuracy-breakdown-card">
             <h4>📊 Subject Accuracy Report:</h4>
             <div id="complete-subject-metrics" class="metrics-list">
-              <!-- Injected per-subject stats -->
+              <!-- Injected per-subject stats & visual progress bars -->
             </div>
           </div>
 
           <div class="complete-actions">
             <button id="btn-next-level" class="btn-primary">Next Level 🚀</button>
+            <button id="btn-complete-review" class="btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">📖 Review Level Solutions</button>
             <button id="btn-replay-level" class="btn-secondary">Replay 🔄</button>
             <button id="btn-complete-map" class="btn-secondary">Level Map 🗺️</button>
+            <button id="btn-complete-home" class="btn-secondary">🏠 Main Menu</button>
           </div>
         </div>
       </div>
 
-      <!-- Shields Depleted / Try Again Modal -->
+      <!-- =========================================================
+           7. GAME OVER SCREEN (Shields Depleted)
+           ========================================================= -->
       <div id="gameover-modal" class="screen-view hidden modal-center">
         <div class="modal-card learn-card" style="text-align: center; align-items: center;">
           <div class="learn-header">
-            <span class="learn-icon" style="font-size: 38px;">🛡️</span>
-            <h3 style="color: #f87171; font-size: 22px;">Shields Depleted!</h3>
+            <span class="learn-icon" style="font-size: 38px;">🛡️💥</span>
+            <h3 style="color: #f87171; font-size: 24px;">Shields Depleted!</h3>
           </div>
           <p style="color: #cbd5e1; font-size: 15px; max-width: 480px; line-height: 1.5;">
             No worries, space cadet! Every asteroid makes you a sharper pilot. Let's recharge your shields and take another flight!
           </p>
+
+          <div class="complete-stats-row" style="margin: 16px 0; width: 100%; max-width: 440px;">
+            <div class="stat-tile">
+              <span class="stat-num" id="gameover-level-val">1</span>
+              <span class="stat-lbl">Level</span>
+            </div>
+            <div class="stat-tile">
+              <span class="stat-num" id="gameover-ufos-val">0</span>
+              <span class="stat-lbl">UFOs Blasted</span>
+            </div>
+            <div class="stat-tile">
+              <span class="stat-num" id="gameover-score-val">0</span>
+              <span class="stat-lbl">Score</span>
+            </div>
+          </div>
+
           <div class="learn-actions" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
             <button id="btn-gameover-retry" class="btn-primary" style="font-size: 15px; padding: 12px 24px;">🔄 Recharge & Try Again</button>
+            <button id="btn-gameover-review" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;">📖 Review Questions</button>
             <button id="btn-gameover-map" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;">🗺️ Choose Level</button>
+            <button id="btn-gameover-home" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;">🏠 Main Menu</button>
           </div>
         </div>
       </div>
 
-      <!-- Skin Customizer Modal -->
+      <!-- =========================================================
+           8. SPACESHIP SKIN SELECTOR (Hangar & Fleet Customizer)
+           ========================================================= -->
       <div id="skin-modal" class="screen-view hidden modal-center">
         <div class="modal-card skin-card">
-          <h3>🛸 Choose Your Spaceship</h3>
-          <p>Clear higher space missions to unlock special fleet skins!</p>
+          <div class="skin-header">
+            <div class="skin-title-wrap">
+              <span class="hangar-icon">🛸</span>
+              <div>
+                <h3>Spaceship Hangar & Fleet Skins</h3>
+                <p>Customize your 3D starfighter armor, cockpit glow, and plasma thrusters!</p>
+              </div>
+            </div>
+            <button id="btn-close-skin-x" class="close-card-btn" title="Close Hangar">✕</button>
+          </div>
 
           <div class="skins-grid">
-            <div class="skin-item" data-skin="saucer">
-              <img src="Sprites/ufo_saucer.png" alt="Classic Saucer">
-              <span class="skin-name">Classic Saucer</span>
-              <span class="skin-status unlocked">Default</span>
+            <div class="skin-item active" data-skin="teal" id="skin-teal">
+              <div class="skin-preview-sphere skin-teal-sphere">
+                <span class="skin-emoji">🚀</span>
+              </div>
+              <div class="skin-info">
+                <span class="skin-name">Neo-Teal Fighter</span>
+                <span class="skin-desc">Military emerald camo armor & cyan ion drive</span>
+                <div class="skin-stats-bars">
+                  <span>⚡ Speed: 85%</span> • <span>🛡️ Armor: 90%</span>
+                </div>
+                <span class="skin-status unlocked" id="skin-teal-status">✓ Equipped</span>
+              </div>
+              <button class="skin-equip-btn">Equipped</button>
             </div>
-            <div class="skin-item locked" data-skin="dart" id="skin-dart">
-              <img src="Sprites/ufo_dart.png" alt="Neon Dart">
-              <span class="skin-name">Neon Dart</span>
-              <span class="skin-status" id="skin-dart-status">Unlocks at Level 3</span>
+
+            <div class="skin-item" data-skin="phoenix" id="skin-phoenix">
+              <div class="skin-preview-sphere skin-phoenix-sphere">
+                <span class="skin-emoji">🔥</span>
+              </div>
+              <div class="skin-info">
+                <span class="skin-name">Solar Phoenix</span>
+                <span class="skin-desc">Crimson gold armor with solar flare plasma</span>
+                <div class="skin-stats-bars">
+                  <span>⚡ Speed: 95%</span> • <span>🛡️ Armor: 80%</span>
+                </div>
+                <span class="skin-status" id="skin-phoenix-status">Unlocks at Level 3</span>
+              </div>
+              <button class="skin-equip-btn">Equip</button>
             </div>
-            <div class="skin-item locked" data-skin="cruiser" id="skin-cruiser">
-              <img src="Sprites/ufo_saucer.png" alt="Cosmic Cruiser" style="filter: hue-rotate(180deg);">
-              <span class="skin-name">Cosmic Cruiser</span>
-              <span class="skin-status" id="skin-cruiser-status">Unlocks at Level 6</span>
+
+            <div class="skin-item" data-skin="stealth" id="skin-stealth">
+              <div class="skin-preview-sphere skin-stealth-sphere">
+                <span class="skin-emoji">🌌</span>
+              </div>
+              <div class="skin-info">
+                <span class="skin-name">Void Phantom</span>
+                <span class="skin-desc">Obsidian stealth titanium & ultraviolet pulse</span>
+                <div class="skin-stats-bars">
+                  <span>⚡ Speed: 90%</span> • <span>🛡️ Armor: 95%</span>
+                </div>
+                <span class="skin-status" id="skin-stealth-status">Unlocks at Level 6</span>
+              </div>
+              <button class="skin-equip-btn">Equip</button>
             </div>
-            <div class="skin-item locked" data-skin="quantum" id="skin-quantum">
-              <img src="Sprites/ufo_dart.png" alt="Quantum Explorer" style="filter: hue-rotate(280deg);">
-              <span class="skin-name">Quantum Explorer</span>
-              <span class="skin-status" id="skin-quantum-status">Unlocks at Level 9</span>
+
+            <div class="skin-item" data-skin="cyber" id="skin-cyber">
+              <div class="skin-preview-sphere skin-cyber-sphere">
+                <span class="skin-emoji">⚡</span>
+              </div>
+              <div class="skin-info">
+                <span class="skin-name">Cyberpunk Nova</span>
+                <span class="skin-desc">Neon magenta hyperdrive with hot pink flame</span>
+                <div class="skin-stats-bars">
+                  <span>⚡ Speed: 98%</span> • <span>🛡️ Armor: 85%</span>
+                </div>
+                <span class="skin-status" id="skin-cyber-status">Unlocks at Level 9</span>
+              </div>
+              <button class="skin-equip-btn">Equip</button>
             </div>
           </div>
 
-          <button id="btn-close-skin" class="btn-secondary">Done</button>
+          <div class="skin-modal-actions">
+            <button id="btn-close-skin" class="btn-primary" style="padding: 10px 32px;">✓ Confirm & Fly</button>
+            <button id="btn-skin-unlock-all" class="btn-secondary">🔓 Unlock All Skins (Cadet Pass)</button>
+          </div>
         </div>
       </div>
 
