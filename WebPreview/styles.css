@@ -19,27 +19,31 @@
   user-select: none;
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   background: #080914;
   color: #ffffff;
   font-family: var(--font-main);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
 }
 
 #game-container {
-  width: 100%;
-  max-width: 1060px;
-  height: 98vh;
-  max-height: 700px;
-  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
   background: var(--bg-dark);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(70, 80, 200, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1621,6 +1625,14 @@ body {
   font-weight: 800;
   letter-spacing: 1px;
   margin-top: 2px;
+}
+
+.dash-btn-sub {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+  color: #ffde59;
 }
 
 .dash-btn-cooldown {

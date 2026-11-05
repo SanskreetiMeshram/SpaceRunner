@@ -847,17 +847,18 @@ class SpaceGame3D {
     // Insert canvas as first child of viewport
     this.container.insertBefore(this.renderer.domElement, this.container.firstChild);
 
-    // Dynamic auto-responsive resizing for Laptop & Mobile
+    // Dynamic auto-responsive resizing for Laptop & Mobile (Full Screen)
     this.onResize = () => {
       if (!this.container || !this.renderer || !this.camera) return;
       const r = this.container.getBoundingClientRect();
-      const w = Math.floor(r.width) || 960;
-      const h = Math.floor(r.height) || 540;
+      const w = Math.floor(r.width) || window.innerWidth;
+      const h = Math.floor(r.height) || window.innerHeight;
       this.camera.aspect = w / h;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(w, h);
     };
     window.addEventListener("resize", this.onResize);
+    window.addEventListener("orientationchange", () => setTimeout(this.onResize, 150));
     setTimeout(this.onResize, 80);
   }
 
@@ -1341,19 +1342,64 @@ class SpaceGame3D {
   }
 
   bindEvents() {
-    // Keyboard inputs: Shift button (and Space) shoots the laser at UFOs!
+    // Fullscreen Toggle Button
+    const fsBtn = document.getElementById("btn-fullscreen-toggle");
+    if (fsBtn) {
+      const toggleFullscreen = () => {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          const docEl = document.documentElement;
+          if (docEl.requestFullscreen) {
+            docEl.requestFullscreen().catch(() => {});
+          } else if (docEl.webkitRequestFullscreen) {
+            docEl.webkitRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
+      };
+
+      fsBtn.addEventListener("click", toggleFullscreen);
+
+      const updateFsBtn = () => {
+        const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+        fsBtn.textContent = isFs ? "🗗 Windowed" : "⛶ Fullscreen";
+        setTimeout(() => this.onResize(), 100);
+      };
+
+      document.addEventListener("fullscreenchange", updateFsBtn);
+      document.addEventListener("webkitfullscreenchange", updateFsBtn);
+    }
+
+    // Keyboard inputs: ONLY Shift key shoots the laser at UFOs! No auto shooting!
     window.addEventListener("keydown", (e) => {
-      this.keys[e.code] = true;
-      if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.code === "Space") {
+      if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.key === "Shift") {
         if (this.state === "PLAYING") {
           e.preventDefault();
           this.fireLaser(true);
         }
+      } else {
+        this.keys[e.code] = true;
       }
     });
 
     window.addEventListener("keyup", (e) => {
       this.keys[e.code] = false;
+    });
+
+    window.addEventListener("blur", () => {
+      this.keys = {};
+      this.shootHeld = false;
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        this.keys = {};
+        this.shootHeld = false;
+      }
     });
 
     // Device Auto-Understanding: detect touch vs mouse/keyboard
@@ -1452,35 +1498,24 @@ class SpaceGame3D {
       window.addEventListener("touchcancel", resetJoy);
     }
 
-    // Mobile Shoot Laser Button
+    // Mobile Shoot Laser Button (fires single shot when player touches the button)
     this.shootHeld = false;
     const mobileShootBtn = document.getElementById("btn-mobile-shoot");
     if (mobileShootBtn) {
-      mobileShootBtn.addEventListener("touchstart", (e) => {
+      let lastMobileShoot = 0;
+      const handleShoot = (e) => {
         e.preventDefault();
         e.stopPropagation();
         checkTouch();
-        this.shootHeld = true;
-        this.fireLaser(true);
-      }, { passive: false });
-      mobileShootBtn.addEventListener("touchend", () => {
-        this.shootHeld = false;
-      });
-      mobileShootBtn.addEventListener("touchcancel", () => {
-        this.shootHeld = false;
-      });
-      mobileShootBtn.addEventListener("mousedown", (e) => {
-        e.stopPropagation();
-        this.shootHeld = true;
-        this.fireLaser(true);
-      });
-      mobileShootBtn.addEventListener("mouseup", () => {
-        this.shootHeld = false;
-      });
-      mobileShootBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        this.fireLaser(true);
-      });
+        const now = performance.now();
+        if (now - lastMobileShoot < 120) return;
+        lastMobileShoot = now;
+        if (this.state === "PLAYING") {
+          this.fireLaser(true);
+        }
+      };
+      mobileShootBtn.addEventListener("pointerdown", handleShoot);
+      mobileShootBtn.addEventListener("touchstart", handleShoot, { passive: false });
     }
 
     // UI Buttons
@@ -1943,6 +1978,8 @@ class SpaceGame3D {
   }
 
   showScreen(target) {
+    this.keys = {};
+    this.shootHeld = false;
     if (this.state !== target && this.state !== "SKIN" && this.state !== "REVIEW") {
       this.previousScreen = this.state;
     }
@@ -2051,6 +2088,8 @@ class SpaceGame3D {
     this.correctCount = 0;
     this.attemptCount = 0;
     this.ufoBlastPending = false;
+    this.keys = {};
+    this.shootHeld = false;
 
     // Reset 3D player position & physics
     this.player.x = 0;
@@ -2233,10 +2272,7 @@ class SpaceGame3D {
       label.style.color = "#00e5ff";
     }
 
-    // Continuous laser firing while holding Shift / Space on laptop or holding SHOOT button on mobile
-    if (this.keys["ShiftLeft"] || this.keys["ShiftRight"] || this.keys["Space"] || this.shootHeld) {
-      this.fireLaser(true);
-    }
+    // Shooting is strictly triggered on player pressing Shift key or touching mobile Shoot button (no auto shooting)
 
     if (this.player.invulnerableTimer > 0) {
       this.player.invulnerableTimer -= dt;
