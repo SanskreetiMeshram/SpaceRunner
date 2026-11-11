@@ -21,6 +21,8 @@
         </div>
       </div>
       <div class="header-actions">
+        <button id="btn-voice-toggle" class="icon-btn" title="Toggle ElevenLabs Realistic Voice">🎙️ Voice: ON</button>
+        <button id="btn-voice-studio" class="nav-btn" title="Open ElevenLabs Voice Studio">🎚️ Voice Studio</button>
         <button id="btn-fullscreen-toggle" class="icon-btn" title="Toggle Fullscreen Mode">⛶ Fullscreen</button>
         <button id="btn-sound-toggle" class="icon-btn" title="Toggle Sound">🔊</button>
         <button id="btn-home-nav" class="nav-btn" title="Main Menu / Start Screen">🏠 Home</button>
@@ -109,6 +111,7 @@
             <div class="start-mascot-speech">
               "Welcome aboard, Cadet! Ready to shoot down alien UFOs and blast into deep space?" 🚀🌟
             </div>
+            <button id="btn-start-listen" class="hint-btn listen-pill-btn" type="button">🔊 Hear Nova</button>
           </div>
         </div>
       </div>
@@ -122,6 +125,7 @@
           <p>Choose a galaxy zone to launch your spaceship, shoot UFOs, and play!</p>
           <div class="hero-actions" style="margin-top: 14px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
             <button id="btn-quick-play" class="btn-primary" style="font-size: 15px; padding: 10px 24px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); cursor: pointer;">🚀 QUICK PLAY</button>
+            <button id="btn-map-listen" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;" type="button">🎙️ Hear Briefing</button>
             <button id="btn-map-to-start" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;">🏠 Main Menu</button>
             <button id="btn-map-to-hangar" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;">🛸 Hangar & Skins</button>
             <button id="btn-map-to-review" class="btn-secondary" style="font-size: 13px; padding: 10px 18px; cursor: pointer;">📖 Review Solutions</button>
@@ -240,6 +244,7 @@
             <div class="mascot-bubble" id="q-mascot-speech">
               Awesome shot! Pick the right answer to power up your spaceship! 🚀✨
             </div>
+            <button id="btn-q-listen" class="hint-btn listen-pill-btn" type="button">🔊 Read Aloud</button>
             <button id="btn-hint" class="hint-btn">💡 Magic Hint</button>
           </div>
           <div id="q-hint-box" class="hint-box hidden"></div>
@@ -254,6 +259,7 @@
           <div class="learn-header">
             <span class="learn-icon">💡</span>
             <h3>Not quite — let's learn this together!</h3>
+            <button id="btn-learn-listen" class="hint-btn listen-pill-btn" type="button" style="margin-left: auto;">🔊 Explain Aloud</button>
           </div>
 
           <div class="learn-question-restated" id="learn-q-restated">
@@ -307,7 +313,10 @@
                 <p>Study question breakdowns and step-by-step solutions to master every cosmic zone!</p>
               </div>
             </div>
-            <button id="btn-close-review-x" class="close-card-btn" title="Close Review">✕</button>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button id="btn-review-stop-voice" class="hint-btn listen-pill-btn hidden" type="button">⏹️ Stop Voice</button>
+              <button id="btn-close-review-x" class="close-card-btn" title="Close Review">✕</button>
+            </div>
           </div>
 
           <!-- Level Selector Bar for Questions -->
@@ -370,6 +379,7 @@
 
           <div class="complete-actions">
             <button id="btn-next-level" class="btn-primary">Next Level 🚀</button>
+            <button id="btn-complete-listen" class="btn-secondary" type="button">🔊 Hear Report</button>
             <button id="btn-complete-review" class="btn-primary" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">📖 Review Level Solutions</button>
             <button id="btn-replay-level" class="btn-secondary">Replay 🔄</button>
             <button id="btn-complete-map" class="btn-secondary">Level Map 🗺️</button>
@@ -408,6 +418,7 @@
 
           <div class="learn-actions" style="margin-top: 10px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
             <button id="btn-gameover-retry" class="btn-primary" style="font-size: 15px; padding: 12px 24px;">🔄 Recharge & Try Again</button>
+            <button id="btn-gameover-listen" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;" type="button">🔊 Hear Nova</button>
             <button id="btn-gameover-review" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;">📖 Review Questions</button>
             <button id="btn-gameover-map" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;">🗺️ Choose Level</button>
             <button id="btn-gameover-home" class="btn-secondary" style="font-size: 14px; padding: 12px 20px;">🏠 Main Menu</button>
@@ -500,10 +511,119 @@
         </div>
       </div>
 
+      <!-- =========================================================
+           9. FLOATING ELEVENLABS NOVA TUTOR VOICE BAR
+           ========================================================= -->
+      <div id="voice-tutor-bar" class="voice-tutor-bar hidden" aria-live="polite">
+        <div class="voice-wave" id="voice-wave-indicator" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="voice-bar-content">
+          <div class="voice-bar-meta">
+            <span class="voice-speaker-pill" id="voice-speaker-label">🎙️ Nova • ElevenLabs</span>
+            <span class="voice-status-badge" id="voice-status-badge">Ready</span>
+          </div>
+          <p class="voice-subtitle-text" id="voice-subtitle-text">Realistic voice tutor ready.</p>
+        </div>
+        <div class="voice-bar-controls">
+          <button id="btn-voice-setup-quick" class="voice-mini-btn accent hidden" type="button">🔑 Setup Key</button>
+          <button id="btn-voice-replay" class="voice-mini-btn" type="button" title="Replay last explanation">🔁 Replay</button>
+          <button id="btn-voice-stop" class="voice-mini-btn" type="button" title="Stop voice">⏹️ Stop</button>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           10. ELEVENLABS REALISTIC VOICE STUDIO MODAL
+           ========================================================= -->
+      <div id="voice-studio-modal" class="screen-view hidden modal-center" role="dialog" aria-modal="true" aria-labelledby="voice-studio-title">
+        <div class="modal-card voice-studio-card">
+          <div class="skin-header">
+            <div class="skin-title-wrap">
+              <span class="hangar-icon">🎙️</span>
+              <div>
+                <h3 id="voice-studio-title">ElevenLabs Realistic Voice Studio</h3>
+                <p>Configure neural voices, models, and automatic explanations — zero robotic speech!</p>
+              </div>
+            </div>
+            <button id="btn-close-voice-x" class="close-card-btn" title="Close Voice Studio" type="button">✕</button>
+          </div>
+
+          <div id="voice-connection-banner" class="voice-connection-banner">
+            <span id="voice-connection-icon">🔑</span>
+            <span id="voice-connection-text">Checking ElevenLabs connection...</span>
+          </div>
+
+          <div class="voice-section">
+            <label class="voice-field-label" for="voice-api-key-input">ElevenLabs API Key (`xi-api-key`)</label>
+            <div class="voice-key-row">
+              <input id="voice-api-key-input" type="password" autocomplete="off" spellcheck="false" placeholder="Paste sk_... API key (saved only in your browser)" />
+              <button id="btn-voice-key-toggle" class="btn-secondary voice-compact-btn" type="button">👁️ Show</button>
+              <button id="btn-voice-key-save" class="btn-primary voice-compact-btn" type="button">💾 Save Key</button>
+              <button id="btn-voice-key-clear" class="btn-secondary voice-compact-btn" type="button">Clear</button>
+            </div>
+            <p class="voice-privacy-note">Stored strictly in your browser's localStorage (or local server <code>.env</code>) — never uploaded or committed to GitHub.</p>
+          </div>
+
+          <div class="voice-section">
+            <div class="voice-section-header">
+              <span class="voice-field-label">Realistic Tutor Voice</span>
+              <button id="btn-load-account-voices" class="btn-secondary voice-compact-btn" type="button">🔄 Load My ElevenLabs Voices</button>
+            </div>
+            <div id="voice-presets-grid" class="voice-presets-grid">
+              <!-- Populated dynamically by voice.js / game3d.js -->
+            </div>
+            <div id="voice-custom-picker-wrap" class="voice-custom-picker hidden">
+              <label class="voice-field-label" for="voice-custom-select">Your ElevenLabs Account Voices:</label>
+              <select id="voice-custom-select"></select>
+            </div>
+          </div>
+
+          <div class="voice-two-col">
+            <div class="voice-section">
+              <label class="voice-field-label" for="voice-model-select">ElevenLabs Neural Model</label>
+              <select id="voice-model-select">
+                <option value="eleven_multilingual_v2">Multilingual v2 (Richest Realistic Voice)</option>
+                <option value="eleven_flash_v2_5">Flash v2.5 (Fastest Low Latency)</option>
+              </select>
+            </div>
+
+            <div class="voice-section">
+              <label class="voice-field-label" for="voice-speed-range">Tutor Speaking Speed: <strong id="voice-speed-val">1.00x</strong></label>
+              <input id="voice-speed-range" type="range" min="0.85" max="1.25" step="0.05" value="1.00" />
+            </div>
+          </div>
+
+          <div class="voice-section">
+            <span class="voice-field-label">Automatic Explanations</span>
+            <div class="voice-toggles-grid">
+              <label class="voice-toggle-item">
+                <input type="checkbox" id="chk-auto-questions" checked />
+                <span>Auto-read Quiz Questions & Magic Hints</span>
+              </label>
+              <label class="voice-toggle-item">
+                <input type="checkbox" id="chk-auto-solutions" checked />
+                <span>Auto-explain Step-by-Step Solutions (Let's Learn)</span>
+              </label>
+              <label class="voice-toggle-item">
+                <input type="checkbox" id="chk-auto-screens" checked />
+                <span>Auto-narrate Mission Intros, Accuracy Reports & Game Over</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="voice-studio-footer">
+            <button id="btn-voice-test" class="btn-primary" type="button">🎵 Test Nova's Voice</button>
+            <button id="btn-voice-clear-cache" class="btn-secondary" type="button">🗑️ Clear Audio Cache (<span id="voice-cache-count">0</span>)</button>
+            <button id="btn-close-voice-done" class="btn-success" type="button">✓ Done & Continue</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <script src="three.min.js"></script>
+  <script src="voice.js"></script>
   <script src="game3d.js"></script>
 </body>
 </html>

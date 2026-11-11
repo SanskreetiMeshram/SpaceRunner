@@ -711,6 +711,9 @@ class SpaceGame3D {
   constructor() {
     this.container = document.getElementById("viewport-wrapper");
     this.sound = new Sound3D();
+    this.voice = (typeof ElevenLabsVoiceEngine !== "undefined")
+      ? new ElevenLabsVoiceEngine({ onStateChange: (st) => this.onVoiceStateChange(st) })
+      : null;
 
     this.state = "MAP";
     this.currentLevel = 1;
@@ -773,7 +776,10 @@ class SpaceGame3D {
     this.particleFX = new ParticleFX3D(this.scene, this.textures.glow);
     this.bindEvents();
     this.renderLevelMap();
-    this.applySpaceshipSkin(this.currentSkin);
+    this.applySpaceshipSkin(this.currentSkin, false);
+    if (this.voice) {
+      this.voice.init().then(() => this.renderVoiceStudio());
+    }
     this.showScreen("START");
 
     this.lastFrameTime = performance.now();
@@ -1376,6 +1382,17 @@ class SpaceGame3D {
 
     // Keyboard inputs: ONLY Shift key shoots the laser at UFOs! No auto shooting!
     window.addEventListener("keydown", (e) => {
+      const tag = e.target && e.target.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
+        if (e.key === "Escape" && this.state === "VOICE") {
+          this.showScreen(this.previousScreen || "START");
+        }
+        return;
+      }
+      if (e.key === "Escape" && this.state === "VOICE") {
+        this.showScreen(this.previousScreen || "START");
+        return;
+      }
       if (e.code === "ShiftLeft" || e.code === "ShiftRight" || e.key === "Shift") {
         if (this.state === "PLAYING") {
           e.preventDefault();
@@ -1643,7 +1660,11 @@ class SpaceGame3D {
     const hintBtn = document.getElementById("btn-hint");
     if (hintBtn) {
       hintBtn.addEventListener("click", () => {
-        document.getElementById("q-hint-box").classList.toggle("hidden");
+        const hintBox = document.getElementById("q-hint-box");
+        hintBox.classList.toggle("hidden");
+        if (!hintBox.classList.contains("hidden") && this.activeQuestion && typeof SpeechScriptBuilder !== "undefined") {
+          this.speakCue(SpeechScriptBuilder.questionHint(this.activeQuestion), { category: "question" });
+        }
       });
     }
 
@@ -1767,7 +1788,7 @@ class SpaceGame3D {
       skinUnlockAllBtn.addEventListener("click", () => {
         this.progress.unlockedSkins = ["teal", "phoenix", "stealth", "cyber"];
         this.saveProgress();
-        this.applySpaceshipSkin(this.currentSkin);
+        this.applySpaceshipSkin(this.currentSkin, false);
       });
     }
 
@@ -1775,10 +1796,338 @@ class SpaceGame3D {
       item.addEventListener("click", () => {
         const skinKey = item.getAttribute("data-skin");
         if (skinKey) {
-          this.applySpaceshipSkin(skinKey);
+          this.applySpaceshipSkin(skinKey, true);
         }
       });
     });
+
+    this.bindVoiceControls();
+  }
+
+  speakCue(payload, opts = {}) {
+    if (!this.voice || !payload) return;
+    this.voice.speak(payload, opts);
+  }
+
+  onVoiceStateChange(st) {
+    const toggleBtn = document.getElementById("btn-voice-toggle");
+    if (toggleBtn) {
+      toggleBtn.textContent = st.enabled ? "🎙️ Voice: ON" : "🔇 Voice: OFF";
+    }
+
+    const reviewStopBtn = document.getElementById("btn-review-stop-voice");
+    if (reviewStopBtn) {
+      reviewStopBtn.classList.toggle("hidden", st.status !== "speaking" && st.status !== "loading");
+    }
+
+    const bar = document.getElementById("voice-tutor-bar");
+    if (bar) {
+      const shouldShow = st.status === "speaking"
+        || st.status === "loading"
+        || st.status === "needs_key"
+        || st.status === "blocked_autoplay"
+        || st.status === "error";
+      bar.classList.toggle("hidden", !shouldShow);
+
+      const wave = document.getElementById("voice-wave-indicator");
+      if (wave) wave.classList.toggle("speaking", st.status === "speaking");
+
+      const speakerEl = document.getElementById("voice-speaker-label");
+      if (speakerEl) {
+        const shortName = (st.voiceName || "Nova").split(" ")[0];
+        speakerEl.textContent = `🎙️ ${shortName} • ElevenLabs`;
+      }
+
+      const statusBadge = document.getElementById("voice-status-badge");
+      if (statusBadge) {
+        statusBadge.className = "voice-status-badge";
+        if (st.status === "loading") statusBadge.textContent = "Synthesizing...";
+        else if (st.status === "speaking") statusBadge.textContent = "Explaining";
+        else if (st.status === "needs_key") {
+          statusBadge.textContent = "Setup Needed";
+          statusBadge.classList.add("is-warn");
+        } else if (st.status === "blocked_autoplay") {
+          statusBadge.textContent = "Click Replay";
+          statusBadge.classList.add("is-warn");
+        } else if (st.status === "error") {
+          statusBadge.textContent = "Error";
+          statusBadge.classList.add("is-error");
+        } else {
+          statusBadge.textContent = "Ready";
+        }
+      }
+
+      const subtitleEl = document.getElementById("voice-subtitle-text");
+      if (subtitleEl) {
+        subtitleEl.textContent = st.errorMessage || st.subtitle || "Realistic voice ready.";
+      }
+
+      const setupQuick = document.getElementById("btn-voice-setup-quick");
+      if (setupQuick) {
+        setupQuick.classList.toggle("hidden", st.status !== "needs_key" && st.status !== "error");
+      }
+    }
+
+    if (this.state === "VOICE") {
+      this.renderVoiceStudio();
+    }
+  }
+
+  bindVoiceControls() {
+    if (!this.voice) return;
+
+    const addClick = (id, fn) => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener("click", fn);
+    };
+
+    addClick("btn-voice-toggle", () => {
+      const nextEnabled = !this.voice.settings.enabled;
+      this.voice.saveSettings({ enabled: nextEnabled });
+      if (nextEnabled && this.voice.lastSpokenPayload) {
+        this.voice.replayLast();
+      }
+    });
+
+    addClick("btn-voice-studio", () => this.showScreen("VOICE"));
+    addClick("btn-voice-setup-quick", () => this.showScreen("VOICE"));
+    addClick("btn-close-voice-x", () => this.showScreen(this.previousScreen || "START"));
+    addClick("btn-close-voice-done", () => this.showScreen(this.previousScreen || "START"));
+    const voiceModalEl = document.getElementById("voice-studio-modal");
+    if (voiceModalEl) {
+      voiceModalEl.addEventListener("click", (e) => {
+        if (e.target === voiceModalEl) {
+          this.showScreen(this.previousScreen || "START");
+        }
+      });
+    }
+    addClick("btn-voice-stop", () => this.voice.stop());
+    addClick("btn-review-stop-voice", () => this.voice.stop());
+    addClick("btn-voice-replay", () => this.voice.replayLast());
+
+    addClick("btn-start-listen", () => {
+      if (typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.startWelcome(), { force: true });
+      }
+    });
+
+    addClick("btn-map-listen", () => {
+      if (typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.missionMapBrief(this.progress.highestLevel || 1), { force: true });
+      }
+    });
+
+    addClick("btn-q-listen", () => {
+      if (this.activeQuestion && typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.questionPrompt(this.activeQuestion), { force: true });
+      }
+    });
+
+    addClick("btn-learn-listen", () => {
+      if (this.activeQuestion && typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.learnExplanation(this.activeQuestion, this.lastLearnChosenIdx), { force: true });
+      }
+    });
+
+    addClick("btn-complete-listen", () => {
+      if (this.lastCompleteStats && typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.levelComplete(this.config, this.lastCompleteStats), { force: true });
+      }
+    });
+
+    addClick("btn-gameover-listen", () => {
+      if (typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.gameOver(this.currentLevel || 1, this.coins || 0), { force: true });
+      }
+    });
+
+    // API key controls in Voice Studio
+    const keyInput = document.getElementById("voice-api-key-input");
+    const keyToggle = document.getElementById("btn-voice-key-toggle");
+    if (keyToggle && keyInput) {
+      keyToggle.addEventListener("click", () => {
+        const isPass = keyInput.type === "password";
+        keyInput.type = isPass ? "text" : "password";
+        keyToggle.textContent = isPass ? "🙈 Hide" : "👁️ Show";
+      });
+    }
+
+    addClick("btn-voice-key-save", () => {
+      if (!keyInput) return;
+      this.voice.setApiKey(keyInput.value);
+      this.renderVoiceStudio();
+      if (this.voice.hasLiveAccess()) {
+        this.voice.speak("ElevenLabs realistic voice is connected and ready to guide your space mission!", { force: true });
+      }
+    });
+
+    addClick("btn-voice-key-clear", () => {
+      if (keyInput) keyInput.value = "";
+      this.voice.setApiKey("");
+      this.renderVoiceStudio();
+    });
+
+    addClick("btn-load-account-voices", async () => {
+      const btn = document.getElementById("btn-load-account-voices");
+      if (btn) btn.textContent = "⏳ Loading...";
+      try {
+        const voices = await this.voice.fetchAccountVoices();
+        const wrap = document.getElementById("voice-custom-picker-wrap");
+        const sel = document.getElementById("voice-custom-select");
+        if (sel && wrap) {
+          sel.innerHTML = "";
+          voices.forEach((v) => {
+            const opt = document.createElement("option");
+            opt.value = v.id;
+            opt.textContent = `${v.name} (${v.accent})`;
+            if (v.id === this.voice.settings.voiceId) opt.selected = true;
+            sel.appendChild(opt);
+          });
+          wrap.classList.remove("hidden");
+        }
+      } catch (err) {
+        const bannerText = document.getElementById("voice-connection-text");
+        if (bannerText) {
+          const msg = err && err.message ? err.message : "Could not load account voices.";
+          bannerText.textContent = /voices_read/i.test(msg)
+            ? "Your key is Text-to-Speech scoped (no voices_read permission) — the 4 built-in realistic presets above are ready to use!"
+            : msg;
+        }
+      } finally {
+        if (btn) btn.textContent = "🔄 Load My ElevenLabs Voices";
+      }
+    });
+
+    const customSel = document.getElementById("voice-custom-select");
+    if (customSel) {
+      customSel.addEventListener("change", (e) => {
+        const opt = e.target.selectedOptions[0];
+        this.voice.saveSettings({
+          voiceId: e.target.value,
+          voiceName: opt ? opt.textContent.split(" (")[0] : "Custom Voice"
+        });
+        this.renderVoiceStudio();
+      });
+    }
+
+    const modelSel = document.getElementById("voice-model-select");
+    if (modelSel) {
+      modelSel.addEventListener("change", (e) => {
+        this.voice.saveSettings({ modelId: e.target.value });
+      });
+    }
+
+    const speedRange = document.getElementById("voice-speed-range");
+    const speedVal = document.getElementById("voice-speed-val");
+    if (speedRange) {
+      speedRange.addEventListener("input", (e) => {
+        const val = Number(e.target.value);
+        if (speedVal) speedVal.textContent = `${val.toFixed(2)}x`;
+        this.voice.saveSettings({ speed: val });
+      });
+    }
+
+    const bindChk = (id, settingKey) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener("change", (e) => {
+          this.voice.saveSettings({ [settingKey]: e.target.checked });
+        });
+      }
+    };
+    bindChk("chk-auto-questions", "autoReadQuestions");
+    bindChk("chk-auto-solutions", "autoExplainSolutions");
+    bindChk("chk-auto-screens", "autoNarrateScreens");
+
+    addClick("btn-voice-test", () => {
+      this.voice.speak(
+        "Hello Space Cadet! I am Nova, your ElevenLabs mission tutor. Blast alien U F Os with Shift, and I will explain every math and science step clearly!",
+        { force: true }
+      );
+    });
+
+    addClick("btn-voice-clear-cache", async () => {
+      await this.voice.cache.clear();
+      this.renderVoiceStudio();
+    });
+  }
+
+  async renderVoiceStudio() {
+    if (!this.voice) return;
+    const s = this.voice.settings;
+
+    const keyInput = document.getElementById("voice-api-key-input");
+    if (keyInput && !keyInput.value && this.voice.apiKey) {
+      keyInput.value = this.voice.apiKey;
+    }
+
+    const banner = document.getElementById("voice-connection-banner");
+    const bannerIcon = document.getElementById("voice-connection-icon");
+    const bannerText = document.getElementById("voice-connection-text");
+    if (banner && bannerIcon && bannerText) {
+      const pregenCount = this.voice.getPregeneratedCount();
+      const hasLive = this.voice.hasLiveAccess();
+      banner.classList.toggle("is-connected", hasLive || pregenCount > 0);
+      if (hasLive) {
+        bannerIcon.textContent = "🟢";
+        const via = this.voice.serverStatus.serverKeyConfigured && !this.voice.apiKey ? "Local Server Proxy (.env)" : "Browser API Key";
+        bannerText.textContent = `ElevenLabs Connected (${via})${pregenCount > 0 ? ` + ${pregenCount} pre-generated MP3 clips` : ""}`;
+      } else if (pregenCount > 0) {
+        bannerIcon.textContent = "🟢";
+        bannerText.textContent = `Pre-generated ElevenLabs MP3 Pack Ready (${pregenCount} clips). Add an API key below for dynamic custom voices.`;
+      } else {
+        bannerIcon.textContent = "🔑";
+        bannerText.textContent = "Paste your ElevenLabs API key below to activate realistic neural tutor voices.";
+      }
+    }
+
+    const grid = document.getElementById("voice-presets-grid");
+    if (grid && typeof ELEVENLABS_VOICES !== "undefined") {
+      grid.innerHTML = "";
+      ELEVENLABS_VOICES.forEach((v) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = `voice-preset-card ${s.voiceId === v.id ? "active" : ""}`;
+        card.innerHTML = `
+          <div class="voice-preset-top">
+            <span class="voice-preset-name">${v.name}</span>
+            <span class="voice-preset-badge">${v.badge}</span>
+          </div>
+          <div class="voice-preset-desc">${v.accent} • ${v.description}</div>
+        `;
+        card.addEventListener("click", () => {
+          this.voice.saveSettings({
+            voiceId: v.id,
+            voiceName: v.name,
+            stability: v.stability,
+            similarityBoost: v.similarity_boost
+          });
+          this.renderVoiceStudio();
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    const modelSel = document.getElementById("voice-model-select");
+    if (modelSel) modelSel.value = s.modelId;
+
+    const speedRange = document.getElementById("voice-speed-range");
+    const speedVal = document.getElementById("voice-speed-val");
+    if (speedRange) speedRange.value = String(s.speed || 1.0);
+    if (speedVal) speedVal.textContent = `${Number(s.speed || 1.0).toFixed(2)}x`;
+
+    const chkQ = document.getElementById("chk-auto-questions");
+    const chkS = document.getElementById("chk-auto-solutions");
+    const chkSc = document.getElementById("chk-auto-screens");
+    if (chkQ) chkQ.checked = s.autoReadQuestions !== false;
+    if (chkS) chkS.checked = s.autoExplainSolutions !== false;
+    if (chkSc) chkSc.checked = s.autoNarrateScreens !== false;
+
+    const cacheCountEl = document.getElementById("voice-cache-count");
+    if (cacheCountEl) {
+      const cnt = await this.voice.cache.count();
+      cacheCountEl.textContent = String(cnt);
+    }
   }
 
   updateMouseCoords(e) {
@@ -1808,9 +2157,11 @@ class SpaceGame3D {
     }
   }
 
-  applySpaceshipSkin(skinKey) {
+  applySpaceshipSkin(skinKey, announce = true) {
     const skins = {
       teal: {
+        title: "Neo-Teal Fighter",
+        desc: "Military emerald camo armor and cyan ion drive",
         hull: 0x489b88,
         armor: 0x1e293b,
         stripe: 0xecfdf5,
@@ -1819,6 +2170,8 @@ class SpaceGame3D {
         glow: 0x00f5ff
       },
       phoenix: {
+        title: "Solar Phoenix",
+        desc: "Crimson gold armor with solar flare plasma",
         hull: 0xd97706,
         armor: 0x991b1b,
         stripe: 0xfef08a,
@@ -1827,6 +2180,8 @@ class SpaceGame3D {
         glow: 0xfef08a
       },
       stealth: {
+        title: "Void Phantom",
+        desc: "Obsidian stealth titanium and ultraviolet pulse",
         hull: 0x1e1b4b,
         armor: 0x09090b,
         stripe: 0x818cf8,
@@ -1835,6 +2190,8 @@ class SpaceGame3D {
         glow: 0xc084fc
       },
       cyber: {
+        title: "Cyberpunk Nova",
+        desc: "Neon magenta hyperdrive with hot pink flame",
         hull: 0xdb2777,
         armor: 0x312e81,
         stripe: 0x22d3ee,
@@ -1860,6 +2217,9 @@ class SpaceGame3D {
     }
 
     this.updateSkinUI();
+    if (announce && typeof SpeechScriptBuilder !== "undefined") {
+      this.speakCue(SpeechScriptBuilder.skinEquipped(s.title, s.desc), { category: "screen" });
+    }
   }
 
   updateSkinUI() {
@@ -1908,7 +2268,7 @@ class SpaceGame3D {
   }
 
   async openAnswerReview(levelNum = 1) {
-    if (this.state !== "REVIEW" && this.state !== "SKIN") {
+    if (this.state !== "REVIEW" && this.state !== "SKIN" && this.state !== "VOICE") {
       this.previousScreen = this.state;
     }
     this.activeReviewLevel = levelNum;
@@ -1964,6 +2324,7 @@ class SpaceGame3D {
         <div class="review-q-header">
           <span class="review-subject-badge">${emoji} ${q.subject.toUpperCase()}</span>
           <span class="review-topic-tag">✨ ${q.topic} • Question #${idx + 1}</span>
+          <button class="review-explain-btn" type="button">🔊 Explain Aloud</button>
         </div>
         <div class="review-q-body">${q.questionText}</div>
         <div class="review-options-list">${optionsHtml}</div>
@@ -1973,6 +2334,14 @@ class SpaceGame3D {
         </div>
         ${q.hint ? `<div class="review-tip-box">💡 <b>Cadet Learning Tip:</b> ${q.hint}</div>` : ''}
       `;
+      const explainBtn = card.querySelector(".review-explain-btn");
+      if (explainBtn) {
+        explainBtn.addEventListener("click", () => {
+          if (typeof SpeechScriptBuilder !== "undefined") {
+            this.speakCue(SpeechScriptBuilder.reviewCard(q, idx), { force: true });
+          }
+        });
+      }
       listContainer.appendChild(card);
     });
   }
@@ -1980,7 +2349,7 @@ class SpaceGame3D {
   showScreen(target) {
     this.keys = {};
     this.shootHeld = false;
-    if (this.state !== target && this.state !== "SKIN" && this.state !== "REVIEW") {
+    if (this.state !== target && this.state !== "SKIN" && this.state !== "REVIEW" && this.state !== "VOICE") {
       this.previousScreen = this.state;
     }
     this.state = target;
@@ -1995,6 +2364,7 @@ class SpaceGame3D {
     const gModal = document.getElementById("gameover-modal");
     const rModal = document.getElementById("answer-review-modal");
     const sModal = document.getElementById("skin-modal");
+    const vModal = document.getElementById("voice-studio-modal");
 
     if (start) start.classList.add("hidden");
     if (hud) hud.classList.add("hidden");
@@ -2006,10 +2376,14 @@ class SpaceGame3D {
     if (gModal) gModal.classList.add("hidden");
     if (rModal) rModal.classList.add("hidden");
     if (sModal) sModal.classList.add("hidden");
+    if (vModal) vModal.classList.add("hidden");
 
     if (target === "START") {
       if (start) start.classList.remove("hidden");
       this.updateStartScreenStats();
+      if (typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.startWelcome(), { category: "screen" });
+      }
     } else if (target === "MAP") {
       if (map) map.classList.remove("hidden");
       this.renderLevelMap();
@@ -2031,11 +2405,17 @@ class SpaceGame3D {
       if (lEl) lEl.textContent = this.currentLevel || 1;
       if (uEl) uEl.textContent = this.coins || 0;
       if (sEl) sEl.textContent = this.score || 0;
+      if (typeof SpeechScriptBuilder !== "undefined") {
+        this.speakCue(SpeechScriptBuilder.gameOver(this.currentLevel || 1, this.coins || 0), { category: "screen" });
+      }
     } else if (target === "REVIEW") {
       if (rModal) rModal.classList.remove("hidden");
     } else if (target === "SKIN") {
       if (sModal) sModal.classList.remove("hidden");
       this.updateSkinUI();
+    } else if (target === "VOICE") {
+      if (vModal) vModal.classList.remove("hidden");
+      this.renderVoiceStudio();
     }
   }
 
@@ -2127,6 +2507,9 @@ class SpaceGame3D {
     await this.loadQuestionBank(lvlNum);
     this.updateHUD();
     this.showScreen("PLAYING");
+    if (typeof SpeechScriptBuilder !== "undefined") {
+      this.speakCue(SpeechScriptBuilder.levelIntro(this.config), { category: "screen" });
+    }
 
     // Immediate initial wave of UFOs & Asteroids ahead so player can shoot & blast right away!
     this.spawn3DCoin(-45, 0, 0);
@@ -2703,6 +3086,9 @@ class SpaceGame3D {
     });
 
     document.getElementById("q-mascot-speech").textContent = "Awesome shot! You blasted the UFO! Pick the right answer! 🚀🌈";
+    if (typeof SpeechScriptBuilder !== "undefined") {
+      this.speakCue(SpeechScriptBuilder.questionPrompt(q), { category: "question" });
+    }
   }
 
   getSubjectEmoji(sub) {
@@ -2727,6 +3113,9 @@ class SpaceGame3D {
       buttons[chosenIdx].classList.add("correct-highlight");
       this.sound.playCorrect();
       document.getElementById("q-mascot-speech").textContent = "Super star! That's completely right! 🎉";
+      if (typeof SpeechScriptBuilder !== "undefined" && (this.coins + 1) < this.config.targetCoins) {
+        this.speakCue(SpeechScriptBuilder.answerCorrect(this.activeQuestion, this.correctCount), { category: "question" });
+      }
     } else {
       buttons[chosenIdx].classList.add("wrong-highlight");
       this.sound.playWrongSoft();
@@ -2765,6 +3154,7 @@ class SpaceGame3D {
   }
 
   showLearnModeModal(q, chosenIdx) {
+    this.lastLearnChosenIdx = chosenIdx;
     this.showScreen("LEARN");
 
     document.getElementById("learn-q-restated").textContent = `${this.getSubjectEmoji(q.subject)} ${q.questionText}`;
@@ -2781,6 +3171,10 @@ class SpaceGame3D {
       item.innerHTML = `<strong>${emoji} Step ${i + 1}:</strong> <span>${step}</span>`;
       list.appendChild(item);
     });
+
+    if (typeof SpeechScriptBuilder !== "undefined") {
+      this.speakCue(SpeechScriptBuilder.learnExplanation(q, chosenIdx), { category: "learn" });
+    }
   }
 
   completeLevel() {
@@ -2810,10 +3204,12 @@ class SpaceGame3D {
     for (let s = 0; s < 3; s++) starsStr += (s < stars) ? "⭐" : "▫️";
     document.getElementById("complete-stars-row").textContent = starsStr;
 
+    const accuracyPct = Math.round(accuracy * 100);
     document.getElementById("complete-score-val").textContent = this.score;
     document.getElementById("complete-coins-val").textContent = this.coins;
-    document.getElementById("complete-accuracy-val").textContent = `${Math.round(accuracy * 100)}%`;
+    document.getElementById("complete-accuracy-val").textContent = `${accuracyPct}%`;
 
+    let topSubject = null;
     const metricsDiv = document.getElementById("complete-subject-metrics");
     if (metricsDiv) {
       metricsDiv.innerHTML = "";
@@ -2830,6 +3226,9 @@ class SpaceGame3D {
         subjects.forEach((s) => {
           const stat = this.progress.subjectStats[s];
           const pct = Math.round((stat.correct / stat.total) * 100);
+          if (!topSubject || pct > topSubject.pct) {
+            topSubject = { name: s, pct };
+          }
           const row = document.createElement("div");
           row.className = "metric-item-row";
           row.innerHTML = `
@@ -2849,7 +3248,11 @@ class SpaceGame3D {
       nextBtn.style.display = (this.currentLevel < 10) ? "inline-block" : "none";
     }
 
+    this.lastCompleteStats = { stars, score: this.score, coins: this.coins, accuracyPct, topSubject };
     this.showScreen("COMPLETE");
+    if (typeof SpeechScriptBuilder !== "undefined") {
+      this.speakCue(SpeechScriptBuilder.levelComplete(this.config, this.lastCompleteStats), { category: "screen" });
+    }
   }
 
   animate(now) {
